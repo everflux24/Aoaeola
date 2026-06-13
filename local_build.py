@@ -4,13 +4,6 @@
 VIBRA_REBOOT v2.1 - CoreToken Architecture + Interruption Layer + Heat Delta
 ==========================================================================
 「話題のTikTok」として設計されたトレンドまとめエンジン
-
-設計思想:
-- ニュースアプリではなく「脳死消費」が目的
-- 1スワイプ = 1話題（CoreToken統合）
-- 情報密度を上げて総滞在時間を伸ばす
-- 将来のマネタイズ可能性（PromoCard）を構造に組み込む
-- 前回ビルドとの差分で「新着」「上昇」を視覚的に表現
 """
 
 import re
@@ -26,22 +19,30 @@ from collections import Counter
 # ==========================================
 # 定数
 # ==========================================
-GENERIC_WORDS = ["ファン", "声", "歓喜", "期待", "話題", "動画", "様子", "登場",
-                 "公開", "同士", "連発", "続出", "募集", "報告", "歓声", "熱狂"]
+GENERIC_WORDS = [
+    "ファン", "声", "歓喜", "期待", "話題", "動画", "様子", "登場",
+    "公開", "同士", "連発", "続出", "募集", "報告", "歓声", "熱狂",
+    # スポーツ用語: core_token から除外
+    "ホームラン", "打点", "勝利", "敗北", "引き分け", "完封", "サヨナラ",
+    "逆転", "延長", "決勝", "準決勝",
+]
 
-REACTION_KEYWORDS = ['ファン歓喜', '話題', 'の声', 'の反応', '盛り上がり', 'ワクワク',
-                     '感情が炸裂', '歓喜', '可愛い', '熱狂', '歓声', '最高', '面白い', '驚き',
-                     '期待', '大盛り上がり']
+REACTION_KEYWORDS = [
+    'ファン歓喜', '話題', 'の声', 'の反応', '盛り上がり', 'ワクワク',
+    '感情が炸裂', '歓喜', '可愛い', '熱狂', '歓声', '最高', '面白い', '驚き',
+    '期待', '大盛り上がり'
+]
 
-SPECIFICITY_KEYWORDS = ['映画', '放送', '公開', '決定', '発表', '発売', '予約',
-                        '開始', '開催', '登場', '解禁', '初', '新', '周年']
+SPECIFICITY_KEYWORDS = [
+    '映画', '放送', '公開', '決定', '発表', '発売', '予約',
+    '開始', '開催', '登場', '解禁', '初', '新', '周年'
+]
 
 # ==========================================
-# Slide 型定義（将来拡張用）
+# Slide 型定義
 # ==========================================
 
 class Slide:
-    """VIBRA_REBOOT のスライド抽象型"""
     __slots__ = ("type", "data")
 
     def __init__(self, slide_type: str, data: dict):
@@ -57,7 +58,6 @@ class Slide:
 # ==========================================
 
 def parse_posts(post_str):
-    """ポスト数を整数に変換"""
     if isinstance(post_str, int):
         return post_str
     if not post_str or post_str in ("0", "詳細なし"):
@@ -69,7 +69,6 @@ def parse_posts(post_str):
         return 0
 
 def extract_tokens(text):
-    """内容語チャンク抽出"""
     tokens = []
     tokens += re.findall(r'[ア-ン゛゜ァ-ォャ-ョー]{2,}', text)
     tokens += re.findall(r'[一-龥々〆]{2,}', text)
@@ -81,7 +80,6 @@ def extract_tokens(text):
 # ==========================================
 
 def get_core_token(title, summary):
-    """主語優先のcore_token抽出"""
     text = title + ' ' + summary
     tokens = extract_tokens(text)
     if not tokens:
@@ -93,8 +91,9 @@ def get_core_token(title, summary):
     for t, count in freq.items():
         score = count * 2
         score += min(len(t), 8)
+        # タイトル先頭出現を優先（+10 → +5 に緩和）
         if title_tokens and t == title_tokens[0]:
-            score += 10
+            score += 5
         elif t in title_tokens:
             score += 5
         if re.fullmatch(r'[ァ-ヴーヷ-ヺ・]+', t):
@@ -107,7 +106,6 @@ def get_core_token(title, summary):
     return scored[0][0] if scored else title[:10]
 
 def update_cluster_core_token(cluster):
-    """クラスタ内全記事からcore_tokenを再計算"""
     all_text = ' '.join(a['title'] + ' ' + a.get('summary', '') for a in cluster['articles'])
     tokens = extract_tokens(all_text)
     freq = Counter(tokens)
@@ -122,7 +120,6 @@ def update_cluster_core_token(cluster):
 # ==========================================
 
 def should_merge(article, cluster):
-    """統合判定: core_token一致 or 包含 or 部分一致"""
     a_core = article.get('core_token', '')
     c_core = cluster.get('core_token', '')
     if not a_core or not c_core:
@@ -139,7 +136,6 @@ def should_merge(article, cluster):
     return False
 
 def cluster_articles_v21(data_list):
-    """v2.1 CoreTokenベースクラスタリング + Gainソート"""
     articles = []
     for item in data_list:
         posts_num = parse_posts(item.get('posts', 0))
@@ -187,7 +183,6 @@ def cluster_articles_v21(data_list):
 # ==========================================
 
 def info_score(title):
-    """タイトルの情報密度スコア"""
     score = 0
     score += len(re.findall(r'[ア-ン]{3,}', title)) * 2
     score += len(re.findall(r'[一-龥]{2,}', title)) * 2
@@ -202,7 +197,6 @@ def info_score(title):
     return max(score, 1)
 
 def select_representative(cluster):
-    """情報量×熱量で代表記事を選定"""
     scored = []
     for a in cluster['articles']:
         score = a['posts'] * info_score(a['title'])
@@ -215,7 +209,6 @@ def select_representative(cluster):
 # ==========================================
 
 def generate_hook(core_token, title):
-    """フックパターン生成"""
     patterns = [
         f"なぜ今、{core_token}？",
         f"{core_token}、何が起きてる？",
@@ -231,7 +224,6 @@ def generate_hook(core_token, title):
 # ==========================================
 
 def extract_event(title):
-    """タイトルから核心イベントを抽出"""
     clean = title
     for rk in REACTION_KEYWORDS:
         if rk in clean:
@@ -243,7 +235,6 @@ def extract_event(title):
     return event[:25] if len(event) >= 4 else title[:25]
 
 def build_sub_reasons(cluster, rep):
-    """サブ記事から関連理由を生成"""
     reasons = []
     seen = set()
     for a in cluster['articles']:
@@ -262,12 +253,10 @@ def build_sub_reasons(cluster, rep):
 # ==========================================
 
 def build_slides(clusters):
-    """クラスタリストをスライドリストに変換"""
     return [Slide("topic", cluster) for cluster in clusters]
 
 
 def inject_interruptions(slides):
-    """中断スライド挿入レイヤー（現状パススルー）"""
     return slides
 
 
@@ -278,7 +267,6 @@ def inject_interruptions(slides):
 META_PATH = os.path.join(os.environ.get("VIBRA_OUTPUT_DIR", "."), "build_meta.json")
 
 def load_prev_meta():
-    """前回ビルドのメタデータを読み込む"""
     if not os.path.exists(META_PATH):
         return {}
     try:
@@ -289,9 +277,9 @@ def load_prev_meta():
 
 
 def save_meta(clusters):
-    """今回ビルドのメタデータを保存（次回の差分比較用）"""
+    jst = datetime.timezone(datetime.timedelta(hours=9))
     meta = {
-        "timestamp": datetime.datetime.now().isoformat(),
+        "timestamp": datetime.datetime.now(jst).isoformat(),
         "clusters": [
             {"core_token": c["core_token"], "heat": c["heat"]}
             for c in clusters
@@ -305,16 +293,6 @@ def save_meta(clusters):
 
 
 def compute_heat_status(cluster, prev_map):
-    """heat変化率を計算し、視覚状態を返す
-
-    Returns:
-        dict: {
-            "is_new": bool,       # 前回不在
-            "delta_pct": float,   # 変化率（%）
-            "status": str,        # "new" | "surge" | "rise" | "stable" | "fall"
-            "badge_color": str,   # CSS color
-        }
-    """
     core = cluster["core_token"]
     heat = cluster["heat"]
 
@@ -323,7 +301,7 @@ def compute_heat_status(cluster, prev_map):
             "is_new": True,
             "delta_pct": 0.0,
             "status": "new",
-            "badge_color": "#2ed573",  # 緑
+            "badge_color": "#2ed573",
         }
 
     prev_heat = prev_map[core]
@@ -333,13 +311,13 @@ def compute_heat_status(cluster, prev_map):
         delta_pct = ((heat - prev_heat) / prev_heat) * 100
 
     if delta_pct >= 30:
-        status, color = "surge", "#ff4757"   # 赤
+        status, color = "surge", "#ff4757"
     elif delta_pct >= 10:
-        status, color = "rise", "#ffa502"    # オレンジ
+        status, color = "rise", "#ffa502"
     elif delta_pct <= -10:
-        status, color = "fall", "#a4b0be"     # グレー
+        status, color = "fall", "#a4b0be"
     else:
-        status, color = "stable", "#ffea00"  # 黄（現状維持）
+        status, color = "stable", "#ffea00"
 
     return {
         "is_new": False,
@@ -354,16 +332,14 @@ def compute_heat_status(cluster, prev_map):
 # ==========================================
 
 def esc(text):
-    """HTMLエスケープ"""
     return html_lib.escape(str(text), quote=True)
 
 def generate_app_html(slides, out_path=None):
-    """TikTokライクHTMLスライド生成"""
     if out_path is None:
         os.makedirs(OUTPUT_DIR, exist_ok=True)
         out_path = os.path.join(OUTPUT_DIR, "index.html")
 
-    now = datetime.datetime.now()
+    now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))
     time_str = now.strftime("%H:%M")
 
     css = """
@@ -391,11 +367,8 @@ def generate_app_html(slides, out_path=None):
         .related-posts { color: #ff6b6b; font-weight: 700; font-size: 12px; }
         .hint { position: absolute; bottom: 20px; width: 100%; left: 0; text-align: center; font-size: 12px; color: rgba(255,255,255,0.4); animation: bounce 2.5s infinite; letter-spacing: 1px; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-8px);} 60% {transform: translateY(-4px);} }
-        /* 更新時刻バッジ */
         .update-badge { position: absolute; top: 16px; left: 16px; z-index: 50; background: rgba(0,0,0,0.4); color: #fff; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 12px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.3px; }
-        /* NEWラベル */
-        .new-label { display: inline-block; background: #2ed573; color: #000; font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 10px; margin-left: 8px; vertical-align: middle; }
-        /* Interruption Slide スタイル（将来有効化予定） */
+        .new-tag { display: inline-block; background: #ff4757; color: #fff; font-size: 10px; font-weight: 900; padding: 2px 7px; border-radius: 8px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.5px; }
         .interruption-slide { display: flex; align-items: center; justify-content: center; }
         .interruption-content { text-align: center; padding: 40px 24px; max-width: 90%; }
         .interruption-badge { display: inline-block; background: rgba(255,255,255,0.15); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
@@ -431,6 +404,7 @@ def generate_app_html(slides, out_path=None):
         '<meta property="og:description" content="X（Twitter）の最新話題を10分ごとに自動更新。'
         'TikTok風の縦スワイプUIで、ニュースやSNSの流行をすばやくチェックできます。">'
         '<meta property="og:type" content="website">'
+        + FAVICON_SVG +
         '<title>X（Twitter）トレンドまとめ｜VIBRA</title>' + css +
         '</head><body><h1 class="visually-hidden">最新のトレンドまとめ</h1>'
         '<main class="app-container">' + slides_html + '</main>'
@@ -473,16 +447,14 @@ def generate_app_html(slides, out_path=None):
 
 
 def _render_topic_slide(i, cluster, colors, time_str):
-    """topic スライドのHTML断片を生成"""
     rep = cluster['rep']
     bg_color = colors[i % len(colors)]
     hook_text = generate_hook(cluster['core_token'], rep['title'])
 
-    # heat_status からバッジスタイルを決定
     hs = cluster.get("heat_status", {})
     badge_color = hs.get("badge_color", "#ffea00")
     is_new = hs.get("is_new", False)
-    new_label = '<span class="new-label">NEW</span>' if is_new else ''
+    new_tag = '<span class="new-tag">新着</span>' if is_new else ''
 
     if rep.get('image'):
         bg_html = (f'<img class="bg-img" src="{esc(rep["image"])}" alt="" '
@@ -520,12 +492,12 @@ def _render_topic_slide(i, cluster, colors, time_str):
         {bg_html}
         <span class="update-badge">🔄 {esc(time_str)} 更新</span>
         <div class="content">
-            <span class="hook-badge" role="text" style="background: {badge_color};">{esc(hook_text)}{new_label}</span>
+            <span class="hook-badge" role="text" style="background: {badge_color};">{esc(hook_text)}</span>
             <h2 id="heading-{i}" class="title">{esc(rep['title'])}</h2>
             <p class="summary">{esc(rep['summary'])}</p>
             <footer class="meta" aria-label="ソーシャル反響">
                 <span class="meta-icon">🔥</span>
-                <span>{posts_str} ポスト</span>
+                <span>{posts_str} ポスト{new_tag}</span>
             </footer>
             {related_html}
         </div>
@@ -535,7 +507,6 @@ def _render_topic_slide(i, cluster, colors, time_str):
 
 
 def _render_interruption_slide(i, data):
-    """interruption スライドのHTML断片を生成（将来有効化予定）"""
     kind = data.get("kind", "promo")
     if kind == "ranking":
         return _render_ranking_slide(i, data)
@@ -546,7 +517,6 @@ def _render_interruption_slide(i, data):
 
 
 def _render_ranking_slide(i, data):
-    """kind=ranking: 人気ランキングテンプレート"""
     title = esc(data.get("title", "人気ランキング"))
     items = data.get("items", [])
     items_html = ""
@@ -578,7 +548,6 @@ def _render_ranking_slide(i, data):
 
 
 def _render_promo_slide(i, data):
-    """kind=promo: スポンサー/広告テンプレート"""
     badge = esc(data.get("badge", "Sponsored"))
     title = esc(data.get("title", ""))
     description = esc(data.get("description", ""))
@@ -599,7 +568,6 @@ def _render_promo_slide(i, data):
 
 
 def _render_announcement_slide(i, data):
-    """kind=announcement: お知らせテンプレート"""
     badge = esc(data.get("badge", "News"))
     title = esc(data.get("title", ""))
     description = esc(data.get("description", ""))
@@ -632,7 +600,6 @@ NEXT_DATA_RE = re.compile(
 
 
 def fetch_data():
-    """ブラウザ不要。HTTP GET 一発で生HTMLを取得する。"""
     print("HTTP GET でデータを取得します（ブラウザ不要）...")
     req = urllib.request.Request(TARGET_URL, headers={"User-Agent": USER_AGENT})
     try:
@@ -644,7 +611,6 @@ def fetch_data():
 
 
 def parse_html(html):
-    """HTMLから __NEXT_DATA__ をパース"""
     if not html:
         return []
     m = NEXT_DATA_RE.search(html)
@@ -690,13 +656,10 @@ def parse_html(html):
 # ==========================================
 
 def main():
-    """メイン実行フロー"""
-    # 前回ビルドデータ読み込み
     prev_meta = load_prev_meta()
     prev_map = {c["core_token"]: c["heat"] for c in prev_meta.get("clusters", [])}
     print(f"前回クラスタ数: {len(prev_map)}")
 
-    # データ取得
     raw = fetch_data()
     data = parse_html(raw) if raw else []
 
@@ -704,24 +667,18 @@ def main():
         print("データ0件のためビルドを中断します（古いサイトは保持されます）。")
         sys.exit(1)
 
-    # クラスタリング
     clusters = cluster_articles_v21(data)
 
-    # heat_status 計算
     for cluster in clusters:
         cluster["heat_status"] = compute_heat_status(cluster, prev_map)
 
-    # メタデータ保存（次回比較用）
     save_meta(clusters)
 
-    # Slide パイプライン
     slides = build_slides(clusters)
     slides = inject_interruptions(slides)
 
-    # HTML生成
     generate_app_html(slides)
 
-    # 統計出力
     new_count = sum(1 for c in clusters if c["heat_status"]["is_new"])
     surge_count = sum(1 for c in clusters if c["heat_status"]["status"] == "surge")
     print(f"\nVIBRA_REBOOT v2.1 ビルド完了")
