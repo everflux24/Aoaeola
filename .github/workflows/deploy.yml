@@ -1,9 +1,9 @@
 name: Build & Deploy VIBRA
 
 on:
-  # 10分ごとに自動再生成（トレンド更新）
+  # 1時間ごとに自動再生成（トレンド更新）
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "0 * * * *"
   # 手動実行
   workflow_dispatch:
   # main への push 時（[skip ci] でDB自動コミットによる無限ループを防止）
@@ -26,6 +26,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Restore build meta cache
+        uses: actions/cache@v4
+        with:
+          path: _site/build_meta.json
+          key: vibra-build-meta-${{ github.run_id }}
+          restore-keys: vibra-build-meta-
 
       - name: Setup Python
         uses: actions/setup-python@v5
