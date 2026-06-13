@@ -1,9 +1,9 @@
 name: Build & Deploy VIBRA
 
 on:
-  # 1時間ごとに自動再生成（トレンド更新）
+  # 10分ごとに自動再生成（トレンド更新）
   schedule:
-    - cron: "0 * * * *"
+    - cron: "*/10 * * * *"
   # 手動実行
   workflow_dispatch:
   # main への push 時（[skip ci] でDB自動コミットによる無限ループを防止）
