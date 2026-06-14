@@ -373,7 +373,7 @@ def generate_app_html(slides, out_path=None):
         .app-container { height: 100vh; width: 100%; overflow-y: scroll; scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
         .app-container::-webkit-scrollbar { display: none; }
         .slide { height: 100vh; width: 100%; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px 24px 80px; position: relative; overflow: hidden; }
-        .bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; filter: brightness(0.7); }
+        .bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: -2; filter: brightness(0.7); background: #111; }
         .bg-gradient { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.85) 80%, rgba(0,0,0,0.95) 100%); }
         .bg-fallback { position: absolute; inset: 0; z-index: -2; filter: blur(60px); opacity: 0.6; }
         .content { z-index: 10; max-width: 100%; transition: opacity 0.35s ease; }
@@ -407,6 +407,7 @@ def generate_app_html(slides, out_path=None):
         .promo-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         /* Toast notification */
         .vibra-toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: #fff; font-size: 13px; font-weight: 700; padding: 10px 20px; border-radius: 20px; backdrop-filter: blur(10px); z-index: 100; animation: toastIn 0.3s ease, toastOut 0.3s ease 1.5s forwards; }
+        .disclaimer { position: absolute; bottom: 48px; right: 16px; font-size: 9px; color: rgba(255,255,255,0.22); text-align: right; line-height: 1.5; max-width: 240px; z-index: 20; letter-spacing: 0.3px; pointer-events: none; mix-blend-mode: luminosity; }
         @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
         @keyframes toastOut { from { opacity: 1; } to { opacity: 0; } }
     </style>
@@ -433,7 +434,6 @@ def generate_app_html(slides, out_path=None):
         '<meta property="og:type" content="website">'
         + FAVICON_SVG +
         '<title>X（Twitter）トレンドまとめ｜VIBRA</title>' + css +
-        '<script>(function(){var bt="{build_timestamp}";var st=localStorage.getItem("vibra_bt");if(st&&st!==bt){location.reload(true);return;}localStorage.setItem("vibra_bt",bt);setInterval(function(){fetch(location.href,{cache:"no-store",method:"HEAD"}).then(function(r){var lm=r.headers.get("last-modified");if(lm&&lm.indexOf(bt.split(" ")[0])===-1){location.reload(true);}}).catch(function(){});},60000);})();</script>' +
         '</head><body><h1 class="visually-hidden">今日の日本トレンドまとめ</h1>'
         '<main class="app-container">' + slides_html + '</main>'
         '<script>(function(){var touchStartY=0,touchStartTime=0;var lastTapTime=0;var longPressTimer=null;var container=document.querySelector(".app-container");if(!container)return;function getShareText(slide){var titleEl=slide.querySelector("h2.title");var metaEl=slide.querySelector(".meta span:last-child");var title=titleEl?titleEl.textContent.trim():"";var meta=metaEl?metaEl.textContent.trim():"";return "🔥 "+title+"\n"+meta+"\nhttps://vibra-reboot.github.io";}function copyToClipboard(text){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){showToast("コピーしました");}).catch(function(){fallbackCopy(text);});}else{fallbackCopy(text);}}function fallbackCopy(text){var ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");showToast("コピーしました");}catch(e){showToast("コピーに失敗しました");}document.body.removeChild(ta);}function showToast(msg){var existing=document.querySelector(".vibra-toast");if(existing)existing.remove();var t=document.createElement("div");t.className="vibra-toast";t.textContent=msg;t.style.cssText="position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.8);color:#fff;font-size:13px;font-weight:700;padding:10px 20px;border-radius:20px;backdrop-filter:blur(10px);z-index:100;animation:toastIn 0.3s ease,toastOut 0.3s ease 1.5s forwards;";document.body.appendChild(t);setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},2000);}container.addEventListener("touchstart",function(e){touchStartY=e.touches[0].clientY;touchStartTime=Date.now();var slide=e.target.closest(".slide");if(slide){longPressTimer=setTimeout(function(){copyToClipboard(getShareText(slide));longPressTimer=null;},600);}},{passive:true});container.addEventListener("touchmove",function(e){if(longPressTimer){var dy=Math.abs(e.touches[0].clientY-touchStartY);if(dy>10){clearTimeout(longPressTimer);longPressTimer=null;}}},{passive:true});container.addEventListener("touchend",function(e){if(longPressTimer){clearTimeout(longPressTimer);longPressTimer=null;}var dy=Math.abs(e.changedTouches[0].clientY-touchStartY);var dt=Date.now()-touchStartTime;if(dy<10 && dt<300){var now=Date.now();var slide=e.target.closest(".slide");if(!slide)return;if(now-lastTapTime<300){copyToClipboard(getShareText(slide));lastTapTime=0;}else{var content=slide.querySelector(".content");if(content)content.classList.toggle("hidden");lastTapTime=now;}}},{passive:true});container.addEventListener("click",function(e){var slide=e.target.closest(".slide");if(slide){var content=slide.querySelector(".content");if(content)content.classList.toggle("hidden");}});var style=document.createElement("style");style.textContent="@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}@keyframes toastOut{from{opacity:1;}to{opacity:0;}}";document.head.appendChild(style);})();</script>'
@@ -538,6 +538,7 @@ def _render_topic_slide(i, cluster, colors, time_str):
             </footer>
             {related_html}
         </div>
+        <div class="disclaimer" aria-hidden="true">※自動取得・自動要約。原文のニュアンスが損なわれる場合があります。</div>
         <div class="hint" aria-hidden="true">SWIPE UP ↓</div>
     </article>
     """
@@ -579,6 +580,7 @@ def _render_ranking_slide(i, data):
             <h2 id="ranking-heading-{i}" class="interruption-title">{title}</h2>
             <ul class="ranking-list">{items_html}</ul>
         </div>
+        <div class="disclaimer" aria-hidden="true">※自動取得・自動要約。原文のニュアンスが損なわれる場合があります。</div>
         <div class="hint" aria-hidden="true">SWIPE UP ↓</div>
     </article>
     """
@@ -599,6 +601,7 @@ def _render_promo_slide(i, data):
             <p class="interruption-desc">{description}</p>
             <a href="{cta_url}" class="interruption-cta" target="_blank" rel="noopener noreferrer">{cta}</a>
         </div>
+        <div class="disclaimer" aria-hidden="true">※自動取得・自動要約。原文のニュアンスが損なわれる場合があります。</div>
         <div class="hint" aria-hidden="true">SWIPE UP ↓</div>
     </article>
     """
@@ -619,6 +622,7 @@ def _render_announcement_slide(i, data):
             <p class="interruption-desc">{description}</p>
             <a href="{cta_url}" class="interruption-cta" target="_blank" rel="noopener noreferrer">{cta}</a>
         </div>
+        <div class="disclaimer" aria-hidden="true">※自動取得・自動要約。原文のニュアンスが損なわれる場合があります。</div>
         <div class="hint" aria-hidden="true">SWIPE UP ↓</div>
     </article>
     """
