@@ -134,11 +134,12 @@ def should_merge(article, cluster):
         return False
     if a_core == c_core:
         return True
+    # 厳格化: 短いトークンの部分一致は禁止（誤マージ防止）
     if a_core in c_core or c_core in a_core:
+        if len(a_core) <= 3 or len(c_core) <= 3:
+            return False
         return True
-    for i in range(len(a_core) - 2):
-        if a_core[i:i+3] in c_core:
-            return True
+    # 3文字部分一致ルールを廢止（誤マージの元凶）
     if a_core in cluster.get('token_counter', {}):
         return True
     return False
@@ -206,8 +207,12 @@ def info_score(title):
 
 def select_representative(cluster):
     scored = []
+    c_core = cluster.get('core_token', '')
     for a in cluster['articles']:
         score = a['posts'] * info_score(a['title'])
+        # core_tokenがクラスターと一致する記事を大幅優先（代表記事の整合性確保）
+        if a.get('core_token') == c_core:
+            score *= 3
         scored.append((a, score))
     scored.sort(key=lambda x: x[1], reverse=True)
     return scored[0][0]
@@ -293,6 +298,11 @@ def save_meta(clusters):
             for c in clusters
         ]
     }
+    # 修正: ディレクトリが存在しない場合は作成（初回保存時のエラー防止）
+    meta_dir = os.path.dirname(META_PATH)
+    if meta_dir and not os.path.exists(meta_dir):
+        os.makedirs(meta_dir, exist_ok=True)
+
     try:
         with open(META_PATH, "w", encoding="utf-8") as f:
             json.dump(meta, f, ensure_ascii=False, indent=2)
@@ -472,8 +482,13 @@ def _render_topic_slide(i, cluster, colors, time_str):
     is_new = hs.get("is_new", False)
     new_tag = '<span class="new-tag">新着</span>' if is_new else ''
 
-    if rep.get('image'):
-        bg_html = (f'<img class="bg-img" src="{esc(rep["image"])}" alt="" '
+    # 画像整合性チェック: 代表記事のcore_tokenがクラスターと一致しない場合は画像を信頼しない
+    c_core = cluster.get('core_token', '')
+    rep_core = rep.get('core_token', '')
+    image_url = rep.get('image', '') if rep_core == c_core else ''
+
+    if image_url:
+        bg_html = (f'<img class="bg-img" src="{esc(image_url)}" alt="" '
                    f'aria-hidden="true" loading="lazy" decoding="async" referrerpolicy="no-referrer">'
                    f'<div class="bg-gradient" aria-hidden="true"></div>')
     else:
