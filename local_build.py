@@ -3,6 +3,7 @@
 """
 VIBRA_REBOOT v2.2 - CoreToken Architecture + Interruption Layer + Heat Delta
                       + SEO Structured Data (<time datetime>, JSON-LD, OGP fix)
+                      NO f-string VERSION
 ==========================================================================
 """
 
@@ -28,21 +29,23 @@ try:
     CORE_LOGIC_AVAILABLE = True
 except ImportError:
     CORE_LOGIC_AVAILABLE = False
-    print("⚠️ コアロジックが見つかりません。core/token_cluster.py と core/hook_reason.py を確認してください。")
+    print("WARNING: Core logic not found. Check core/token_cluster.py and core/hook_reason.py")
     sys.exit(1)
 
 
 FAVICON_SVG = (
     '<link rel="icon" type="image/svg+xml" '
     'href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 '
-    'viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🔥%3C/text%3E%3C/svg%3E">'
+    'viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E'
+    + chr(0x1F525)
+    + '%3C/text%3E%3C/svg%3E">'
 )
 
 
 class Slide:
     __slots__ = ("type", "data")
 
-    def __init__(self, slide_type: str, data: dict):
+    def __init__(self, slide_type, data):
         self.type = slide_type
         self.data = data
 
@@ -53,11 +56,11 @@ class Slide:
 def parse_posts(post_str):
     if isinstance(post_str, int):
         return post_str
-    if not post_str or post_str in ("0", "詳細なし"):
+    if not post_str or post_str in ("0", "\u8a73\u7d30\u306a\u3057"):
         return 0
-    s = str(post_str).replace("ポスト", "").replace(",", "").strip()
+    s = str(post_str).replace("\u30dd\u30b9\u30c8", "").replace(",", "").strip()
     try:
-        return int(float(s.replace("万", "")) * 10000) if "万" in s else int(s)
+        return int(float(s.replace("\u4e07", "")) * 10000) if "\u4e07" in s else int(s)
     except:
         return 0
 
@@ -91,7 +94,7 @@ def save_meta(clusters):
         with open(META_PATH, "w", encoding="utf-8") as f:
             json.dump(meta, f, ensure_ascii=False, indent=2)
     except OSError as e:
-        print(f"メタデータ保存警告: {e}")
+        print("Meta save warning: " + str(e))
 
 
 def compute_heat_status(cluster, prev_map):
@@ -130,7 +133,6 @@ def compute_heat_status(cluster, prev_map):
 
 
 def generate_json_ld(slides, iso_time, page_title, page_desc):
-    """Schema.org ItemList + NewsArticle を生成"""
     item_list = []
     position = 1
     for slide in slides:
@@ -183,10 +185,10 @@ def generate_app_html(slides, out_path=None):
     time_str = now.strftime("%H:%M")
     iso_time = now.isoformat()
 
-    ogp_image_url = f"https://everflux24.github.io/VIBRA/ogp-default.png?v={version}"
+    ogp_image_url = "https://everflux24.github.io/VIBRA/ogp-default.png?v=" + version
 
-    page_title = "X（Twitter）トレンドまとめ｜VIBRA"
-    page_desc = "X（Twitter）の最新話題を30分ごとに自動更新。TikTok風の縦スワイプUIで、ニュースやSNSの流行をすばやくチェックできます。"
+    page_title = "X\uff08Twitter\uff09\u30c8\u30ec\u30f3\u30c9\u307e\u3068\u3081\uff5cVIBRA"
+    page_desc = "X\uff08Twitter\uff09\u306e\u6700\u65b0\u8a71\u984c\u309230\u5206\u3054\u3068\u306b\u81ea\u52d5\u66f4\u65b0\u3002TikTok\u98a8\u306e\u7e26\u30b9\u30ef\u30a4\u30d7UI\u3067\u3001\u30cb\u30e5\u30fc\u30b9\u3084SNS\u306e\u6d41\u884c\u3092\u3059\u3070\u3084\u304f\u30c1\u30a7\u30c3\u30af\u3067\u304d\u307e\u3059\u3002"
 
     json_ld = generate_json_ld(slides, iso_time, page_title, page_desc)
 
@@ -245,27 +247,27 @@ def generate_app_html(slides, out_path=None):
         elif slide.type == "interruption":
             slides_html += _render_interruption_slide(i, slide.data)
 
-    # HTML構築 - 各行を個別の文字列結合で改行を避ける
-    head_part1 = '<!DOCTYPE html><!-- VIBRA_BUILD: ' + build_timestamp + ' --><html lang="ja"><head><meta charset="UTF-8">'
-    head_part2 = '<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">'
-    head_part3 = '<meta name="theme-color" content="#000000"><meta name="google-site-verification" content="teiftQqNINv-6xUwSh2bHx9fYM2_XtNd3yhuS0e1kNQ"><meta http-equiv="refresh" content="1800">'
-    head_part4 = '<meta name="description" content="' + esc(page_desc) + '">'
-    head_part5 = '<meta property="og:title" content="' + esc(page_title) + '">'
-    head_part6 = '<meta property="og:description" content="' + esc(page_desc) + '">'
-    head_part7 = '<meta property="og:type" content="website"><meta property="og:url" content="https://everflux24.github.io/VIBRA/">'
-    head_part8 = '<meta property="og:image" content="' + esc(ogp_image_url) + '"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">'
-    head_part9 = FAVICON_SVG
-    head_part10 = '<title>' + esc(page_title) + '</title>' + css
-    head_part11 = '<script type="application/ld+json">' + json_ld + '</script>'
-    head_part12 = '</head><body><h1 class="visually-hidden">今日の日本トレンドまとめ</h1>'
-    head_part13 = '<main class="app-container">' + slides_html + '</main>'
-    head_part14 = '</body></html>'
+    parts = []
+    parts.append('<!DOCTYPE html><!-- VIBRA_BUILD: ' + build_timestamp + ' --><html lang="ja"><head><meta charset="UTF-8">')
+    parts.append('<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">')
+    parts.append('<meta name="theme-color" content="#000000"><meta name="google-site-verification" content="teiftQqNINv-6xUwSh2bHx9fYM2_XtNd3yhuS0e1kNQ"><meta http-equiv="refresh" content="1800">')
+    parts.append('<meta name="description" content="' + esc(page_desc) + '">')
+    parts.append('<meta property="og:title" content="' + esc(page_title) + '">')
+    parts.append('<meta property="og:description" content="' + esc(page_desc) + '">')
+    parts.append('<meta property="og:type" content="website"><meta property="og:url" content="https://everflux24.github.io/VIBRA/">')
+    parts.append('<meta property="og:image" content="' + esc(ogp_image_url) + '"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">')
+    parts.append(FAVICON_SVG)
+    parts.append('<title>' + esc(page_title) + '</title>' + css)
+    parts.append('<script type="application/ld+json">' + json_ld + '</script>')
+    parts.append('</head><body><h1 class="visually-hidden">\u4eca\u65e5\u306e\u65e5\u672c\u30c8\u30ec\u30f3\u30c9\u307e\u3068\u3081</h1>')
+    parts.append('<main class="app-container">' + slides_html + '</main>')
+    parts.append('</body></html>')
 
-    full_html = head_part1 + head_part2 + head_part3 + head_part4 + head_part5 + head_part6 + head_part7 + head_part8 + head_part9 + head_part10 + head_part11 + head_part12 + head_part13 + head_part14
+    full_html = "".join(parts)
 
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(full_html)
-    print(f"✅ {out_path} を生成しました！（スライド数: {len(slides)}）")
+    print("Generated: " + out_path + " (slides: " + str(len(slides)) + ")")
     return out_path
 
 
@@ -273,30 +275,19 @@ def generate_sitemap(base_url="https://everflux24.github.io/VIBRA"):
     jst = datetime.timezone(datetime.timedelta(hours=9))
     now = datetime.datetime.now(jst)
     lastmod = now.strftime("%Y-%m-%dT%H:%M:%S+09:00")
-    xml = """<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>""" + base_url + """/</loc>
-    <lastmod>""" + lastmod + """</lastmod>
-    <changefreq>always</changefreq>
-    <priority>1.0</priority>
-  </url>
-</urlset>"""
+    xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>" + base_url + "/</loc>\n    <lastmod>" + lastmod + "</lastmod>\n    <changefreq>always</changefreq>\n    <priority>1.0</priority>\n  </url>\n</urlset>"
     sitemap_path = os.path.join(OUTPUT_DIR, "sitemap.xml")
     with open(sitemap_path, "w", encoding="utf-8") as f:
         f.write(xml)
-    print(f"✅ {sitemap_path} を生成しました")
+    print("Generated: " + sitemap_path)
 
 
 def generate_robots_txt(base_url="https://everflux24.github.io/VIBRA"):
-    robots = "User-agent: *
-Allow: /
-
-Sitemap: " + base_url + "/sitemap.xml"
+    robots = "User-agent: *\nAllow: /\n\nSitemap: " + base_url + "/sitemap.xml"
     robots_path = os.path.join(OUTPUT_DIR, "robots.txt")
     with open(robots_path, "w", encoding="utf-8") as f:
         f.write(robots)
-    print(f"✅ {robots_path} を生成しました")
+    print("Generated: " + robots_path)
 
 
 def _render_topic_slide(i, cluster, colors, time_str, iso_time):
@@ -307,7 +298,7 @@ def _render_topic_slide(i, cluster, colors, time_str, iso_time):
     hs = cluster.get("heat_status", {})
     badge_color = hs.get("badge_color", "#ffea00")
     is_new = hs.get("is_new", False)
-    new_tag = '<span class="new-tag">新着</span>' if is_new else ''
+    new_tag = '<span class="new-tag">\u65b0\u7740</span>' if is_new else ''
 
     c_core = cluster.get('core_token', '')
     rep_title = rep.get('title', '')
@@ -323,43 +314,45 @@ def _render_topic_slide(i, cluster, colors, time_str, iso_time):
 
     posts_num = cluster['heat']
     if posts_num >= 10000:
-        posts_str = f"{posts_num/10000:.1f}万" if posts_num % 10000 != 0 else f"{posts_num//10000}万"
+        posts_str = str(round(posts_num / 10000, 1)) + "\u4e07" if posts_num % 10000 != 0 else str(posts_num // 10000) + "\u4e07"
     else:
-        posts_str = f"{posts_num:,}"
+        posts_str = "{:,}".format(posts_num)
 
     related_html = ""
     if cluster.get('sub_reasons'):
-        related_html = '<div class="related"><div class="related-label">関連</div>'
+        related_html = '<div class="related"><div class="related-label">\u95a2\u9023</div>'
         for sub in cluster['sub_reasons']:
             sub_posts = sub['posts']
             if sub_posts >= 10000:
-                sub_posts_str = f"{sub_posts//10000}万"
+                sub_posts_str = str(sub_posts // 10000) + "\u4e07"
             elif sub_posts >= 1000:
-                sub_posts_str = f"{sub_posts//1000}k"
+                sub_posts_str = str(sub_posts // 1000) + "k"
             else:
                 sub_posts_str = str(sub_posts)
             related_html += ('<div class="related-item">'
                              '<span class="related-text">' + esc(sub["text"]) + '</span>'
-                             '<span class="related-posts">🔥 ' + sub_posts_str + '</span>'
+                             '<span class="related-posts">' + chr(0x1F525) + ' ' + sub_posts_str + '</span>'
                              '</div>')
         related_html += '</div>'
 
-    return ('<article class="slide" aria-labelledby="heading-' + str(i) + '">'
-            + bg_html
-            + '<time datetime="' + esc(iso_time) + '" class="update-badge">🔄 ' + esc(time_str) + ' 更新</time>'
-            + '<div class="content">'
-            + '<span class="hook-badge" role="text" style="background: ' + badge_color + ';">' + esc(hook_text) + '</span>'
-            + '<h2 id="heading-' + str(i) + '" class="title">' + esc(rep['title']) + '</h2>'
-            + '<p class="summary">' + esc(rep['summary']) + '</p>'
-            + '<footer class="meta" aria-label="ソーシャル反響">'
-            + '<span class="meta-icon">🔥</span>'
-            + '<span>' + posts_str + ' ポスト' + new_tag + '</span>'
-            + '</footer>'
-            + related_html
-            + '</div>'
-            + '<div class="disclaimer" aria-hidden="true">※自動取得・自動要約。背景ミスマッチ、原文のニュアンスが損なわれる場合があり、内容の正確性を保証するものではありません。</div>'
-            + '<div class="hint" aria-hidden="true">SWIPE UP ↓</div>'
-            + '</article>')
+    parts = []
+    parts.append('<article class="slide" aria-labelledby="heading-' + str(i) + '">')
+    parts.append(bg_html)
+    parts.append('<time datetime="' + esc(iso_time) + '" class="update-badge">' + chr(0x1F504) + ' ' + esc(time_str) + ' \u66f4\u65b0</time>')
+    parts.append('<div class="content">')
+    parts.append('<span class="hook-badge" role="text" style="background: ' + badge_color + ';">' + esc(hook_text) + '</span>')
+    parts.append('<h2 id="heading-' + str(i) + '" class="title">' + esc(rep['title']) + '</h2>')
+    parts.append('<p class="summary">' + esc(rep['summary']) + '</p>')
+    parts.append('<footer class="meta" aria-label="\u30bd\u30fc\u30b7\u30e3\u30eb\u53cd\u97ff">')
+    parts.append('<span class="meta-icon">' + chr(0x1F525) + '</span>')
+    parts.append('<span>' + posts_str + ' \u30dd\u30b9\u30c8' + new_tag + '</span>')
+    parts.append('</footer>')
+    parts.append(related_html)
+    parts.append('</div>')
+    parts.append('<div class="disclaimer" aria-hidden="true">\u203b\u81ea\u52d5\u53d6\u5f97\u30fb\u81ea\u52d5\u8981\u7d04\u3002\u80cc\u666f\u30df\u30b9\u30de\u30c3\u30c1\u3001\u539f\u6587\u306e\u30cb\u30e5\u30a2\u30f3\u30b9\u304c\u640d\u306a\u308f\u308c\u308b\u5834\u5408\u304c\u3042\u308a\u3001\u5185\u5bb9\u306e\u6b63\u78ba\u6027\u3092\u4fdd\u8a3c\u3059\u308b\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002</div>')
+    parts.append('<div class="hint" aria-hidden="true">SWIPE UP \u2193</div>')
+    parts.append('</article>')
+    return "".join(parts)
 
 
 def _render_interruption_slide(i, data):
@@ -373,71 +366,77 @@ def _render_interruption_slide(i, data):
 
 
 def _render_ranking_slide(i, data):
-    title = esc(data.get("title", "人気ランキング"))
+    title = esc(data.get("title", "\u4eba\u6c17\u30e9\u30f3\u30ad\u30f3\u30b0"))
     items = data.get("items", [])
     items_html = ""
     for idx, item in enumerate(items[:5], 1):
         text = esc(item.get("text", ""))
         posts = item.get("posts", 0)
         if posts >= 10000:
-            posts_str = f"{posts//10000}万"
+            posts_str = str(posts // 10000) + "\u4e07"
         elif posts >= 1000:
-            posts_str = f"{posts//1000}k"
+            posts_str = str(posts // 1000) + "k"
         else:
             posts_str = str(posts)
         items_html += ('<li class="ranking-item">'
                        '<span class="ranking-num">' + str(idx) + '</span>'
                        '<span class="ranking-text">' + text + '</span>'
-                       '<span class="ranking-posts">' + posts_str + ' ポスト</span>'
+                       '<span class="ranking-posts">' + posts_str + ' \u30dd\u30b9\u30c8</span>'
                        '</li>')
 
-    return ('<article class="slide interruption-slide ranking-bg" aria-labelledby="ranking-heading-' + str(i) + '">'
-            '<div class="interruption-content">'
-            '<span class="interruption-badge">Ranking</span>'
-            '<h2 id="ranking-heading-' + str(i) + '" class="interruption-title">' + title + '</h2>'
-            '<ul class="ranking-list">' + items_html + '</ul>'
-            '</div>'
-            '<div class="disclaimer" aria-hidden="true">※自動取得・自動要約。原文のニュアンスが損なわれる場合があり、内容の正確性を保証するものではありません。</div>'
-            '<div class="hint" aria-hidden="true">SWIPE UP ↓</div>'
-            '</article>')
+    parts = []
+    parts.append('<article class="slide interruption-slide ranking-bg" aria-labelledby="ranking-heading-' + str(i) + '">')
+    parts.append('<div class="interruption-content">')
+    parts.append('<span class="interruption-badge">Ranking</span>')
+    parts.append('<h2 id="ranking-heading-' + str(i) + '" class="interruption-title">' + title + '</h2>')
+    parts.append('<ul class="ranking-list">' + items_html + '</ul>')
+    parts.append('</div>')
+    parts.append('<div class="disclaimer" aria-hidden="true">\u203b\u81ea\u52d5\u53d6\u5f97\u30fb\u81ea\u52d5\u8981\u7d04\u3002\u539f\u6587\u306e\u30cb\u30e5\u30a2\u30f3\u30b9\u304c\u640d\u306a\u308f\u308c\u308b\u5834\u5408\u304c\u3042\u308a\u3001\u5185\u5bb9\u306e\u6b63\u78ba\u6027\u3092\u4fdd\u8a3c\u3059\u308b\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002</div>')
+    parts.append('<div class="hint" aria-hidden="true">SWIPE UP \u2193</div>')
+    parts.append('</article>')
+    return "".join(parts)
 
 
 def _render_promo_slide(i, data):
     badge = esc(data.get("badge", "Sponsored"))
     title = esc(data.get("title", ""))
     description = esc(data.get("description", ""))
-    cta = esc(data.get("cta", "詳しく見る"))
+    cta = esc(data.get("cta", "\u8a73\u3057\u304f\u898b\u308b"))
     cta_url = esc(data.get("cta_url", "#"))
 
-    return ('<article class="slide interruption-slide promo-bg" aria-labelledby="promo-heading-' + str(i) + '">'
-            '<div class="interruption-content">'
-            '<span class="interruption-badge">' + badge + '</span>'
-            '<h2 id="promo-heading-' + str(i) + '" class="interruption-title">' + title + '</h2>'
-            '<p class="interruption-desc">' + description + '</p>'
-            '<a href="' + cta_url + '" class="interruption-cta" target="_blank" rel="noopener noreferrer">' + cta + '</a>'
-            '</div>'
-            '<div class="disclaimer" aria-hidden="true">※自動取得・自動要約。原文のニュアンスが損なわれる場合があり、内容の正確性を保証するものではありません。</div>'
-            '<div class="hint" aria-hidden="true">SWIPE UP ↓</div>'
-            '</article>')
+    parts = []
+    parts.append('<article class="slide interruption-slide promo-bg" aria-labelledby="promo-heading-' + str(i) + '">')
+    parts.append('<div class="interruption-content">')
+    parts.append('<span class="interruption-badge">' + badge + '</span>')
+    parts.append('<h2 id="promo-heading-' + str(i) + '" class="interruption-title">' + title + '</h2>')
+    parts.append('<p class="interruption-desc">' + description + '</p>')
+    parts.append('<a href="' + cta_url + '" class="interruption-cta" target="_blank" rel="noopener noreferrer">' + cta + '</a>')
+    parts.append('</div>')
+    parts.append('<div class="disclaimer" aria-hidden="true">\u203b\u81ea\u52d5\u53d6\u5f97\u30fb\u81ea\u52d5\u8981\u7d04\u3002\u539f\u6587\u306e\u30cb\u30e5\u30a2\u30f3\u30b9\u304c\u640d\u306a\u308f\u308c\u308b\u5834\u5408\u304c\u3042\u308a\u3001\u5185\u5bb9\u306e\u6b63\u78ba\u6027\u3092\u4fdd\u8a3c\u3059\u308b\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002</div>')
+    parts.append('<div class="hint" aria-hidden="true">SWIPE UP \u2193</div>')
+    parts.append('</article>')
+    return "".join(parts)
 
 
 def _render_announcement_slide(i, data):
     badge = esc(data.get("badge", "News"))
     title = esc(data.get("title", ""))
     description = esc(data.get("description", ""))
-    cta = esc(data.get("cta", "確認する"))
+    cta = esc(data.get("cta", "\u78ba\u8a8d\u3059\u308b"))
     cta_url = esc(data.get("cta_url", "#"))
 
-    return ('<article class="slide interruption-slide" style="background: linear-gradient(135deg, #2ed573 0%, #1e90ff 100%);" aria-labelledby="announce-heading-' + str(i) + '">'
-            '<div class="interruption-content">'
-            '<span class="interruption-badge">' + badge + '</span>'
-            '<h2 id="announce-heading-' + str(i) + '" class="interruption-title">' + title + '</h2>'
-            '<p class="interruption-desc">' + description + '</p>'
-            '<a href="' + cta_url + '" class="interruption-cta" target="_blank" rel="noopener noreferrer">' + cta + '</a>'
-            '</div>'
-            '<div class="disclaimer" aria-hidden="true">※自動取得・自動要約。原文のニュアンスが損なわれる場合があり、内容の正確性を保証するものではありません。</div>'
-            '<div class="hint" aria-hidden="true">SWIPE UP ↓</div>'
-            '</article>')
+    parts = []
+    parts.append('<article class="slide interruption-slide" style="background: linear-gradient(135deg, #2ed573 0%, #1e90ff 100%);" aria-labelledby="announce-heading-' + str(i) + '">')
+    parts.append('<div class="interruption-content">')
+    parts.append('<span class="interruption-badge">' + badge + '</span>')
+    parts.append('<h2 id="announce-heading-' + str(i) + '" class="interruption-title">' + title + '</h2>')
+    parts.append('<p class="interruption-desc">' + description + '</p>')
+    parts.append('<a href="' + cta_url + '" class="interruption-cta" target="_blank" rel="noopener noreferrer">' + cta + '</a>')
+    parts.append('</div>')
+    parts.append('<div class="disclaimer" aria-hidden="true">\u203b\u81ea\u52d5\u53d6\u5f97\u30fb\u81ea\u52d5\u8981\u7d04\u3002\u539f\u6587\u306e\u30cb\u30e5\u30a2\u30f3\u30b9\u304c\u640d\u306a\u308f\u308c\u308b\u5834\u5408\u304c\u3042\u308a\u3001\u5185\u5bb9\u306e\u6b63\u78ba\u6027\u3092\u4fdd\u8a3c\u3059\u308b\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002</div>')
+    parts.append('<div class="hint" aria-hidden="true">SWIPE UP \u2193</div>')
+    parts.append('</article>')
+    return "".join(parts)
 
 
 TARGET_URL = "https://search.yahoo.co.jp/realtime/search/matome"
@@ -449,13 +448,13 @@ NEXT_DATA_RE = re.compile(
 
 
 def fetch_data():
-    print("HTTP GET でデータを取得します（ブラウザ不要）...")
+    print("HTTP GET fetching data...")
     req = urllib.request.Request(TARGET_URL, headers={"User-Agent": USER_AGENT})
     try:
         with urllib.request.urlopen(req, timeout=20) as res:
             return res.read().decode("utf-8", errors="replace")
     except Exception as e:
-        print(f"取得エラー: {e}")
+        print("Fetch error: " + str(e))
         return None
 
 
@@ -464,13 +463,13 @@ def parse_html(html):
         return []
     m = NEXT_DATA_RE.search(html)
     if not m:
-        print("__NEXT_DATA__ が見つかりません（DOM構造変更の可能性）")
+        print("__NEXT_DATA__ not found (DOM structure may have changed)")
         return []
     try:
         data = json.loads(m.group(1))
         items = data["props"]["pageProps"]["pageData"]["matomeList"]["items"]
     except (KeyError, json.JSONDecodeError) as e:
-        print(f"JSON構造の解析に失敗: {e}")
+        print("JSON parse error: " + str(e))
         return []
 
     data_list = []
@@ -478,7 +477,7 @@ def parse_html(html):
         title = (it.get("title") or "").strip()
         if not title:
             continue
-        summary = (it.get("summary") or "詳細なし").strip()
+        summary = (it.get("summary") or "\u8a73\u7d30\u306a\u3057").strip()
         posts = it.get("tweetCount", 0)
         image = ""
         img = it.get("image")
@@ -496,20 +495,20 @@ def parse_html(html):
             "positive": sentiment.get("positive"),
             "negative": sentiment.get("negative"),
         })
-    print(f"{len(data_list)} 件のトレンドを抽出しました。")
+    print("Extracted " + str(len(data_list)) + " trends.")
     return data_list
 
 
 def main():
     prev_meta = load_prev_meta()
     prev_map = {c["core_token"]: c["heat"] for c in prev_meta.get("clusters", [])}
-    print(f"前回クラスタ数: {len(prev_map)}")
+    print("Previous clusters: " + str(len(prev_map)))
 
     raw = fetch_data()
     data = parse_html(raw) if raw else []
 
     if not data:
-        print("データ0件のためビルドを中断します（古いサイトは保持されます）。")
+        print("No data. Build aborted (old site preserved).")
         sys.exit(1)
 
     clusters = cluster_articles_v21(data)
@@ -528,9 +527,9 @@ def main():
     if os.path.exists(ogp_src):
         import shutil
         shutil.copy2(ogp_src, ogp_dst)
-        print(f"✅ {ogp_src} → {ogp_dst} をコピーしました")
+        print("Copied: " + ogp_src + " -> " + ogp_dst)
     else:
-        print(f"⚠️ OGP画像が見つかりません: {ogp_src}")
+        print("OGP image not found: " + ogp_src)
 
     generate_app_html(slides)
     generate_sitemap()
@@ -538,11 +537,10 @@ def main():
 
     new_count = sum(1 for c in clusters if c["heat_status"]["is_new"])
     surge_count = sum(1 for c in clusters if c["heat_status"]["status"] == "surge")
-    print(f"
-VIBRA_REBOOT v2.2 ビルド完了")
-    print(f"  クラスタ数: {len(clusters)}")
-    print(f"  新着: {new_count} | 急上昇: {surge_count}")
-    print(f"  総スライド数: {len(slides)}")
+    print("\nVIBRA_REBOOT v2.2 build complete")
+    print("  Clusters: " + str(len(clusters)))
+    print("  New: " + str(new_count) + " | Surge: " + str(surge_count))
+    print("  Total slides: " + str(len(slides)))
 
 
 if __name__ == "__main__":
