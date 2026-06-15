@@ -1,21 +1,16 @@
 name: Build & Deploy VIBRA
 
 on:
-  # 10分ごとに自動再生成（トレンド更新）
   schedule:
     - cron: "*/10 * * * *"
-  # 手動実行
   workflow_dispatch:
-  # main への push 時（[skip ci] でDB自動コミットによる無限ループを防止）
   push:
     branches: [main]
 
-# Pages デプロイに必要な権限
 permissions:
   pages: write
   id-token: write
 
-# Pages デプロイの同時実行を1本に制限
 concurrency:
   group: vibra-pages
   cancel-in-progress: false
@@ -39,7 +34,17 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Build site (Yahoo SSR JSON -> _site/index.html)
+      - name: Reconstruct core logic from Secrets
+        env:
+          VIBRA_CORE_1: ${{ secrets.VIBRA_CORE_1 }}
+          VIBRA_CORE_2: ${{ secrets.VIBRA_CORE_2 }}
+        run: |
+          mkdir -p core
+          echo "$VIBRA_CORE_1" > core/token_cluster.py
+          echo "$VIBRA_CORE_2" > core/hook_reason.py
+          echo "✅ Core logic reconstructed from Secrets"
+
+      - name: Build site
         env:
           VIBRA_OUTPUT_DIR: _site
         run: python local_build.py
