@@ -195,8 +195,10 @@ def generate_app_html(slides, out_path=None):
 
     ogp_image_url = "https://everflux24.github.io/VIBRA/ogp-default.png?v=" + version
 
-    page_title = "X\uff08Twitter\uff09\u30c8\u30ec\u30f3\u30c9\u307e\u3068\u3081\uff5cVIBRA"
-    page_desc = "X\uff08Twitter\uff09\u306e\u6700\u65b0\u8a71\u984c\u309230\u5206\u3054\u3068\u306b\u81ea\u52d5\u66f4\u65b0\u3002TikTok\u98a8\u306e\u7e26\u30b9\u30ef\u30a4\u30d7UI\u3067\u3001\u30cb\u30e5\u30fc\u30b9\u3084SNS\u306e\u6d41\u884c\u3092\u3059\u3070\u3084\u304f\u30c1\u30a7\u30c3\u30af\u3067\u304d\u307e\u3059\u3002"
+    # === タイトル・ディスクリプション更新 ===
+    page_title = "VIBRA\uff5c\u3086\u308b\u304f\u77b0\u3081\u308bX\u30c8\u30ec\u30f3\u30c9"
+    page_desc = "\u6687\u3064\u3076\u3057\u306e\u3064\u3044\u3067\u306b\u3001\u4e16\u306e\u4e2d\u306e\u7a7a\u6c17\u304c\u306a\u3093\u3068\u306a\u304f\u308f\u304b\u308b\u3002X\u3067\u8a71\u984c\u306e\u30cb\u30e5\u30fc\u30b9\u3084\u30c8\u30ec\u30f3\u30c9\u309230\u5206\u3054\u3068\u306b\u307e\u3068\u3081\u308b\u3001\u3086\u308b\u304f\u77b0\u3081\u308b\u305f\u3081\u306e\u30b5\u30fc\u30d3\u30b9\u3067\u3059\u3002"
+    ogp_desc = "\u30cb\u30e5\u30fc\u30b9\u3084\u6d41\u884c\u306e\u201c\u307f\u3093\u306a\u306e\u53cd\u5fdc\u201d\u3092\u3001\u7e26\u30b9\u30ef\u30a4\u30d7\u3067\u6c17\u8efd\u306b\u30c1\u30a7\u30c3\u30af\u3002\u5c11\u3057\u7a7a\u3044\u305f\u6642\u9593\u306e\u6687\u3064\u3076\u3057\u306b\u3002"
 
     json_ld = generate_json_ld(slides, iso_time, page_title, page_desc)
 
@@ -261,7 +263,7 @@ def generate_app_html(slides, out_path=None):
     parts.append('<meta name="theme-color" content="#000000"><meta name="google-site-verification" content="teiftQqNINv-6xUwSh2bHx9fYM2_XtNd3yhuS0e1kNQ"><meta http-equiv="refresh" content="1800">')
     parts.append('<meta name="description" content="' + esc(page_desc) + '">')
     parts.append('<meta property="og:title" content="' + esc(page_title) + '">')
-    parts.append('<meta property="og:description" content="' + esc(page_desc) + '">')
+    parts.append('<meta property="og:description" content="' + esc(ogp_desc) + '">')
     parts.append('<meta property="og:type" content="website"><meta property="og:url" content="https://everflux24.github.io/VIBRA/">')
     parts.append('<meta property="og:image" content="' + esc(ogp_image_url) + '"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">')
     parts.append(FAVICON_SVG)
