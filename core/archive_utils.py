@@ -7,8 +7,11 @@ Aoaeola Archive Utilities v2.5
 import hashlib
 import os
 import shutil
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+
+JST = timezone(timedelta(hours=9))
 
 
 def get_color_from_token(token: str) -> dict:
@@ -38,7 +41,6 @@ def get_archive_hour_blocks(dt: datetime) -> list:
     指定日時を含む4時間枠の開始時刻リストを返す。
     0,4,8,12,16,20 のどれかに丸める。
     """
-    hour_block = (dt.hour // 4) * 4
     return [
         dt.replace(hour=h, minute=0, second=0, microsecond=0)
         for h in range(0, 24, 4)
@@ -54,7 +56,7 @@ def cleanup_old_archives(base_dir: str, cutoff_days: int = 365) -> list:
     if not archive_root.exists():
         return []
 
-    cutoff = datetime.now() - timedelta(days=cutoff_days)
+    cutoff = datetime.now(JST) - timedelta(days=cutoff_days)
     deleted = []
 
     for year_dir in archive_root.iterdir():
@@ -70,7 +72,7 @@ def cleanup_old_archives(base_dir: str, cutoff_days: int = 365) -> list:
                     continue
                 day = int(day_dir.name)
                 try:
-                    dir_date = datetime(year, month, day)
+                    dir_date = datetime(year, month, day, tzinfo=JST)
                 except ValueError:
                     continue
                 if dir_date < cutoff:
@@ -92,9 +94,7 @@ def get_recent_archive_links(base_dir: str, days: int = 7) -> list:
     """
     archive_root = Path(base_dir) / "archive"
     links = []
-    # JST（日本標準時）で今日の日付を取得
-    jst = __import__("datetime").timezone(__import__("datetime").timedelta(hours=9))
-    today = datetime.now(jst)
+    today = datetime.now(JST)
 
     for i in range(days):
         d = today - timedelta(days=i)
