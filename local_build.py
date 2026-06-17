@@ -3,8 +3,9 @@
 """
 Aoaeola v2.5 - CoreToken Architecture + Interruption Layer + Heat Delta
                       + SEO Structured Data + Summary Quality Filter
+                      + Archive System (4h blocks / 365d rolling / Gradient BG)
                       NO f-string VERSION
-==========================================================================
+============================================================================
 """
 
 import re
@@ -15,8 +16,14 @@ import hashlib
 import sys
 import urllib.request
 import datetime
+import shutil
+import xml.etree.ElementTree as ET
 from collections import Counter
+from pathlib import Path
 
+# ============================================================
+# Core Logic Import (Secrets or local)
+# ============================================================
 try:
     from core.token_cluster import (
         extract_tokens, get_core_token, update_cluster_core_token,
@@ -32,7 +39,22 @@ except ImportError:
     print("WARNING: Core logic not found. Check core/token_cluster.py and core/hook_reason.py")
     sys.exit(1)
 
+# ============================================================
+# Archive Utilities (committed to repo)
+# ============================================================
+from core.archive_utils import (
+    get_color_from_token,
+    get_archive_path,
+    get_archive_hour_blocks,
+    cleanup_old_archives,
+    get_recent_archive_links,
+    generate_archive_title,
+)
 
+
+# ============================================================
+# Constants
+# ============================================================
 FAVICON_SVG = (
     '<link rel="icon" type="image/svg+xml" '
     'href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 '
@@ -41,11 +63,23 @@ FAVICON_SVG = (
     + '%3C/text%3E%3C/svg%3E">'
 )
 
+TARGET_URL = "https://search.yahoo.co.jp/realtime/search/matome"
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+)
+OUTPUT_DIR = os.environ.get("VIBRA_OUTPUT_DIR", ".")
+META_PATH = os.path.join(OUTPUT_DIR, "build_meta.json")
+NEXT_DATA_RE = re.compile(
+    r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', re.S)
 
-# ==========================================
-# サマリー品質フィルタ（v2.5追加）
-# ==========================================
+SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
+ET.register_namespace("", SITEMAP_NS)
 
+
+# ============================================================
+# Summary Quality Filter (v2.5)
+# ============================================================
 AI_PATTERNS = [
     r'と話題になっている',
     r'とSNSで話題に',
@@ -79,42 +113,32 @@ AI_PATTERNS = [
     r' allegedly',
 ]
 
+
 def clean_summary(summary):
-    """
-    生成AIによる安定的表現を除去し、サマリー品質を向上
-    """
+    """生成AIによる安定的表現を除去し、サマリー品質を向上"""
     if not summary or summary == "\u8a73\u7d30\u306a\u3057":
         return summary
-
     original = summary
-
-    # AIパターンを除去
     for pattern in AI_PATTERNS:
         summary = re.sub(pattern, '', summary)
-
-    # 口語表現を除去・正規化
-    summary = re.sub(r'\s*よ\s*。', '。', summary)
-    summary = re.sub(r'\s*だよ\s*。', '。', summary)
-    summary = re.sub(r'\s*なんだ\s*。', '。', summary)
-    summary = re.sub(r'\s*みたい\s*。', '。', summary)
-    summary = re.sub(r'\s*みたいです\s*。', '。', summary)
-    summary = re.sub(r'\s*ようです\s*。', '。', summary)
-
-    # 冗長な空白を正規化
+    summary = re.sub(r'\s*\u3088\s*\u3002', '\u3002', summary)
+    summary = re.sub(r'\s*\u3060\u3088\s*\u3002', '\u3002', summary)
+    summary = re.sub(r'\s*\u306a\u3093\u3060\s*\u3002', '\u3002', summary)
+    summary = re.sub(r'\s*\u307f\u305f\u3044\s*\u3002', '\u3002', summary)
+    summary = re.sub(r'\s*\u307f\u305f\u3044\u3067\u3059\s*\u3002', '\u3002', summary)
+    summary = re.sub(r'\s*\u3088\u3046\u3067\u3059\s*\u3002', '\u3002', summary)
     summary = re.sub(r'\s+', ' ', summary)
-
-    # 文末が不自然な場合は修正
     summary = summary.strip()
-    if summary.endswith('が') or summary.endswith('を') or summary.endswith('に'):
-        summary = summary + '。'
-
-    # 空になった場合は元に戻す
+    if summary.endswith('\u304c') or summary.endswith('\u3092') or summary.endswith('\u306b'):
+        summary = summary + '\u3002'
     if not summary.strip():
         summary = original
-
     return summary
 
 
+# ============================================================
+# Slide Model
+# ============================================================
 class Slide:
     __slots__ = ("type", "data")
 
@@ -148,7 +172,6 @@ def build_slides(clusters):
             surge_clusters.append(c)
         else:
             normal_clusters.append(c)
-
     slides = []
     for c in surge_clusters:
         slides.append(Slide("topic", c))
@@ -161,8 +184,9 @@ def inject_interruptions(slides):
     return slides
 
 
-META_PATH = os.path.join(os.environ.get("VIBRA_OUTPUT_DIR", "."), "build_meta.json")
-
+# ============================================================
+# Meta / Heat Delta
+# ============================================================
 def load_prev_meta():
     if not os.path.exists(META_PATH):
         return {}
@@ -185,7 +209,6 @@ def save_meta(clusters):
     meta_dir = os.path.dirname(META_PATH)
     if meta_dir and not os.path.exists(meta_dir):
         os.makedirs(meta_dir, exist_ok=True)
-
     try:
         with open(META_PATH, "w", encoding="utf-8") as f:
             json.dump(meta, f, ensure_ascii=False, indent=2)
@@ -196,7 +219,6 @@ def save_meta(clusters):
 def compute_heat_status(cluster, prev_map):
     core = cluster["core_token"]
     heat = cluster["heat"]
-
     if core not in prev_map:
         return {
             "is_new": True,
@@ -204,13 +226,11 @@ def compute_heat_status(cluster, prev_map):
             "status": "new",
             "badge_color": "#2ed573",
         }
-
     prev_heat = prev_map[core]
     if prev_heat == 0:
         delta_pct = 999.0 if heat > 0 else 0.0
     else:
         delta_pct = ((heat - prev_heat) / prev_heat) * 100
-
     if delta_pct >= 20:
         status, color = "surge", "#ff4757"
     elif delta_pct >= 10:
@@ -219,7 +239,6 @@ def compute_heat_status(cluster, prev_map):
         status, color = "fall", "#a4b0be"
     else:
         status, color = "stable", "#ffea00"
-
     return {
         "is_new": False,
         "delta_pct": round(delta_pct, 1),
@@ -228,6 +247,9 @@ def compute_heat_status(cluster, prev_map):
     }
 
 
+# ============================================================
+# JSON-LD / SEO
+# ============================================================
 def generate_json_ld(slides, iso_time, page_title, page_desc):
     item_list = []
     position = 1
@@ -254,7 +276,6 @@ def generate_json_ld(slides, iso_time, page_title, page_desc):
             }
         })
         position += 1
-
     data = {
         "@context": "https://schema.org",
         "@type": "ItemList",
@@ -270,17 +291,43 @@ def esc(text):
     return html_lib.escape(str(text), quote=True)
 
 
+# ============================================================
+# Archive Footer HTML Generator
+# ============================================================
+def generate_top_footer_archive_links(now, output_dir):
+    """過去7日のアーカイブリンクをフッターとして生成"""
+    links = get_recent_archive_links(output_dir, days=7)
+    if not links:
+        return ""
+    html_parts = ['<footer class="archive-footer">']
+    html_parts.append('<div class="archive-footer-label">\u904e\u53bb7\u65e5\u306e\u30a2\u30fc\u30ab\u30a4\u30d6</div>')
+    html_parts.append('<div class="archive-footer-links">')
+    for link in links:
+        cls = "archive-footer-link" if link["has_data"] else "archive-footer-link empty"
+        if link["has_data"]:
+            html_parts.append(
+                '<a href="' + link["path"] + '" class="' + cls + '">' + link["date_str"] + '</a>'
+            )
+        else:
+            html_parts.append('<span class="' + cls + '">' + link["date_str"] + '</span>')
+    html_parts.append('</div></footer>')
+    return "".join(html_parts)
+
+
+# ============================================================
+# Main HTML Generator
+# ============================================================
 def generate_app_html(slides, out_path=None):
     if out_path is None:
         os.makedirs(OUTPUT_DIR, exist_ok=True)
         out_path = os.path.join(OUTPUT_DIR, "index.html")
 
-    now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))
+    jst = datetime.timezone(datetime.timedelta(hours=9))
+    now = datetime.datetime.now(jst)
     build_timestamp = now.strftime('%Y-%m-%d %H:%M JST')
     version = now.strftime('%Y%m%d_%H%M')
     time_str = now.strftime("%H:%M")
     iso_time = now.isoformat()
-
     ogp_image_url = "https://everflux24.github.io/Aoaeola/ogp-default.png?v=" + version
 
     page_title = "Aoaeola\uff5c\u3086\u308b\u304f\u77b0\u3081\u308bX\u30c8\u30ec\u30f3\u30c9"
@@ -289,9 +336,48 @@ def generate_app_html(slides, out_path=None):
 
     json_ld = generate_json_ld(slides, iso_time, page_title, page_desc)
 
-    # v2.5: アーカイブリンクCSSを追加
-    css = ARCHIVE_LINKS_CSS + """
-    <style>
+    # v2.5: Archive footer CSS
+    archive_css = """
+    .archive-footer {
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .archive-footer-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+    .archive-footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+    }
+    .archive-footer-link {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      transition: background 0.2s;
+    }
+    .archive-footer-link:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .archive-footer-link.empty {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    """
+
+    css = '<style>' + archive_css + """
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif; background: #000; color: #fff; overflow: hidden; }
         .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
@@ -306,7 +392,6 @@ def generate_app_html(slides, out_path=None):
         .hook-badge { display: inline-block; color: #000; font-size: 14px; font-weight: 800; padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
         h2.title { font-size: 26px; font-weight: 900; line-height: 1.3; margin-bottom: 12px; text-shadow: 0 2px 16px rgba(0,0,0,0.8); }
         h3.title { font-size: 22px; font-weight: 900; line-height: 1.3; margin-bottom: 12px; text-shadow: 0 2px 16px rgba(0,0,0,0.8); }
-
         p.summary { font-size: 15px; line-height: 1.65; color: #eee; background: rgba(20,20,20,0.5); padding: 16px; border-radius: 12px; backdrop-filter: blur(6px); margin-bottom: 16px; }
         .meta { font-size: 16px; color: #ff6b6b; font-weight: 800; display: flex; align-items: center; gap: 6px; text-shadow: 0 1px 4px rgba(0,0,0,0.8); margin-bottom: 14px; }
         .meta-icon { font-size: 18px; }
@@ -335,12 +420,10 @@ def generate_app_html(slides, out_path=None):
         .disclaimer { position: absolute; bottom: 48px; right: 16px; font-size: 9px; color: rgba(255,255,255,0.22); text-align: right; line-height: 1.5; max-width: 240px; z-index: 20; letter-spacing: 0.3px; pointer-events: none; mix-blend-mode: luminosity; }
         @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
         @keyframes toastOut { from { opacity: 1; } to { opacity: 0; } }
-    </style>
-    """
+    </style>"""
 
     slides_html = ""
     colors = ["#ff4757", "#2ed573", "#1e90ff", "#ffa502", "#3742fa", "#a55eea", "#26de81"]
-
     for i, slide in enumerate(slides):
         if slide.type == "topic":
             slides_html += _render_topic_slide(i, slide.data, colors, time_str, iso_time, is_h3=True)
@@ -362,107 +445,33 @@ def generate_app_html(slides, out_path=None):
     parts.append('</head><body><h1 class="visually-hidden">\u4eca\u65e5\u306e\u65e5\u672c\u30c8\u30ec\u30f3\u30c9\u307e\u3068\u3081</h1>')
     parts.append('<main class="app-container">' + slides_html + '</main>')
 
-    # v2.5: フッターにアーカイブリンクを追加
-    archive_footer_html = generate_top_footer_archive_links(now)
+    # v2.5: Archive footer
+    archive_footer_html = generate_top_footer_archive_links(now, OUTPUT_DIR)
     parts.append(archive_footer_html)
     parts.append('</body></html>')
 
     full_html = "".join(parts)
-
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(full_html)
     print("Generated: " + out_path + " (slides: " + str(len(slides)) + ")")
     return out_path
 
 
-def generate_sitemap(base_url="https://everflux24.github.io/Aoaeola"):
-    """sitemap.xml を生成：トップページ + 全アーカイブURL"""
-    jst = datetime.timezone(datetime.timedelta(hours=9))
-    now = datetime.datetime.now(jst)
-
-    urls = []
-
-    # 1. トップページ
-    urls.append({
-        'loc': base_url + '/',
-        'lastmod': now.strftime("%Y-%m-%dT%H:%M:%S+09:00"),
-        'changefreq': 'always',
-        'priority': '1.0'
-    })
-
-    # 2. アーカイブURL（365日分）
-    archive_dir = Path("archive")
-    if archive_dir.exists():
-        for year_dir in sorted(archive_dir.iterdir()):
-            if not year_dir.is_dir():
-                continue
-            for month_dir in sorted(year_dir.iterdir()):
-                if not month_dir.is_dir():
-                    continue
-                for day_dir in sorted(month_dir.iterdir()):
-                    if not day_dir.is_dir():
-                        continue
-                    for html_file in sorted(day_dir.glob("*.html")):
-                        rel_path = html_file.relative_to(archive_dir)
-                        url = base_url + '/archive/' + str(rel_path).replace('\\', '/')
-                        mtime = datetime.datetime.fromtimestamp(
-                            html_file.stat().st_mtime,
-                            tz=jst
-                        )
-                        urls.append({
-                            'loc': url,
-                            'lastmod': mtime.strftime("%Y-%m-%dT%H:%M:%S+09:00"),
-                            'changefreq': 'never',
-                            'priority': '0.3'
-                        })
-
-    xml_parts = ['<?xml version="1.0" encoding="UTF-8"?>']
-    xml_parts.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    for url in urls:
-        xml_parts.append('  <url>')
-        xml_parts.append('    <loc>' + esc(url['loc']) + '</loc>')
-        xml_parts.append('    <lastmod>' + url['lastmod'] + '</lastmod>')
-        xml_parts.append('    <changefreq>' + url['changefreq'] + '</changefreq>')
-        xml_parts.append('    <priority>' + url['priority'] + '</priority>')
-        xml_parts.append('  </url>')
-    xml_parts.append('</urlset>')
-
-    xml = '\n'.join(xml_parts)
-    sitemap_path = os.path.join(OUTPUT_DIR, "sitemap.xml")
-    with open(sitemap_path, "w", encoding="utf-8") as f:
-        f.write(xml)
-
-    print("Generated sitemap.xml: " + str(len(urls)) + " URLs")
-    print("  - Top page: 1")
-    print("  - Archives: " + str(len(urls) - 1))
-    return sitemap_path
-
-
-def generate_robots_txt(base_url="https://everflux24.github.io/Aoaeola"):
-    robots = "User-agent: *\nAllow: /\n\nSitemap: " + base_url + "/sitemap.xml"
-    robots_path = os.path.join(OUTPUT_DIR, "robots.txt")
-    with open(robots_path, "w", encoding="utf-8") as f:
-        f.write(robots)
-    print("Generated: " + robots_path)
-
-
+# ============================================================
+# Slide Renderers
+# ============================================================
 def _render_topic_slide(i, cluster, colors, time_str, iso_time, is_h3=False):
     rep = cluster['rep']
     bg_color = colors[i % len(colors)]
-
-    # v2.5: cluster_sizeを渡してHookを統一
     cluster_size = len(cluster.get('articles', []))
     hook_text = generate_hook(cluster['core_token'], rep['title'], cluster_size)
-
     hs = cluster.get("heat_status", {})
     badge_color = hs.get("badge_color", "#ffea00")
     is_new = hs.get("is_new", False)
     new_tag = '<span class="new-tag">\u65b0\u7740</span>' if is_new else ''
-
     c_core = cluster.get('core_token', '')
     rep_title = rep.get('title', '')
     image_url = rep.get('image', '') if c_core in rep_title else ''
-
     if image_url:
         bg_html = ('<img class="bg-img" src="' + esc(image_url) + '" alt="" '
                    'aria-hidden="true" loading="lazy" decoding="async" referrerpolicy="no-referrer">'
@@ -470,13 +479,11 @@ def _render_topic_slide(i, cluster, colors, time_str, iso_time, is_h3=False):
     else:
         bg_html = ('<div class="bg-fallback" style="background: ' + bg_color + ';" aria-hidden="true"></div>'
                    '<div class="bg-gradient" aria-hidden="true"></div>')
-
     posts_num = cluster['heat']
     if posts_num >= 10000:
         posts_str = str(round(posts_num / 10000, 1)) + "\u4e07" if posts_num % 10000 != 0 else str(posts_num // 10000) + "\u4e07"
     else:
         posts_str = "{:,}".format(posts_num)
-
     related_html = ""
     if cluster.get('sub_reasons'):
         related_html = '<div class="related"><div class="related-label">\u95a2\u9023</div>'
@@ -493,7 +500,6 @@ def _render_topic_slide(i, cluster, colors, time_str, iso_time, is_h3=False):
                              '<span class="related-posts">' + chr(0x1F525) + ' ' + sub_posts_str + '</span>'
                              '</div>')
         related_html += '</div>'
-
     parts = []
     parts.append('<article class="slide" aria-labelledby="heading-' + str(i) + '">')
     parts.append(bg_html)
@@ -543,7 +549,6 @@ def _render_ranking_slide(i, data):
                        '<span class="ranking-text">' + text + '</span>'
                        '<span class="ranking-posts">' + posts_str + ' \u30dd\u30b9\u30c8</span>'
                        '</li>')
-
     parts = []
     parts.append('<article class="slide interruption-slide ranking-bg" aria-labelledby="ranking-heading-' + str(i) + '">')
     parts.append('<div class="interruption-content">')
@@ -563,7 +568,6 @@ def _render_promo_slide(i, data):
     description = esc(data.get("description", ""))
     cta = esc(data.get("cta", "\u8a73\u3057\u304f\u898b\u308b"))
     cta_url = esc(data.get("cta_url", "#"))
-
     parts = []
     parts.append('<article class="slide interruption-slide promo-bg" aria-labelledby="promo-heading-' + str(i) + '">')
     parts.append('<div class="interruption-content">')
@@ -584,7 +588,6 @@ def _render_announcement_slide(i, data):
     description = esc(data.get("description", ""))
     cta = esc(data.get("cta", "\u78ba\u8a8d\u3059\u308b"))
     cta_url = esc(data.get("cta_url", "#"))
-
     parts = []
     parts.append('<article class="slide interruption-slide" style="background: linear-gradient(135deg, #2ed573 0%, #1e90ff 100%);" aria-labelledby="announce-heading-' + str(i) + '">')
     parts.append('<div class="interruption-content">')
@@ -599,14 +602,122 @@ def _render_announcement_slide(i, data):
     return "".join(parts)
 
 
-TARGET_URL = "https://search.yahoo.co.jp/realtime/search/matome"
-USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-              "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-OUTPUT_DIR = os.environ.get("VIBRA_OUTPUT_DIR", ".")
-NEXT_DATA_RE = re.compile(
-    r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', re.S)
+# ============================================================
+# Sitemap Generator (v2.5 unified)
+# ============================================================
+def generate_sitemap(base_url="https://everflux24.github.io/Aoaeola"):
+    """sitemap.xml を生成：トップページ + 全アーカイブURL"""
+    jst = datetime.timezone(datetime.timedelta(hours=9))
+    now = datetime.datetime.now(jst)
+    base = Path(OUTPUT_DIR)
+    urlset = ET.Element(f"{{{SITEMAP_NS}}}urlset")
+
+    # 1. トップページ
+    _add_sitemap_url(urlset, base_url + "/", now, "always", "1.0")
+
+    # 2. アーカイブURL（_site/archive/ 以下を自動検出）
+    archive_root = base / "archive"
+    if archive_root.exists():
+        for html_file in sorted(archive_root.rglob("*.html")):
+            rel = html_file.relative_to(base)
+            url = base_url + "/" + str(rel).replace("\\", "/")
+            mtime = datetime.datetime.fromtimestamp(html_file.stat().st_mtime, tz=jst)
+            _add_sitemap_url(urlset, url, mtime, "never", "0.3")
+
+    tree = ET.ElementTree(urlset)
+    sitemap_path = base / "sitemap.xml"
+    tree.write(sitemap_path, encoding="utf-8", xml_declaration=True)
+
+    # URL数をカウント
+    url_count = len(list(urlset.iter(f"{{{SITEMAP_NS}}}url")))
+    print("Generated sitemap.xml: " + str(url_count) + " URLs")
+    print("  - Top page: 1")
+    print("  - Archives: " + str(url_count - 1))
+    return str(sitemap_path)
 
 
+def _add_sitemap_url(parent, loc, lastmod, changefreq, priority):
+    """sitemapエントリを追加"""
+    url = ET.SubElement(parent, f"{{{SITEMAP_NS}}}url")
+    ET.SubElement(url, f"{{{SITEMAP_NS}}}loc").text = loc
+    ET.SubElement(url, f"{{{SITEMAP_NS}}}lastmod").text = lastmod.strftime("%Y-%m-%dT%H:%M:%S+09:00")
+    ET.SubElement(url, f"{{{SITEMAP_NS}}}changefreq").text = changefreq
+    ET.SubElement(url, f"{{{SITEMAP_NS}}}priority").text = priority
+
+
+# ============================================================
+# robots.txt Generator
+# ============================================================
+def generate_robots_txt(base_url="https://everflux24.github.io/Aoaeola"):
+    robots = "User-agent: *\nAllow: /\n\nSitemap: " + base_url + "/sitemap.xml"
+    robots_path = os.path.join(OUTPUT_DIR, "robots.txt")
+    with open(robots_path, "w", encoding="utf-8") as f:
+        f.write(robots)
+    print("Generated: " + robots_path)
+
+
+# ============================================================
+# Archive Generator (v2.5)
+# ============================================================
+def save_archive(clusters, now, iso_time):
+    """4時間枠アーカイブを生成"""
+    for block_time in get_archive_hour_blocks(now):
+        archive_file = get_archive_path(OUTPUT_DIR, block_time)
+        archive_file.parent.mkdir(parents=True, exist_ok=True)
+
+        # 最もヒートの高いクラスターのトークンから色を決定
+        core_token = clusters[0]["core_token"] if clusters else "trend"
+        colors = get_color_from_token(core_token)
+
+        # テンプレート読み込み
+        template_path = os.path.join(os.path.dirname(__file__), "templates", "archive_page.html")
+        with open(template_path, "r", encoding="utf-8") as f:
+            template = f.read()
+
+        # コンテンツカード生成
+        content_cards = ""
+        for c in clusters:
+            rep = c.get("rep", {})
+            title = rep.get("title", "")
+            summary = rep.get("summary", "")
+            posts = c.get("heat", 0)
+            if posts >= 10000:
+                posts_str = str(round(posts / 10000, 1)) + "\u4e07"
+            else:
+                posts_str = "{:,}".format(posts)
+            content_cards += (
+                '<article class="card">'
+                '<h2>' + esc(title) + '</h2>'
+                '<p>' + esc(summary) + '</p>'
+                '<div class="meta">' + chr(0x1F525) + ' ' + posts_str + ' \u30dd\u30b9\u30c8</div>'
+                '</article>'
+            )
+
+        # テンプレートレンダリング
+        html = template.replace("{{archive_title}}", generate_archive_title(block_time))
+        html = html.replace("{{canonical_url}}",
+            "https://everflux24.github.io/Aoaeola/archive/" +
+            str(block_time.year) + "/" +
+            "{:02d}".format(block_time.month) + "/" +
+            "{:02d}".format(block_time.day) + "/" +
+            "{:02d}".format(block_time.hour) + "-00.html")
+        html = html.replace("{{gradient_start}}", colors["start"])
+        html = html.replace("{{gradient_end}}", colors["end"])
+        html = html.replace("{{hue_start}}", str(colors["hue_start"]))
+        html = html.replace("{{iso_datetime}}", block_time.isoformat())
+        html = html.replace("{{display_datetime}}", block_time.strftime("%Y\u5e74%m\u6708%d\u65e5 %H:%M"))
+        html = html.replace("{{content_cards}}", content_cards)
+        html = html.replace("{{generation_time}}", now.strftime("%Y-%m-%d %H:%M:%S"))
+
+        with open(archive_file, "w", encoding="utf-8") as f:
+            f.write(html)
+
+    print("Archive generated: " + str(len(list(get_archive_hour_blocks(now)))) + " files")
+
+
+# ============================================================
+# Data Fetcher
+# ============================================================
 def fetch_data():
     print("HTTP GET fetching data...")
     req = urllib.request.Request(TARGET_URL, headers={"User-Agent": USER_AGENT})
@@ -616,7 +727,6 @@ def fetch_data():
     except Exception as e:
         print("Fetch error: " + str(e))
         return None
-
     data = parse_html(html) if html else []
     print("Extracted " + str(len(data)) + " trends.")
     return data
@@ -635,17 +745,13 @@ def parse_html(html):
     except (KeyError, json.JSONDecodeError) as e:
         print("JSON parse error: " + str(e))
         return []
-
     data_list = []
     for it in items:
         title = (it.get("title") or "").strip()
         if not title:
             continue
         summary = (it.get("summary") or "\u8a73\u7d30\u306a\u3057").strip()
-
-        # v2.5: サマリー品質フィルタ適用
         summary = clean_summary(summary)
-
         posts = it.get("tweetCount", 0)
         image = ""
         img = it.get("image")
@@ -663,25 +769,24 @@ def parse_html(html):
             "positive": sentiment.get("positive"),
             "negative": sentiment.get("negative"),
         })
-
     return data_list
 
 
+# ============================================================
+# Main
+# ============================================================
 def main():
     prev_meta = load_prev_meta()
     prev_map = {c["core_token"]: c["heat"] for c in prev_meta.get("clusters", [])}
     print("Previous clusters: " + str(len(prev_map)))
 
     data = fetch_data()
-
     if not data:
         print("No data. Build aborted (old site preserved).")
         sys.exit(1)
 
     clusters = cluster_articles_v21(data)
-
     for cluster in clusters:
-        # v2.5: cluster_sizeを渡してHook統一
         cluster_size = len(cluster.get('articles', []))
         cluster['sub_reasons'] = build_sub_reasons(cluster, cluster['rep'])
         cluster["heat_status"] = compute_heat_status(cluster, prev_map)
@@ -691,25 +796,31 @@ def main():
     slides = build_slides(clusters)
     slides = inject_interruptions(slides)
 
+    # OGP image copy
     ogp_src = os.path.join(os.path.dirname(__file__), "ogp-default.png")
     ogp_dst = os.path.join(OUTPUT_DIR, "ogp-default.png")
     if os.path.exists(ogp_src):
-        import shutil
         shutil.copy2(ogp_src, ogp_dst)
         print("Copied: " + ogp_src + " -> " + ogp_dst)
     else:
         print("OGP image not found: " + ogp_src)
 
+    # HTML generation
+    jst = datetime.timezone(datetime.timedelta(hours=9))
+    now = datetime.datetime.now(jst)
+    iso_time = now.isoformat()
+
     generate_app_html(slides)
     generate_sitemap()
     generate_robots_txt()
 
-    # v2.5: アーカイブ生成
+    # v2.5: Archive generation
     save_archive(clusters, now, iso_time)
 
-    # v2.5: 365日超えクリーンアップ
-    cleanup_old_archives(now, days=365)
-
+    # v2.5: 365-day cleanup
+    deleted = cleanup_old_archives(OUTPUT_DIR, cutoff_days=365)
+    if deleted:
+        print("Cleaned up " + str(len(deleted)) + " old archive directories")
 
     new_count = sum(1 for c in clusters if c["heat_status"]["is_new"])
     surge_count = sum(1 for c in clusters if c["heat_status"]["status"] == "surge")
