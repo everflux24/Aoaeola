@@ -275,9 +275,10 @@ def generate_app_html(slides, out_path=None):
         .hook-badge { display: inline-block; color: #000; font-size: 14px; font-weight: 800; padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
         h2.title { font-size: 26px; font-weight: 900; line-height: 1.3; margin-bottom: 12px; text-shadow: 0 2px 16px rgba(0,0,0,0.8); }
         h3.title { font-size: 22px; font-weight: 900; line-height: 1.3; margin-bottom: 12px; text-shadow: 0 2px 16px rgba(0,0,0,0.8); }
-        .section-bar { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.9); backdrop-filter: blur(12px); padding: 12px 24px; font-size: 13px; font-weight: 800; color: #ffea00; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; gap: 8px; }
+        .section-bar { background: rgba(0,0,0,0.95); padding: 16px 24px; font-size: 14px; font-weight: 800; color: #ffea00; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; gap: 10px; }
         .section-icon { font-size: 16px; }
         .section-title { font-size: 13px; font-weight: 800; margin: 0; }
+        .section-divider { height: auto; min-height: 60px; width: 100%; display: flex; align-items: center; justify-content: center; background: #000; scroll-snap-align: start; }
         .category-badge { display: inline-block; background: rgba(255,255,255,0.15); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 10px; margin-left: 8px; vertical-align: middle; }
         p.summary { font-size: 15px; line-height: 1.65; color: #eee; background: rgba(20,20,20,0.5); padding: 16px; border-radius: 12px; backdrop-filter: blur(6px); margin-bottom: 16px; }
         .meta { font-size: 16px; color: #ff6b6b; font-weight: 800; display: flex; align-items: center; gap: 6px; text-shadow: 0 1px 4px rgba(0,0,0,0.8); margin-bottom: 14px; }
@@ -371,10 +372,11 @@ def _render_section_header(data):
     icon = data.get("icon", "")
     title = data.get("title", "")
     section_id = data.get("id", "")
-    return ('<div class="section-bar" id="' + section_id + '" role="region" aria-label="' + esc(title) + '">'
+    return ('<div class="section-divider" id="' + section_id + '" role="region" aria-label="' + esc(title) + '">'
+            '<div class="section-bar">'
             '<span class="section-icon">' + icon + '</span>'
             '<span class="section-title">' + esc(title) + '</span>'
-            '</div>')
+            '</div></div>')
 
 
 def _render_topic_slide(i, cluster, colors, time_str, iso_time, is_h3=False):
@@ -642,14 +644,25 @@ def main():
     deduped = list(seen_tokens.values())
     print("After dedup: " + str(len(deduped)) + " unique items")
 
+    # Build core_token -> category mapping from original data (before dedup)
+    token_to_category = {}
+    for item in deduped:
+        core = get_core_token(item['title'], item.get('summary', ''))
+        cat = item.get('category', 'matome')
+        if core not in token_to_category:
+            token_to_category[core] = cat
+
     clusters = cluster_articles_v21(deduped)
 
     for cluster in clusters:
         cluster['sub_reasons'] = build_sub_reasons(cluster, cluster['rep'])
         cluster["heat_status"] = compute_heat_status(cluster, prev_map)
-        # Assign category from representative article
+        # Assign category from rep, or fallback to token mapping, or matome
         rep_article = cluster.get('rep', {})
-        cluster["category"] = rep_article.get('category', 'matome')
+        cat = rep_article.get('category')
+        if not cat:
+            cat = token_to_category.get(cluster.get('core_token', ''), 'matome')
+        cluster["category"] = cat
 
     save_meta(clusters)
 
