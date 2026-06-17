@@ -181,7 +181,50 @@ def build_slides(clusters):
 
 
 def inject_interruptions(slides):
-    return slides
+    """
+    ランキングスライドを先頭に挿入。
+    ピックアップ表示された記事は mark_as_picked_up でフラグを立て、
+    ソート順表示時にスキップする。
+    """
+    if not slides:
+        return slides
+
+    # 上位5件の人気トレンドをランキングスライド用に抽出
+    # ピックアップ対象をマーク
+    ranking_items = []
+    picked_tokens = set()
+    for slide in slides[:5]:
+        if slide.type != "topic":
+            continue
+        cluster = slide.data
+        core_token = cluster.get("core_token", "")
+        rep = cluster.get("rep", {})
+        ranking_items.append({
+            "text": rep.get("title", core_token),
+            "posts": cluster.get("heat", 0),
+        })
+        # ピックアップ済みフラグを立てる
+        cluster["_picked_up"] = True
+        picked_tokens.add(core_token)
+
+    if not ranking_items:
+        return slides
+
+    # ランキングスライドを作成
+    ranking_slide = Slide("interruption", {
+        "kind": "ranking",
+        "title": "今の人気トレンド",
+        "items": ranking_items,
+    })
+
+    # ピックアップ済み記事をソート順から除外
+    filtered_slides = []
+    for slide in slides:
+        if slide.type == "topic" and slide.data.get("_picked_up"):
+            continue
+        filtered_slides.append(slide)
+
+    return [ranking_slide] + filtered_slides
 
 
 # ============================================================
