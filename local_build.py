@@ -569,7 +569,7 @@ def fetch_data():
     return all_data
 
 
-def parse_html(html):
+def parse_html(html, category_key="matome"):
     if not html:
         return []
     m = NEXT_DATA_RE.search(html)
@@ -605,8 +605,9 @@ def parse_html(html):
             "url": it.get("url", ""),
             "positive": sentiment.get("positive"),
             "negative": sentiment.get("negative"),
+            "category": category_key,
         })
-    print("Extracted " + str(len(data_list)) + " trends.")
+
     return data_list
 
 
