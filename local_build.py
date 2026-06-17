@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Aoaeola v2.2 - CoreToken Architecture + Interruption Layer + Heat Delta
+Aoaeola v2.4 - CoreToken Architecture + Interruption Layer + Heat Delta
                       + SEO Structured Data (<time datetime>, JSON-LD, OGP fix)
                       NO f-string VERSION
 ==========================================================================
@@ -67,6 +67,63 @@ def parse_posts(post_str):
 
 def build_slides(clusters):
     return [Slide("topic", cluster) for cluster in clusters]
+
+
+def build_slides_with_categories(clusters):
+    """Build slides with surge section + category sections, removing duplicates."""
+    from collections import defaultdict
+
+    # Separate surge and normal clusters
+    surge_clusters = []
+    normal_clusters = []
+    for c in clusters:
+        hs = c.get("heat_status", {})
+        if hs.get("status") == "surge" or hs.get("is_new", False):
+            surge_clusters.append(c)
+        else:
+            normal_clusters.append(c)
+
+    # Get surge core_tokens for deduplication
+    surge_tokens = {c["core_token"] for c in surge_clusters}
+
+    # Group normal clusters by category
+    categorized = defaultdict(list)
+    for c in normal_clusters:
+        if c["core_token"] in surge_tokens:
+            continue  # Skip duplicates already in surge
+        cat = c.get("category", "matome")
+        if cat not in CATEGORIES:
+            cat = "matome"
+        categorized[cat].append(c)
+
+    # Build slides in order: surge -> categories
+    slides = []
+
+    # Surge section header
+    if surge_clusters:
+        slides.append(Slide("section_header", {
+            "id": "cat-surge",
+            "icon": chr(0x1F4A5),
+            "title": "急上昇トピック"
+        }))
+        for c in surge_clusters:
+            slides.append(Slide("topic", c))
+
+    # Category sections
+    category_order = ['matome', 'entertainment', 'sports', 'politics', 'economy', 'it-science']
+    for cat_key in category_order:
+        if cat_key not in categorized or not categorized[cat_key]:
+            continue
+        cat_info = CATEGORIES[cat_key]
+        slides.append(Slide("section_header", {
+            "id": "cat-" + cat_key,
+            "icon": cat_info["icon"],
+            "title": cat_info["name"]
+        }))
+        for c in categorized[cat_key]:
+            slides.append(Slide("topic", c))
+
+    return slides
 
 
 def inject_interruptions(slides):
@@ -217,6 +274,9 @@ def generate_app_html(slides, out_path=None):
         .content.hidden { opacity: 0; pointer-events: none; }
         .hook-badge { display: inline-block; color: #000; font-size: 14px; font-weight: 800; padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
         h2.title { font-size: 26px; font-weight: 900; line-height: 1.3; margin-bottom: 12px; text-shadow: 0 2px 16px rgba(0,0,0,0.8); }
+        h3.title { font-size: 22px; font-weight: 900; line-height: 1.3; margin-bottom: 12px; text-shadow: 0 2px 16px rgba(0,0,0,0.8); }
+        .section-heading { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); padding: 14px 24px; font-size: 14px; font-weight: 800; color: #ffea00; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .section-heading h2 { font-size: 14px; font-weight: 800; margin: 0; }
         p.summary { font-size: 15px; line-height: 1.65; color: #eee; background: rgba(20,20,20,0.5); padding: 16px; border-radius: 12px; backdrop-filter: blur(6px); margin-bottom: 16px; }
         .meta { font-size: 16px; color: #ff6b6b; font-weight: 800; display: flex; align-items: center; gap: 6px; text-shadow: 0 1px 4px rgba(0,0,0,0.8); margin-bottom: 14px; }
         .meta-icon { font-size: 18px; }
@@ -250,12 +310,17 @@ def generate_app_html(slides, out_path=None):
 
     slides_html = ""
     colors = ["#ff4757", "#2ed573", "#1e90ff", "#ffa502", "#3742fa", "#a55eea", "#26de81"]
+    slide_idx = 0
 
-    for i, slide in enumerate(slides):
-        if slide.type == "topic":
-            slides_html += _render_topic_slide(i, slide.data, colors, time_str, iso_time)
+    for slide in slides:
+        if slide.type == "section_header":
+            slides_html += _render_section_header(slide.data)
+        elif slide.type == "topic":
+            slides_html += _render_topic_slide(slide_idx, slide.data, colors, time_str, iso_time, is_h3=True)
+            slide_idx += 1
         elif slide.type == "interruption":
-            slides_html += _render_interruption_slide(i, slide.data)
+            slides_html += _render_interruption_slide(slide_idx, slide.data)
+            slide_idx += 1
 
     parts = []
     parts.append('<!DOCTYPE html><!-- Aoaeola_BUILD: ' + build_timestamp + ' --><html lang="ja"><head><meta charset="UTF-8">')
@@ -300,7 +365,17 @@ def generate_robots_txt(base_url="https://everflux24.github.io/Aoaeola"):
     print("Generated: " + robots_path)
 
 
-def _render_topic_slide(i, cluster, colors, time_str, iso_time):
+def _render_section_header(data):
+    icon = data.get("icon", "")
+    title = data.get("title", "")
+    section_id = data.get("id", "")
+    return ('<section aria-labelledby="' + section_id + '">'
+            '<div class="section-heading" id="' + section_id + '">'
+            '<h2>' + icon + ' ' + esc(title) + '</h2>'
+            '</div></section>')
+
+
+def _render_topic_slide(i, cluster, colors, time_str, iso_time, is_h3=False):
     rep = cluster['rep']
     bg_color = colors[i % len(colors)]
     hook_text = generate_hook(cluster['core_token'], rep['title'])
@@ -351,7 +426,8 @@ def _render_topic_slide(i, cluster, colors, time_str, iso_time):
     parts.append('<time datetime="' + esc(iso_time) + '" class="update-badge">' + chr(0x1F504) + ' ' + esc(time_str) + ' \u66f4\u65b0</time>')
     parts.append('<div class="content">')
     parts.append('<span class="hook-badge" role="text" style="background: ' + badge_color + ';">' + esc(hook_text) + '</span>')
-    parts.append('<h2 id="heading-' + str(i) + '" class="title">' + esc(rep['title']) + '</h2>')
+    tag_name = "h3" if is_h3 else "h2"
+    parts.append('<' + tag_name + ' id="heading-' + str(i) + '" class="title">' + esc(rep['title']) + '</' + tag_name + '>')
     parts.append('<p class="summary">' + esc(rep['summary']) + '</p>')
     parts.append('<footer class="meta" aria-label="\u30bd\u30fc\u30b7\u30e3\u30eb\u53cd\u97ff">')
     parts.append('<span class="meta-icon">' + chr(0x1F525) + '</span>')
@@ -449,7 +525,16 @@ def _render_announcement_slide(i, data):
     return "".join(parts)
 
 
-TARGET_URL = "https://search.yahoo.co.jp/realtime/search/matome"
+CATEGORIES = {
+    'matome': {'name': '総合', 'icon': chr(0x1F525)},
+    'entertainment': {'name': 'エンタメ', 'icon': chr(0x1F3A4)},
+    'sports': {'name': 'スポーツ', 'icon': chr(0x26BD)},
+    'politics': {'name': '社会・政治', 'icon': chr(0x1F3DB)},
+    'economy': {'name': '経済', 'icon': chr(0x1F4B0)},
+    'it-science': {'name': 'IT・科学', 'icon': chr(0x1F4BB)},
+}
+
+BASE_TARGET_URL = "https://search.yahoo.co.jp/realtime/search/matome"
 USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
               "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 OUTPUT_DIR = os.environ.get("VIBRA_OUTPUT_DIR", ".")
@@ -457,15 +542,31 @@ NEXT_DATA_RE = re.compile(
     r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', re.S)
 
 
-def fetch_data():
-    print("HTTP GET fetching data...")
-    req = urllib.request.Request(TARGET_URL, headers={"User-Agent": USER_AGENT})
+def fetch_category(category_key):
+    if category_key == 'matome':
+        url = BASE_TARGET_URL
+    else:
+        url = BASE_TARGET_URL + "?category=" + category_key
+    print("HTTP GET: " + url)
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     try:
         with urllib.request.urlopen(req, timeout=20) as res:
             return res.read().decode("utf-8", errors="replace")
     except Exception as e:
-        print("Fetch error: " + str(e))
+        print("Fetch error [" + category_key + "]: " + str(e))
         return None
+
+
+def fetch_data():
+    all_data = []
+    for cat_key in CATEGORIES:
+        html = fetch_category(cat_key)
+        if html:
+            items = parse_html(html, cat_key)
+            all_data.extend(items)
+            print("  [" + cat_key + "] extracted " + str(len(items)) + " items")
+    print("Total extracted: " + str(len(all_data)) + " items from all categories")
+    return all_data
 
 
 def parse_html(html):
@@ -514,22 +615,37 @@ def main():
     prev_map = {c["core_token"]: c["heat"] for c in prev_meta.get("clusters", [])}
     print("Previous clusters: " + str(len(prev_map)))
 
-    raw = fetch_data()
-    data = parse_html(raw) if raw else []
+    data = fetch_data()
 
     if not data:
         print("No data. Build aborted (old site preserved).")
         sys.exit(1)
 
-    clusters = cluster_articles_v21(data)
+    # Deduplicate by core_token: keep highest heat entry
+    seen_tokens = {}
+    deduped = []
+    for item in data:
+        core = get_core_token(item['title'], item.get('summary', ''))
+        if core in seen_tokens:
+            if item['posts'] > seen_tokens[core]['posts']:
+                seen_tokens[core] = item
+        else:
+            seen_tokens[core] = item
+    deduped = list(seen_tokens.values())
+    print("After dedup: " + str(len(deduped)) + " unique items")
+
+    clusters = cluster_articles_v21(deduped)
 
     for cluster in clusters:
         cluster['sub_reasons'] = build_sub_reasons(cluster, cluster['rep'])
         cluster["heat_status"] = compute_heat_status(cluster, prev_map)
+        # Assign category from representative article
+        rep_article = cluster.get('rep', {})
+        cluster["category"] = rep_article.get('category', 'matome')
 
     save_meta(clusters)
 
-    slides = build_slides(clusters)
+    slides = build_slides_with_categories(clusters)
     slides = inject_interruptions(slides)
 
     ogp_src = os.path.join(os.path.dirname(__file__), "ogp-default.png")
@@ -547,7 +663,7 @@ def main():
 
     new_count = sum(1 for c in clusters if c["heat_status"]["is_new"])
     surge_count = sum(1 for c in clusters if c["heat_status"]["status"] == "surge")
-    print("\nAoaeola v2.2 build complete")
+    print("\nAoaeola v2.4 build complete")
     print("  Clusters: " + str(len(clusters)))
     print("  New: " + str(new_count) + " | Surge: " + str(surge_count))
     print("  Total slides: " + str(len(slides)))
