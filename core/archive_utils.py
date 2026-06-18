@@ -131,3 +131,84 @@ def get_recent_archive_links(base_dir, days=7):
 def generate_archive_title(dt):
     """アーカイブページの<title>を生成"""
     return "{:02d}".format(dt.month) + "月" + "{:02d}".format(dt.day) + "日 " + "{:02d}".format(dt.hour) + "時台のトレンド｜Aoaeola"
+
+def get_adjacent_archive_links(base_dir, dt):
+    """
+    指定日時の前後4時間枠のアーカイブリンクを生成。
+    ファイルが存在する場合のみリンクを返す。
+    戻り値: {"prev": {"url": "...", "text": "..."}, "next": {...}} または None
+    """
+    links = {"prev": None, "next": None}
+    jst = timezone(timedelta(hours=9))
+
+    # 前の4時間枠
+    prev_hour = dt.hour - 4
+    prev_dt = dt
+    if prev_hour < 0:
+        prev_hour = 20
+        prev_dt = dt - timedelta(days=1)
+    prev_path = os.path.join(
+        base_dir, "archive", str(prev_dt.year),
+        "{:02d}".format(prev_dt.month), "{:02d}".format(prev_dt.day),
+        "{:02d}-00.html".format(prev_hour)
+    )
+    if os.path.exists(prev_path):
+        rel_path = ("archive/" + str(prev_dt.year) + "/" +
+                    "{:02d}".format(prev_dt.month) + "/" +
+                    "{:02d}".format(prev_dt.day) + "/" +
+                    "{:02d}".format(prev_hour) + "-00.html")
+        links["prev"] = {
+            "url": rel_path,
+            "text": ("{:02d}".format(prev_dt.month) + "/" +
+                     "{:02d}".format(prev_dt.day) + " " +
+                     "{:02d}".format(prev_hour) + ":00")
+        }
+
+    # 次の4時間枠
+    next_hour = dt.hour + 4
+    next_dt = dt
+    if next_hour >= 24:
+        next_hour = 0
+        next_dt = dt + timedelta(days=1)
+    next_path = os.path.join(
+        base_dir, "archive", str(next_dt.year),
+        "{:02d}".format(next_dt.month), "{:02d}".format(next_dt.day),
+        "{:02d}-00.html".format(next_hour)
+    )
+    if os.path.exists(next_path):
+        rel_path = ("archive/" + str(next_dt.year) + "/" +
+                    "{:02d}".format(next_dt.month) + "/" +
+                    "{:02d}".format(next_dt.day) + "/" +
+                    "{:02d}".format(next_hour) + "-00.html")
+        links["next"] = {
+            "url": rel_path,
+            "text": ("{:02d}".format(next_dt.month) + "/" +
+                     "{:02d}".format(next_dt.day) + " " +
+                     "{:02d}".format(next_hour) + ":00")
+        }
+
+    return links
+
+
+def get_archive_nav_html(base_dir, current_dt, days=7):
+    """
+    アーカイブページ内に表示する過去N日のアーカイブナビゲーションHTMLを生成。
+    """
+    links = get_recent_archive_links(base_dir, days=days)
+    current_date_str = "{:02d}/{:02d}".format(current_dt.month, current_dt.day)
+    html_parts = ['<nav class="archive-nav">']
+    html_parts.append('<div class="archive-nav-label">過去7日のアーカイブ</div>')
+    html_parts.append('<div class="archive-nav-links">')
+    for link in links:
+        if link["has_data"]:
+            cls = "archive-nav-link"
+            if link["date_str"] == current_date_str:
+                cls = "archive-nav-link current"
+            html_parts.append(
+                '<a href="' + link["path"] + '" class="' + cls + '">' + link["date_str"] + '</a>'
+            )
+        else:
+            html_parts.append('<span class="archive-nav-link empty">' + link["date_str"] + '</span>')
+    html_parts.append('</div></nav>')
+    return "".join(html_parts)
+
