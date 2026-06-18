@@ -213,7 +213,19 @@ def inject_interruptions(slides):
             if len(pickup_slides) >= 5:
                 break
 
-    # 3. 残りを通常スライドに
+    # 3. ピックアップ内を「新着→surge→その他」の順に並べ替え
+    def _pickup_sort_key(slide):
+        hs = slide.data.get("heat_status", {})
+        if hs.get("is_new"):
+            return (0, -slide.data.get("heat", 0))  # 新着を最優先
+        elif hs.get("status") == "surge":
+            return (1, -slide.data.get("heat", 0))  # surgeを次
+        else:
+            return (2, -slide.data.get("heat", 0))  # その他（heat補完）
+
+    pickup_slides.sort(key=_pickup_sort_key)
+
+    # 4. 残りを通常スライドに
     for i, slide in enumerate(slides):
         if i not in picked_indices:
             normal_slides.append(slide)
@@ -333,8 +345,6 @@ def esc(text):
 # ============================================================
 def generate_top_footer_archive_links(now, output_dir):
     """過去7日のアーカイブリンクをフッターとして生成"""
-    # output_dir を絶対パスに解決して確実にファイル検出
-    output_dir = os.path.abspath(output_dir)
     links = get_recent_archive_links(output_dir, days=7)
     if not links:
         return ""
