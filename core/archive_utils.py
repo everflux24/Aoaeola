@@ -38,12 +38,13 @@ def get_archive_path(base_dir: str, dt: datetime) -> Path:
 
 def get_archive_hour_blocks(dt: datetime) -> list:
     """
-    指定日時を含む4時間枠の開始時刻リストを返す。
+    指定日時を含む4時間枠の開始時刻を1つだけ返す。
     0,4,8,12,16,20 のどれかに丸める。
+    例：13:15 → 12:00 のみを返す
     """
+    block_start = (dt.hour // 4) * 4
     return [
-        dt.replace(hour=h, minute=0, second=0, microsecond=0)
-        for h in range(0, 24, 4)
+        dt.replace(hour=block_start, minute=0, second=0, microsecond=0)
     ]
 
 
