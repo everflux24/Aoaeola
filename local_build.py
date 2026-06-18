@@ -333,6 +333,8 @@ def esc(text):
 # ============================================================
 def generate_top_footer_archive_links(now, output_dir):
     """過去7日のアーカイブリンクをフッターとして生成"""
+    # output_dir を絶対パスに解決して確実にファイル検出
+    output_dir = os.path.abspath(output_dir)
     links = get_recent_archive_links(output_dir, days=7)
     if not links:
         return ""
@@ -775,8 +777,7 @@ def save_archive(clusters, now, iso_time):
         with open(archive_file, "w", encoding="utf-8") as f:
             f.write(html)
 
-    block_count = len(list(get_archive_hour_blocks(now)))
-    print("Archive generated: " + str(block_count) + " files")
+    print("Archive generated: " + str(len(list(get_archive_hour_blocks(now)))) + " files")
 
 
 # ============================================================
