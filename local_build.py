@@ -68,7 +68,7 @@ USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 )
-OUTPUT_DIR = os.environ.get("VIBRA_OUTPUT_DIR", ".")
+OUTPUT_DIR = os.environ.get("VIBRA_OUTPUT_DIR", "_site")
 META_PATH = os.path.join(OUTPUT_DIR, "build_meta.json")
 NEXT_DATA_RE = re.compile(
     r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', re.S)
@@ -370,6 +370,10 @@ def generate_app_html(slides, out_path=None):
     if out_path is None:
         os.makedirs(OUTPUT_DIR, exist_ok=True)
         out_path = os.path.join(OUTPUT_DIR, "index.html")
+    else:
+        out_dir = os.path.dirname(out_path)
+        if out_dir:
+            os.makedirs(out_dir, exist_ok=True)
 
     jst = datetime.timezone(datetime.timedelta(hours=9))
     now = datetime.datetime.now(jst)
@@ -736,6 +740,16 @@ def generate_robots_txt(base_url="https://everflux24.github.io/Aoaeola"):
 # ============================================================
 def save_archive(clusters, now, iso_time):
     """4時間枠アーカイブを生成"""
+    # OUTPUT_DIR を確実に作成
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+    # テンプレート存在チェック
+    template_path = os.path.join(os.path.dirname(__file__), "templates", "archive_page.html")
+    if not os.path.exists(template_path):
+        print("WARNING: Archive template not found: " + template_path)
+        print("  Skipping archive generation.")
+        return
+
     for block_time in get_archive_hour_blocks(now):
         archive_file = get_archive_path(OUTPUT_DIR, block_time)
         archive_file.parent.mkdir(parents=True, exist_ok=True)
@@ -745,7 +759,6 @@ def save_archive(clusters, now, iso_time):
         colors = get_color_from_token(core_token)
 
         # テンプレート読み込み
-        template_path = os.path.join(os.path.dirname(__file__), "templates", "archive_page.html")
         with open(template_path, "r", encoding="utf-8") as f:
             template = f.read()
 
