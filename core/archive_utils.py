@@ -132,6 +132,52 @@ def generate_archive_title(dt):
     """アーカイブページの<title>を生成"""
     return "{:02d}".format(dt.month) + "月" + "{:02d}".format(dt.day) + "日 " + "{:02d}".format(dt.hour) + "時台のトレンド｜Aoaeola"
 
+
+def get_same_day_hour_links(base_dir, current_dt):
+    """
+    同じ日の全4時間枠アーカイブリンクを生成。
+    戻り値: [{"url": "04-00.html", "text": "04:00", "is_current": True}, ...]
+    """
+    links = []
+    for h in range(0, 24, 4):
+        file_name = "{:02d}-00.html".format(h)
+        file_path = os.path.join(
+            base_dir, "archive", str(current_dt.year),
+            "{:02d}".format(current_dt.month), "{:02d}".format(current_dt.day),
+            file_name
+        )
+        is_current = (h == current_dt.hour)
+        has_file = os.path.exists(file_path)
+        links.append({
+            "url": file_name,
+            "text": "{:02d}:00".format(h),
+            "is_current": is_current,
+            "has_file": has_file,
+        })
+    return links
+
+
+def get_same_day_hour_nav_html(base_dir, current_dt):
+    """
+    同じ日の4時間枠ナビゲーションHTMLを生成。
+    """
+    links = get_same_day_hour_links(base_dir, current_dt)
+    html_parts = ['<nav class="hour-blocks-nav">']
+    html_parts.append('<div class="hour-blocks-label">本日のアーカイブ</div>')
+    html_parts.append('<div class="hour-blocks-links">')
+    for link in links:
+        if link["has_file"]:
+            cls = "hour-block-link"
+            if link["is_current"]:
+                cls = "hour-block-link current"
+            html_parts.append(
+                '<a href="' + link["url"] + '" class="' + cls + '">' + link["text"] + '</a>'
+            )
+        else:
+            html_parts.append('<span class="hour-block-link empty">' + link["text"] + '</span>')
+    html_parts.append('</div></nav>')
+    return "".join(html_parts)
+
 def get_adjacent_archive_links(base_dir, dt):
     """
     指定日時の前後4時間枠のアーカイブリンクを生成。
