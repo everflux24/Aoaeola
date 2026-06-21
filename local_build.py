@@ -779,14 +779,17 @@ def save_archive(clusters, now, iso_time):
             )
         return content
 
-    for block_time in get_archive_hour_blocks(now):
-        # A方式：同日全アーカイブ再生成
+    # v2.5.1: updated_files をループ外で初期化
+    all_updated_files = []
+    hour_blocks = get_archive_hour_blocks(now)
+    for block_time in hour_blocks:
         updated_files = regenerate_same_day_archives(
             OUTPUT_DIR, template_path, block_time, generate_content_cards
         )
+        all_updated_files.extend(updated_files)
 
-    print("Archive generated: " + str(len(list(get_archive_hour_blocks(now)))) + " new blocks, " +
-          str(len(updated_files)) + " total files updated")
+    print("Archive generated: " + str(len(list(hour_blocks))) + " new blocks, " +
+          str(len(all_updated_files)) + " total files updated")
 
 
 # ============================================================
