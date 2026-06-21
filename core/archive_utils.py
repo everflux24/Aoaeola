@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Aoaeola Archive Utilities v2.5
+Aoaeola Archive Utilities v2.5.1
 - 4時間枠アーカイブ生成（現在時刻を含む1枠のみ）
 - 背景グラデーション（トークンハッシュから決定的に生成）
 - 365日ローリングクリーンアップ
 - 直接HTMLファイルリンク
+- A方式：同日全アーカイブ再生成（SEO最適）
 NO f-string VERSION
 """
 import hashlib
 import os
+import re
 import shutil
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 JST = timezone(timedelta(hours=9))
+
 
 def get_color_from_token(token):
     """
@@ -22,9 +25,8 @@ def get_color_from_token(token):
     同じトークンは常に同じ色を返す。
     """
     h = hashlib.md5(token.encode("utf-8")).hexdigest()
-    # 色相: 0-360
     hue_start = int(h[0:4], 16) % 360
-    hue_end = (hue_start + 40) % 360  # 40度ずらした補色系
+    hue_end = (hue_start + 40) % 360
     return {
         "start": "hsl(" + str(hue_start) + ", 70%, 45%)",
         "end": "hsl(" + str(hue_end) + ", 70%, 55%)",
@@ -32,9 +34,11 @@ def get_color_from_token(token):
         "hue_end": hue_end,
     }
 
+
 def get_archive_path(base_dir, dt):
     """archive/YYYY/MM/DD/HH-00.html のパスを生成"""
     return Path(base_dir) / ("archive/" + str(dt.year) + "/" + "{:02d}".format(dt.month) + "/" + "{:02d}".format(dt.day) + "/" + "{:02d}".format(dt.hour) + "-00.html")
+
 
 def get_archive_hour_blocks(dt):
     """
@@ -43,6 +47,7 @@ def get_archive_hour_blocks(dt):
     """
     hour_block = (dt.hour // 4) * 4
     return [dt.replace(hour=hour_block, minute=0, second=0, microsecond=0)]
+
 
 def cleanup_old_archives(base_dir, cutoff_days=365):
     """
@@ -75,7 +80,6 @@ def cleanup_old_archives(base_dir, cutoff_days=365):
                 if dir_date < cutoff:
                     shutil.rmtree(day_dir)
                     deleted.append(str(day_dir))
-                    # 空になった親ディレクトリも削除
                     if not any(month_dir.iterdir()):
                         month_dir.rmdir()
                     if not any(year_dir.iterdir()):
@@ -83,10 +87,10 @@ def cleanup_old_archives(base_dir, cutoff_days=365):
 
     return deleted
 
+
 def get_recent_archive_links(base_dir, days=7):
     """
     過去N日分のアーカイブ日付リンク情報を返す。
-    各日付のHTMLファイルへの直接リンクを生成。
     戻り値: [{"date_str": "06/17", "path": "archive/2026/06/17/16-00.html", "has_data": True}, ...]
     """
     archive_root = Path(base_dir).resolve() / "archive"
@@ -98,13 +102,12 @@ def get_recent_archive_links(base_dir, days=7):
         date_path = archive_root / (str(d.year) + "/" + "{:02d}".format(d.month) + "/" + "{:02d}".format(d.day))
         has_data = date_path.exists() and any(date_path.iterdir())
 
-        # 日付ディレクトリ内のHTMLファイルを探す
         html_file = ""
         if has_data:
             try:
                 html_files = sorted([f.name for f in date_path.iterdir() if f.suffix == ".html"])
                 if html_files:
-                    html_file = html_files[-1]  # 最新のファイル
+                    html_file = html_files[-1]
             except (OSError, PermissionError):
                 pass
 
@@ -121,14 +124,15 @@ def get_recent_archive_links(base_dir, days=7):
 
     return links
 
+
 def generate_archive_title(dt):
     """アーカイブページの<title>を生成"""
     return "{:02d}".format(dt.month) + "月" + "{:02d}".format(dt.day) + "日 " + "{:02d}".format(dt.hour) + "時台のトレンド｜Aoaeola"
 
+
 def get_same_day_hour_links(base_dir, current_dt):
     """
     同じ日の全4時間枠アーカイブリンクを生成。
-    戻り値: [{"url": "04-00.html", "text": "04:00", "is_current": True}, ...]
     """
     links = []
     for h in range(0, 24, 4):
@@ -148,10 +152,9 @@ def get_same_day_hour_links(base_dir, current_dt):
         })
     return links
 
+
 def get_same_day_hour_nav_html(base_dir, current_dt):
-    """
-    同じ日の4時間枠ナビゲーションHTMLを生成。
-    """
+    """同じ日の4時間枠ナビゲーションHTMLを生成"""
     links = get_same_day_hour_links(base_dir, current_dt)
     html_parts = ['<nav class="hour-blocks-nav">']
     html_parts.append('<div class="hour-blocks-label">本日のアーカイブ</div>')
@@ -169,14 +172,13 @@ def get_same_day_hour_nav_html(base_dir, current_dt):
     html_parts.append('</div></nav>')
     return "".join(html_parts)
 
+
 def get_adjacent_archive_links(base_dir, dt):
     """
     指定日時の前後4時間枠のアーカイブリンクを生成。
     ファイルが存在する場合のみリンクを返す。
-    戻り値: {"prev": {"url": "...", "text": "..."}, "next": {...}} または None
     """
     links = {"prev": None, "next": None}
-    jst = timezone(timedelta(hours=9))
 
     # 前の4時間枠
     prev_hour = dt.hour - 4
@@ -227,24 +229,23 @@ def get_adjacent_archive_links(base_dir, dt):
     return links
 
 
-
 def get_archive_pager_html(adj_links):
-    """前後4時間枠ナビゲーションHTMLを生成"""
-    html_parts = []
+    """前後4時間枠ナビゲーションHTMLを生成（CSSクラス名を修正）"""
+    html_parts = ['<div class="archive-pager">']
     if adj_links["prev"]:
-        html_parts.append('<a href="' + adj_links["prev"]["url"] + '" class="archive-pager-link prev">← ' + adj_links["prev"]["text"] + '</a>')
+        html_parts.append('<a href="' + adj_links["prev"]["url"] + '">← ' + adj_links["prev"]["text"] + '</a>')
     else:
-        html_parts.append('<span class="archive-pager-link prev disabled">← 前へ</span>')
+        html_parts.append('<span class="disabled">← 前へ</span>')
     if adj_links["next"]:
-        html_parts.append('<a href="' + adj_links["next"]["url"] + '" class="archive-pager-link next">' + adj_links["next"]["text"] + ' →</a>')
+        html_parts.append('<a href="' + adj_links["next"]["url"] + '">' + adj_links["next"]["text"] + ' →</a>')
     else:
-        html_parts.append('<span class="archive-pager-link next disabled">次へ →</span>')
+        html_parts.append('<span class="disabled">次へ →</span>')
+    html_parts.append('</div>')
     return "".join(html_parts)
 
+
 def get_archive_nav_html(base_dir, current_dt, days=7):
-    """
-    アーカイブページ内に表示する過去N日のアーカイブナビゲーションHTMLを生成。
-    """
+    """過去N日のアーカイブナビゲーションHTMLを生成"""
     links = get_recent_archive_links(base_dir, days=days)
     current_date_str = "{:02d}/{:02d}".format(current_dt.month, current_dt.day)
     html_parts = ['<nav class="archive-nav">']
@@ -264,7 +265,6 @@ def get_archive_nav_html(base_dir, current_dt, days=7):
     return "".join(html_parts)
 
 
-
 def safe_replace(template, key, value):
     """<!--KEY-->形式のプレースホルダーを安全に置換"""
     return template.replace("<!--" + key + "-->", value)
@@ -280,10 +280,15 @@ def extract_content_cards(html):
 
 def render_single_archive_page(base_dir, template_path, dt, content_cards_html):
     """
-    単一アーカイブページをレンダリング（安全な置換）。
+    単一アーカイブページをレンダリング。
+    背景グラデーションも含めて全プレースホルダーを置換。
     """
     with open(template_path, "r", encoding="utf-8") as f:
         template = f.read()
+
+    # グラデーション色を決定（日付ハッシュから）
+    date_token = str(dt.year) + "{:02d}".format(dt.month) + "{:02d}".format(dt.day)
+    colors = get_color_from_token(date_token)
 
     adj = get_adjacent_archive_links(base_dir, dt)
     pager = get_archive_pager_html(adj)
@@ -300,6 +305,9 @@ def render_single_archive_page(base_dir, template_path, dt, content_cards_html):
         str(dt.year) + "年" + "{:02d}".format(dt.month) + "月" +
         "{:02d}".format(dt.day) + "日 " + "{:02d}".format(dt.hour) + ":00")
     result = safe_replace(result, "ISO_DATETIME", dt.isoformat())
+    result = safe_replace(result, "GRADIENT_START", colors["start"])
+    result = safe_replace(result, "GRADIENT_END", colors["end"])
+    result = safe_replace(result, "HUE_START", str(colors["hue_start"]))
     result = safe_replace(result, "PAGER_TOP", pager)
     result = safe_replace(result, "HOUR_BLOCKS_NAV", hour_nav)
     result = safe_replace(result, "CONTENT_CARDS", content_cards_html)
@@ -323,7 +331,6 @@ def save_archive_page(base_dir, dt, html_content):
 def regenerate_same_day_archives(base_dir, template_path, current_dt, content_generator):
     """
     A方式核心：同日全アーカイブ再生成 + 既存コンテンツ保持 + 前後日隣接枠更新。
-    新規アーカイブ生成時に、同日の既存アーカイブもナビゲーションを更新して再生成する。
     """
     updated_files = []
 
@@ -357,9 +364,12 @@ def regenerate_same_day_archives(base_dir, template_path, current_dt, content_ge
         path = save_archive_page(base_dir, dt, html)
         updated_files.append(path)
 
-    # 3. 前日の最後の枠を更新（次へリンクを更新するため）
-    prev_dt = current_dt - timedelta(days=1)
-    prev_hour = 20
+    # 3. 前日の隣接枠を更新（現在の時間帯に応じて）
+    prev_hour = current_dt.hour - 4
+    prev_dt = current_dt
+    if prev_hour < 0:
+        prev_hour = 20
+        prev_dt = current_dt - timedelta(days=1)
     prev_path = os.path.join(base_dir, "archive", str(prev_dt.year),
                              "{:02d}".format(prev_dt.month), "{:02d}".format(prev_dt.day),
                              "{:02d}-00.html".format(prev_hour))
@@ -372,9 +382,12 @@ def regenerate_same_day_archives(base_dir, template_path, current_dt, content_ge
         path = save_archive_page(base_dir, dt, html)
         updated_files.append(path)
 
-    # 4. 翌日の最初の枠を更新（前へリンクを更新するため）
-    next_dt = current_dt + timedelta(days=1)
-    next_hour = 0
+    # 4. 翌日の隣接枠を更新（現在の時間帯に応じて）
+    next_hour = current_dt.hour + 4
+    next_dt = current_dt
+    if next_hour >= 24:
+        next_hour = 0
+        next_dt = current_dt + timedelta(days=1)
     next_path = os.path.join(base_dir, "archive", str(next_dt.year),
                              "{:02d}".format(next_dt.month), "{:02d}".format(next_dt.day),
                              "{:02d}-00.html".format(next_hour))
