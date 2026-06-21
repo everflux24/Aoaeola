@@ -14,9 +14,7 @@ import shutil
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-
 JST = timezone(timedelta(hours=9))
-
 
 def get_color_from_token(token):
     """
@@ -34,11 +32,9 @@ def get_color_from_token(token):
         "hue_end": hue_end,
     }
 
-
 def get_archive_path(base_dir, dt):
     """archive/YYYY/MM/DD/HH-00.html のパスを生成"""
     return Path(base_dir) / ("archive/" + str(dt.year) + "/" + "{:02d}".format(dt.month) + "/" + "{:02d}".format(dt.day) + "/" + "{:02d}".format(dt.hour) + "-00.html")
-
 
 def get_archive_hour_blocks(dt):
     """
@@ -47,7 +43,6 @@ def get_archive_hour_blocks(dt):
     """
     hour_block = (dt.hour // 4) * 4
     return [dt.replace(hour=hour_block, minute=0, second=0, microsecond=0)]
-
 
 def cleanup_old_archives(base_dir, cutoff_days=365):
     """
@@ -83,11 +78,10 @@ def cleanup_old_archives(base_dir, cutoff_days=365):
                     # 空になった親ディレクトリも削除
                     if not any(month_dir.iterdir()):
                         month_dir.rmdir()
-            if not any(year_dir.iterdir()):
-                year_dir.rmdir()
+                    if not any(year_dir.iterdir()):
+                        year_dir.rmdir()
 
     return deleted
-
 
 def get_recent_archive_links(base_dir, days=7):
     """
@@ -127,11 +121,9 @@ def get_recent_archive_links(base_dir, days=7):
 
     return links
 
-
 def generate_archive_title(dt):
     """アーカイブページの<title>を生成"""
     return "{:02d}".format(dt.month) + "月" + "{:02d}".format(dt.day) + "日 " + "{:02d}".format(dt.hour) + "時台のトレンド｜Aoaeola"
-
 
 def get_same_day_hour_links(base_dir, current_dt):
     """
@@ -155,7 +147,6 @@ def get_same_day_hour_links(base_dir, current_dt):
             "has_file": has_file,
         })
     return links
-
 
 def get_same_day_hour_nav_html(base_dir, current_dt):
     """
@@ -235,7 +226,6 @@ def get_adjacent_archive_links(base_dir, dt):
 
     return links
 
-
 def get_archive_nav_html(base_dir, current_dt, days=7):
     """
     アーカイブページ内に表示する過去N日のアーカイブナビゲーションHTMLを生成。
@@ -257,4 +247,3 @@ def get_archive_nav_html(base_dir, current_dt, days=7):
             html_parts.append('<span class="archive-nav-link empty">' + link["date_str"] + '</span>')
     html_parts.append('</div></nav>')
     return "".join(html_parts)
-
