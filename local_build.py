@@ -356,6 +356,9 @@ def esc(text):
 def generate_top_footer_archive_links(now, output_dir):
     """過去7日のアーカイブリンクをフッターとして生成"""
     links = get_top_page_archive_links(output_dir, days=7)
+    print("DEBUG: generate_top_footer_archive_links - found " + str(len(links)) + " links")
+    for link in links:
+        print("  " + link["date_str"] + ": has_data=" + str(link["has_data"]) + ", path=" + repr(link["path"]))
     if not links:
         return ""
     html_parts = ['<footer class="archive-footer">']
@@ -363,14 +366,16 @@ def generate_top_footer_archive_links(now, output_dir):
     html_parts.append('<div class="archive-footer-links">')
     for link in links:
         cls = "archive-footer-link" if link["has_data"] else "archive-footer-link empty"
-        if link["has_data"]:
+        if link["has_data"] and link["path"]:
             html_parts.append(
                 '<a href="' + link["path"] + '" class="' + cls + '">' + link["date_str"] + '</a>'
             )
         else:
             html_parts.append('<span class="' + cls + '">' + link["date_str"] + '</span>')
     html_parts.append('</div></footer>')
-    return "".join(html_parts)
+    result = "".join(html_parts)
+    print("DEBUG: footer HTML length=" + str(len(result)))
+    return result
 
 
 # ============================================================
