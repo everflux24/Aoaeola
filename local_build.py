@@ -763,7 +763,7 @@ def save_archive(clusters, now, iso_time):
         template_content = f.read()
     if '<base' in template_content:
         print("CRITICAL WARNING: Template still contains <base> tag!")
-        print("  Please update templates/archive_page.html to remove <base target="_blank">")
+        print("  Please update templates/archive_page.html to remove <base target=\"_blank\">")
         # 緊急回避: テンプレートから <base ...> を削除
         template_content = template_content.replace('<base target="_blank">', '')
         template_content = template_content.replace("<base target='_blank'>", '')
