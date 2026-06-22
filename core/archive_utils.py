@@ -152,7 +152,8 @@ def get_top_page_archive_links(base_dir, days=7):
 
     for i in range(days):
         d = today - timedelta(days=i)
-        date_path = archive_root / (str(d.year) + "/" + "{:02d}".format(d.month) + "/" + "{:02d}".format(d.day))
+        # Pathオブジェクトを正しく構築
+        date_path = archive_root / str(d.year) / "{:02d}".format(d.month) / "{:02d}".format(d.day)
         has_data = date_path.exists() and any(date_path.iterdir())
 
         html_file = ""
