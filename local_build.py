@@ -355,10 +355,7 @@ def esc(text):
 # ============================================================
 def generate_top_footer_archive_links(now, output_dir):
     """過去7日のアーカイブリンクをフッターとして生成"""
-    links = get_top_page_archive_links(output_dir, days=7)
-    print("DEBUG: generate_top_footer_archive_links - found " + str(len(links)) + " links")
-    for link in links:
-        print("  " + link["date_str"] + ": has_data=" + str(link["has_data"]) + ", path=" + repr(link["path"]))
+    links = get_recent_archive_links(output_dir, days=7)
     if not links:
         return ""
     html_parts = ['<footer class="archive-footer">']
@@ -366,16 +363,14 @@ def generate_top_footer_archive_links(now, output_dir):
     html_parts.append('<div class="archive-footer-links">')
     for link in links:
         cls = "archive-footer-link" if link["has_data"] else "archive-footer-link empty"
-        if link["has_data"] and link["path"]:
+        if link["has_data"]:
             html_parts.append(
                 '<a href="' + link["path"] + '" class="' + cls + '">' + link["date_str"] + '</a>'
             )
         else:
             html_parts.append('<span class="' + cls + '">' + link["date_str"] + '</span>')
     html_parts.append('</div></footer>')
-    result = "".join(html_parts)
-    print("DEBUG: footer HTML length=" + str(len(result)))
-    return result
+    return "".join(html_parts)
 
 
 # ============================================================
@@ -764,24 +759,20 @@ def save_archive(clusters, now, iso_time):
         print("  Skipping archive generation.")
         return
 
-    # テンプレート検証: <base target="_blank"> が残存していないか確認
+    # テンプレート検証
     with open(template_path, "r", encoding="utf-8") as f:
         template_content = f.read()
     if '<base' in template_content:
-        print("CRITICAL WARNING: Template still contains <base> tag!")
-        print("  Please update templates/archive_page.html to remove <base target=\"_blank\">")
-        # 緊急回避: テンプレートから <base ...> を削除
+        print("CRITICAL WARNING: Template contains <base> tag! Removing...")
         template_content = template_content.replace('<base target="_blank">', '')
         template_content = template_content.replace("<base target='_blank'>", '')
-        # 一時ファイルに書き出し
         import tempfile
         temp_fd, temp_path = tempfile.mkstemp(suffix='.html')
         with os.fdopen(temp_fd, 'w', encoding='utf-8') as f:
             f.write(template_content)
         template_path = temp_path
-        print("  Emergency fix applied: removed <base> tag from template")
     else:
-        print("Template validation passed: no <base> tag found")
+        print("Template validation passed: no <base> tag")
 
     # コンテンツカード生成関数
     def generate_content_cards(dt):
@@ -802,9 +793,8 @@ def save_archive(clusters, now, iso_time):
                 '<div class="meta">' + chr(0x1F525) + ' ' + posts_str + ' ポスト</div>'
                 '</article>'
             )
-        # 防御的チェック: コンテンツが空なら警告
         if not content.strip():
-            print("WARNING: generate_content_cards returned empty content for " + str(dt))
+            print("WARNING: Empty content for " + str(dt))
             content = '<article class="card"><h2>データ取得中</h2><p>コンテンツを読み込めませんでした。</p></article>'
         return content
 
