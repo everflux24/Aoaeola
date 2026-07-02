@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07月02日 16時台のトレンド｜Aoaeola</title>
+  <meta name="description" content="07月02日 16時台のトレンド｜Aoaeola — Aoaeolaが選んだ注目トレンド">
+  <link rel="canonical" href="https://everflux24.github.io/Aoaeola/archive/2026/07/02/16-00.html">
+  <style>
+    :root {
+      --bg-start: hsl(354, 70%, 45%);
+      --bg-end: hsl(34, 70%, 55%);
+      --text: #1a1a2e;
+      --card-bg: rgba(255,255,255,0.85);
+      --accent: hsl(354, 70%, 35%);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      min-height: 100vh;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    header time {
+      display: block;
+      margin-top: 0.5rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .card .meta {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255,255,255,0.9);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .back-link:hover {
+      background: #fff;
+    }
+    .hour-blocks-nav {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .hour-blocks-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .hour-blocks-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .hour-block-link {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .hour-block-link:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .hour-block-link.current {
+      background: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .hour-block-link.empty {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .archive-pager {
+      display: flex;
+      justify-content: space-between;
+      margin: 1.5rem 0;
+      padding: 0 0.5rem;
+    }
+    .archive-pager a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .archive-pager a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .archive-pager .disabled {
+      opacity: 0.3;
+      pointer-events: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+    .archive-nav {
+      margin: 2rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .archive-nav-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .archive-nav-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .archive-nav-link {
+      display: inline-block;
+      padding: 0.4rem 0.7rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      transition: background 0.2s;
+    }
+    .archive-nav-link:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .archive-nav-link.current {
+      background: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .archive-nav-link.empty {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    footer {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "07月02日 16時台のトレンド｜Aoaeola",
+    "description": "07月02日 16時台のトレンド｜Aoaeola — Aoaeolaが選んだ注目トレンド",
+    "url": "https://everflux24.github.io/Aoaeola/archive/2026/07/02/16-00.html",
+    "datePublished": "2026-07-02T16:00:00+09:00",
+    "dateModified": "2026-07-02T16:00:00+09:00"
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>07月02日 16時台のトレンド｜Aoaeola</h1>
+      <time datetime="2026-07-02T16:00:00+09:00">2026年07月02日 16:00</time>
+    </header>
+
+    <!--NAV:PAGER_TOP-->
+<div class="archive-pager"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/02/12-00.html">← 07/02 12:00</a><span class="disabled">次へ →</span></div>
+<!--/NAV:PAGER_TOP-->
+
+    <!--NAV:HOUR_BLOCKS-->
+<nav class="hour-blocks-nav"><div class="hour-blocks-label">本日のアーカイブ</div><div class="hour-blocks-links"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/02/00-00.html" class="hour-block-link">00:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/02/04-00.html" class="hour-block-link">04:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/02/08-00.html" class="hour-block-link">08:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/02/12-00.html" class="hour-block-link">12:00</a><span class="hour-block-link empty">16:00</span><span class="hour-block-link empty">20:00</span></div></nav>
+<!--/NAV:HOUR_BLOCKS-->
+
+    <main class="content-cards">
+      <article class="card"><h2>ブラックサンダーケーキが話題沸騰！「食べたい」声が続出、SNSで大盛り上がり</h2><p>SNSで『ブラックサンダーケーキ』が話題になり、見た目や味に対する期待が高まっている。アイスや誕生日ケーキとしてのイメージも広がり、みんなが「食べたい！」と声を上げている様子が見られる。</p><div class="meta">🔥 1,497 ポスト</div></article><article class="card"><h2>「吉野家×ドラゴンクエストウォーク」コラボ開始、行列と完売にファン歓喜</h2><p>吉野家とドラゴンクエストウォークのコラボが始まり、限定セットやフィギュアが登場した。発売と同時に行列ができ、すぐに完売し、テイクアウト容器での提供に切り替えられた。</p><div class="meta">🔥 1,431 ポスト</div></article><article class="card"><h2>北海道日本ハムファイターズ2軍、本拠地が恵庭市に決定　ファン歓喜の声</h2><p>7月2日の記者会見で、北海道日本ハムファイターズは2軍本拠地を千葉・鎌ケ谷から恵庭市へ移すと発表し、スタジアムや練習場、選手寮を備えた施設を2030年頃にオープンさせる計画を紹介した。</p><div class="meta">🔥 1,047 ポスト</div></article><article class="card"><h2>「ONE PIECEカード」29周年記念付録がジャンプ33号に登場、1冊1枚・増刷50万部で話題に</h2><p>7月13日発売のジャンプ33号に、ONE PIECEカードが付録として登場した。1冊につき1枚が同梱され、通常より50万部増刷されることになり、購入はお一人様1冊までと制限されている。ファンの間で話題になっている。</p><div class="meta">🔥 794 ポスト</div></article><article class="card"><h2>ALD1オンラインくじ、即売り切れと決済エラーでファンの不満が広がる</h2><p>ALD1オンラインくじで支払いが完了したのに、くじ画面がエラーになったり、マイページに表示されなかったりするケースが多発。発売と同時に即売り切れとなり、返金を求める声も上がっている。ユーザーは購入できずに困惑している様子が投稿からうかがえる。</p><div class="meta">🔥 562 ポスト</div></article><article class="card"><h2>スパイダーマン：ブランド・ニュー・デイ、IMAX最速上映にファン歓喜</h2><p>映画『スパイダーマン：ブランド・ニュー・デイ』が日本でIMAX限定の最速上映を迎えるんだって！7月31日0時スタートで、ビジュアルも解禁された。ファン歓喜の声が広がってる。</p><div class="meta">🔥 518 ポスト</div></article><article class="card"><h2>わんぱく！刀剣乱舞ぬいぐるみ、千円近く値上げで再販も同時に話題沸騰</h2><p>わんぱく！刀剣乱舞のぬいぐるみが、約1千円から2千円の値上げとなり、過去価格と比較した投稿が続出。再販や受注開始の情報と合わせて、購入を迷う声や既に買い揃えたファンの感想がSNSで話題になっている。</p><div class="meta">🔥 516 ポスト</div></article><article class="card"><h2>「148neo」バカタオル2026発売、争奪戦熱狂の声が拡散</h2><p>バカタオル2026が発売され、#148neoのハッシュタグで盛り上がり。ユーザーは「争奪戦」や「早くしろ」の掛け声と共に、購入や待機の様子を投稿し、ワクワク感が伝わってくる。</p><div class="meta">🔥 509 ポスト</div></article><article class="card"><h2>アメリカ代表、バログン退場の逆転劇で2-0勝利　ホスト国の勢いが光る</h2><p>アメリカ代表がバログンのゴールでリードしたものの、彼のレッドカードで人数が減るハプニング。そこから直接FKで追加点を奪い、2-0で勝ち上がった展開が話題に。</p><div class="meta">🔥 425 ポスト</div></article><article class="card"><h2>はるすが両日出場！シャニマス283PRODUCTIONオールキャストライブが初開催にファン歓喜</h2><p>2日間のシャニマスライブが全員オールキャストで開催決定！はるすが両日出場するのは5th以来で、ファンは「やばい」「最高」ってテンション上がっている。</p><div class="meta">🔥 390 ポスト</div></article><article class="card"><h2>「ミッフィー プチえいぐるみ」新入荷＆再入荷が続出、限定数で売り切れ必至の熱狂</h2><p>ミッフィーのプチえいぐるみが新作として各店に並び、再入荷や限定数販売が続出し、ファンの間で「早く手に入れたい！」と盛り上がっている様子が見られる。</p><div class="meta">🔥 327 ポスト</div></article><article class="card"><h2>ポストイット渋谷ヒカリエイベント、手書きメッセージで盛り上がり「最高！」と歓喜</h2><p>渋谷ヒカリエでポストイットのイベントが開かれ、来場者が付箋に手書きメッセージを書いたり、限定デザインの付箋をゲットしたり、アイスコーヒーがもらえるブースで楽しんだ様子がSNSで広がっている。</p><div class="meta">🔥 315 ポスト</div></article><article class="card"><h2>ツイステ展大阪でチケット譲渡や当選報告が続出、ファンの歓喜と嘆きが交錯</h2><p>ツイステ展の大阪開催で、チケットが重複当選したり余っている人が譲渡を呼びかけたり、当選したファンが歓喜の声を上げたり、落選でがっかりする声が混ざったりして、チケット事情が盛り上がっている。「当たってよかった」「残念だった」など感情が交錯し、SNS上で賑やかなやり取りが続いています。</p><div class="meta">🔥 308 ポスト</div></article><article class="card"><h2>「リコリス・リコイル」4周年　新夏制服ビジュアル公開でファン熱狂</h2><p>リコリス・リコイルが放送開始4周年を迎え、ファンは祝福のツイートと共に、千束とたきなの夏制服新ビジュアルが公開されたことを喜び、当日の生配信イベント開催も告知された様子が見られた。</p><div class="meta">🔥 235 ポスト</div></article><article class="card"><h2>「遊戯王」高価買取表更新と新弾入荷が続々、ファン歓喜の声多数が話題に</h2><p>遊戯王の高価買取表が更新され、最新パックや特価カードが入荷したと各店が紹介している。イベントや限定オリパ情報も続々と発表中。</p><div class="meta">🔥 212 ポスト</div></article><article class="card"><h2>日本代表帰国、成田空港でファン歓声　“おかえり”の声が届く</h2><p>日本代表が成田空港に帰ってきて、ファンの歓声が上がり“おかえり”の声が響く。選手はスーツ姿で登場し、森保監督は後に会見を開くらしい。</p><div class="meta">🔥 190 ポスト</div></article><article class="card"><h2>PlayStation新作ゲームのディスク生産終了、2028年1月からデジタル専売へ</h2><p>Sonyが2028年1月から新作ゲームのディスク生産をやめて、全部デジタル配信にするって発表したんだ。これでパッケージ版がなくなる。</p><div class="meta">🔥 158 ポスト</div></article><article class="card"><h2>がんばれゴエモン大集合！が発売、隠しタイトル『クライシスフォース』が登場でファン歓喜</h2><p>SwitchとPS5で『がんばれゴエモン大集合！』がリリースされ、13作品が楽しめるようになった。設定の隠しコマンドで、ファミコン後期の名作シューティング『クライシスフォース』が隠しタイトルとして入っていると分かり、ファンの間で話題になっている。</p><div class="meta">🔥 153 ポスト</div></article><article class="card"><h2>本田圭佑監督候補に熱狂的声援　“本田監督見たい”がSNSで拡散</h2><p>SNS上で本田圭佑が日本代表監督になる案が話題になり、ライセンス取得のステップや短期就任のアイデアが次々に登場した。ユーザーは「本田監督見たい」や「監督兼解説者」など期待感を表現しつつ、賛否の声が交錯した様子が見られた。</p><div class="meta">🔥 151 ポスト</div></article><article class="card"><h2>大谷翔平、1番DHで5打数無安打　ドジャース7-1敗北に一部のファンは「残念」</h2><p>大谷翔平が1番DHで登板し、5回の打席すべて空振りで無安打に。試合はドジャースが7-1で敗れ、ファンの期待が裏切られたと受け止められた様子。</p><div class="meta">🔥 142 ポスト</div></article><article class="card"><h2>遊戯王ラッシュデュエルに新カードイラスト公開、販売と買取が同時に話題に</h2><p>遊戯王ラッシュデュエルで新テーマ「ゴエゴエ」のカードイラストが公開され、ブースターパックやオーバーラッシュパックの販売が告知された上、買取開始の呼びかけも見られた。ユーザーからは「ゴエゴエがラッシュデュエルに！？」や「おっさん向けカードゲーム？」反応が寄せられ、話題が広がっている。</p><div class="meta">🔥 139 ポスト</div></article><article class="card"><h2>ドル円が162円台で揺れる、ウォーラー氏発言で買いと売りが交錯</h2><p>7月2日、米雇用統計やウォーラー議長のコメントがきっかけで、ドル円は162円台で上下に揺れ、162.30前後での押し目買いが目立ったり、162.80付近で売りが入ったりと、取引が活発になった。</p><div class="meta">🔥 116 ポスト</div></article><article class="card"><h2>「ムシキング」DARTSLIVEコラボが熱狂的反応「ムシキングだぁぁぁぁぁぁぁぁぁぁ!!」で話題に</h2><p>ムシキングとDARTSLIVEがコラボし、限定カードが登場したと投稿が相次ぎ、ファンが「熱すぎる」や「ムシキングだぁぁぁぁぁぁぁぁぁぁ!!」と盛り上がっている様子が見られる。</p><div class="meta">🔥 111 ポスト</div></article><article class="card"><h2>ガッチューで共有された『調子がいい』瞬間、ユーザーが喜びの声を連発</h2><p>ガッチューのハッシュタグが今日の『調子がいい瞬間』投稿で大盛り上がり。信号が青だけ、朝食が美味しい、仕事がスムーズ日常の小さなハッピーが次々とシェアされた。</p><div class="meta">🔥 111 ポスト</div></article><article class="card"><h2>週刊少年ジャンプ33号、予約不可・店頭限定で発売へ　「お一人様1冊」ルールが話題に</h2><p>『週刊少年ジャンプ』33号が7月13日発売。付録のワンピカードが登場する一方で、予約は受け付けず、店頭での購入はお一人様1冊だけ、電話予約はできないというルールが設定された。</p><div class="meta">🔥 108 ポスト</div></article><article class="card"><h2>ソフトバンクグループ、OpenAI追加出資と株担保借入再開で話題に</h2><p>ソフトバンクがOpenAIへの追加出資を実行し、株を担保にした大口借入の再交渉を始めた。株価はちょっと揺れたけど、投資家やファンの関心が高まっている様子。</p><div class="meta">🔥 106 ポスト</div></article><article class="card"><h2>マクドナルド、カスタマイズ廃止で「ピクルス多め」できず、ユーザーの声が上がる</h2><p>マクドナルドがカスタマイズを縮小し、ピクルスやソースの増量ができなくなったと報告された。</p><div class="meta">🔥 100 ポスト</div></article><article class="card"><h2>「ダレハナ」13時生放送開始、山崎怜奈とれなちがリスナーへ元気な挨拶と芋けんぴ話題</h2><p>『ダレハナ』が13時から生放送し、タイムフリーでも聴けると告知。山崎怜奈とれなちがリスナーに元気な挨拶をし、雨の天候や芋けんぴのプレゼント話で盛り上がった。</p><div class="meta">🔥 99 ポスト</div></article><article class="card"><h2>NHK夏の音楽祭『うたであえたら』で二宮和也ら『ラーゲリ』司会が決定、ファン歓喜</h2><p>二宮和也が大森元貴・北川景子と共にNHK夏の音楽祭『うたであえたら』の司会に抜擢され、SNSでは『ラーゲリ』と呼ばれる三人のコンビが話題に。多くの投稿が「楽しみすぎる」「嬉しい」期待を表現している。</p><div class="meta">🔥 97 ポスト</div></article><article class="card"><h2>ローレン・イロアス、手記の加筆でお宝争奪戦へ　ファンが熱い応援と予想を展開</h2><p>7月20日に始まる『手記の加筆』で、ローレン・イロアスがどれだけお宝を集められるか、ファンが予想しながら応援している様子がSNSで広がっている。</p><div class="meta">🔥 96 ポスト</div></article><article class="card"><h2>元日本代表FW豊田陽平、サガン鳥栖新社長に就任「ワクワク」ファン歓喜</h2><p>豊田陽平がサガン鳥栖の新社長に登場し、ファンの間で話題になっている。代表取締役社長としての就任が報じられ、期待の声が広がっている。公式サイトでもお知らせが掲載され、SNSでは「ワクワク」「よろしくお願いします」コメントが続出している。</p><div class="meta">🔥 96 ポスト</div></article><article class="card"><h2>パウ・パトロール、アミューズメントゲーム機とハッピーセットが同時登場で子どもたち大興奮</h2><p>パウ・パトロールの新しいゲーム機が全国のアミューズメント施設でスタートし、同時にマクドナルドのハッピーセットでもパウ・パトロールのおもちゃが登場、プレイ後にカードがもらえる。</p><div class="meta">🔥 95 ポスト</div></article><article class="card"><h2>カルリーニョス・ジュニオ退団発表、ファンは「残念」「ありがとう」の声</h2><p>カルリーニョス・ジュニオがジェフユナイテッド市原・千葉を去ることが決まり、契約解除と退団が公式に発表された。ファンは「残念」「ありがとう」の声を上げている。</p><div class="meta">🔥 86 ポスト</div></article><article class="card"><h2>仁左衛門、秀山祭で沼津Wキャスト出演が発表　ファン歓喜の声が広がる</h2><p>仁左衛門が沼津役でWキャスト出演することが発表され、ファンの間で「見たい！」や「胸熱」声が上がっている。沼津の型が違うのを見られる期待感や、ダブルキャストの見どころが話題になっている。</p><div class="meta">🔥 86 ポスト</div></article><article class="card"><h2>SUPER EIGHT、カンテレで88分特番決定にファン歓喜「やったー」</h2><p>SUPER EIGHTがカンテレで88分のスペシャル番組を放送することが決まり、8月8日に実家帰還する形で再集合するニュースがSNSで広がっている。告知は放送の888時間前に行われ、ファンからは「やったー」「カンテレだけかという声も」反応が上がっている。</p><div class="meta">🔥 85 ポスト</div></article><article class="card"><h2>ベルギー対セネガル戦、2-0リードからの逆転劇に「ベルギーが強い」声が上がる</h2><p>SNSでは、ベルギーがセネガルに2-0のピンチから逆転し、延長戦で3-2で勝ち抜いた様子が紹介され、みんなが「逆転劇にワクワク」している様子が伝わる。</p><div class="meta">🔥 82 ポスト</div></article><article class="card"><h2>ファビオ、斜視と義眼議論が広がる　“目が印象的”との期待の声</h2><p>ファビオが登場したことで、目が斜視か義眼か、支援会話がどうなるか話題がSNSで盛り上がり、ユーザーは“目が印象的”“支援会話が楽しみ”と期待を寄せている。</p><div class="meta">🔥 82 ポスト</div></article><article class="card"><h2>NHK夏の音楽祭『うたであえたら 2026』、二宮和也・大森元貴・北川景子が司会で登場、ファン歓喜</h2><p>二宮和也が大森元貴・北川景子と共に『うたであえたら 2026』の司会に抜擢され、8月15日の放送が決定したとファンが歓喜している。音楽祭はNHK総合とNHK ONEで同時配信され、夏の夜に家族で楽しめる企画として期待が高まっている。</p><div class="meta">🔥 77 ポスト</div></article><article class="card"><h2>中村憲剛ヘッドコーチ就任、ファン歓喜の声が続出、期待と興奮が渦巻く</h2><p>中村憲剛がヘッドコーチに就任したとSNSで次々に報告され、ファンは「ついにきた！！！！！！」や「ヘッドコーチ！！！！！！！！！！」と喜びの声を上げている様子が見られる。</p><div class="meta">🔥 69 ポスト</div></article><article class="card"><h2>「呪術廻戦」マスコット予約開始・再販でファンが「欲しい」声続出</h2><p>『呪術廻戦』の限定マスコットが予約開始や再販され、ファンが購入や交換を呼びかけている様子がSNSに広がっている。</p><div class="meta">🔥 68 ポスト</div></article><article class="card"><h2>キャミィが登場！一番くじ新作フィギュア発売にファン歓喜の声が広がる</h2><p>ストリートファイター６のキャミィが一番くじで新作フィギュアやマスターリースとして登場し、入手を期待する声が多数上がった。プラチナ取得を祝う投稿や、価格上昇への不安、ゲーム内での性能や操作感に関する意見も見られ、ファンの関心が高まっている様子が投稿からうかがえる。</p><div class="meta">🔥 61 ポスト</div></article><article class="card"><h2>横須賀線がポイント点検で運転見合わせ、利用者は「仕方ない」声上がる</h2><p>横須賀線が品川〜西大井でポイント点検のため運転見合わせに。横浜で折り返し運転、直通列車は中止で、復旧は未定。利用者は代替バスや他路線へ乗り換え、駅構内で「運転見合わせだってね」や「仕方ない」声が上がっている。一部区間は運転再開し、横浜〜久里浜は通常通り走っているので、乗客は折り返し駅での案内に従っている様子だ。</p><div class="meta">🔥 59 ポスト</div></article><article class="card"><h2>ディベイニー、4打数4安打の猛打賞でファン歓喜「めちゃ調子ええね」</h2><p>阪神タイガースのディベイニーが2軍戦で4打数4安打の猛打賞を披露し、盗塁やタイムリーも重ねた。打率が上がり、日本野球への適応が進んでいる様子がSNSで広まっている。さらに、居残り練習での真面目さも称賛され、1軍昇格への期待が高まっている。</p><div class="meta">🔥 59 ポスト</div></article><article class="card"><h2>達くん金髪化にファン歓喜、かっこいいと絶賛の声続出、SNSで話題沸騰、ディズニープリンス似</h2><p>SNS上で達くんが金髪に変身したことが報告され、ファンが「かっこいい」「素敵すぎる」と歓喜し、金髪の破壊力や似合い具合が話題になっている。</p><div class="meta">🔥 56 ポスト</div></article><article class="card"><h2>『こびとづかん カクレモモジリコレクション』新入荷、限定数で再入荷ラッシュ！</h2><p>7月2日、全国のガチャガチャ店で『こびとづかん カクレモモジリコレクション』が新商品として登場し、再入荷や個数制限が設定されたことが話題になっている。店頭では「数に限りがあります」「お一人様3個まで」案内が目立ち、来店客を呼び込んでいる。</p><div class="meta">🔥 55 ポスト</div></article><article class="card"><h2>デイビッド・ヌワバ、琉球ゴールデンキングスへ移籍決定　ファン歓喜の声続出</h2><p>デイビッド・ヌワバが琉球ゴールデンキングスに加入し、移籍が決定したことがSNSで話題になっている。ファンは「めんそーれ！」と歓迎し、期待の声が広がっている。</p><div class="meta">🔥 53 ポスト</div></article><article class="card"><h2>「プロジェクト・ヘイル・メアリー」配信開始で「最高」や「早すぎる」などの声が上がる、アマプラで見放題に</h2><p>Amazonプライムで7月3日から『プロジェクト・ヘイル・メアリー』が見放題になると報告が相次ぎ、字幕や吹替、原作小説の話題まで広がっている。</p><div class="meta">🔥 52 ポスト</div></article><article class="card"><h2>DayRe:がAnimelo Summer Live 2026ミニステージに初出演、ファン歓喜の声が広がる</h2><p>DayRe:がアニサマのミニステージに登場し、ARCANA PROJECTや前橋ウィッチーズと共演することが発表され、ファンの間でワクワクが広がっている。</p><div class="meta">🔥 51 ポスト</div></article><article class="card"><h2>ポープウィリアムがフットボールトライブを批判　「問題のあるメディア」廃止要請がSNSで拡散</h2><p>ポープウィリアムがツイッターでフットボールトライブを「問題のあるメディア」と呼び、廃止を求めたことが話題になっている。一部のユーザーが賛同のコメントを寄せ、メディアへの批判が広がっている。</p><div class="meta">🔥 49 ポスト</div></article><article class="card"><h2>「オーラス生配信」決定でファン歓喜「やったー」「嬉しすぎる」感が広がる</h2><p>timeleszのオーラス生配信が決まって、ファンが「やったー」「嬉しすぎる」って大はしゃぎ。配信日時やチケット情報が気になる声も多く、みんなでワクワクしながら待っている様子が伝わる。</p><div class="meta">🔥 47 ポスト</div></article><article class="card"><h2>デデデ大王＆タンクスター amiibo本日発売、価格約7700円でファン歓喜の声続出</h2><p>本日、カービィのエアライダーからデデデ大王＆タンクスター amiiboが登場し、全国の店舗で販売が開始された。価格は約7,700円で、タンクスターのクローラーが取り外せる仕様がファンに好評だ。</p><div class="meta">🔥 47 ポスト</div></article><article class="card"><h2>ショーン・オマラ、シーホース三河へ加入決定　ファン歓喜の声が広がる</h2><p>ショーン・オマラがシーホース三河に加入したと報告され、インサイドの強さやリバウンド力が期待されている様子がSNSで話題になっている。ファンは「ビッグウェルカム！！」や「がんばれ！！」と歓声を上げ、チームの戦力強化に胸を躍らせている。</p><div class="meta">🔥 47 ポスト</div></article><article class="card"><h2>達孝太が金髪に変身、ファンが「やばすぎ」驚きと歓喜の声が一部で見られる、SNSで話題に</h2><p>金髪に変身した姿がSNSに登場し、ファンの間で話題になっている。『金髪になった！』や『やばすぎ』コメントが寄せられ、写真や壁紙のリクエストも多数あった。</p><div class="meta">🔥 45 ポスト</div></article><article class="card"><h2>サカナクション・エジー＆浦本さんのゲリラファンストが突如開始、ファン歓喜の声続出</h2><p>サカナクションのエジーと浦本さんが、予告ゼロのゲリラファンストを昼に突如スタート！仕事中の人も「チラ聴き」しながらチェックし、最後まで見れた人は「アーカイブ残ると嬉しい」って盛り上がってる様子。</p><div class="meta">🔥 44 ポスト</div></article><article class="card"><h2>「ラジタマ」アンケートで「ご主人」呼称への違和感が拡散、配偶者様提案も</h2><p>ラジタマが緊急アンケートを出したことで、リスナーが「ご主人」や「奥様」への違和感や自分の呼び方を次々に投稿。敬称での呼び分けや、配偶者を「配偶者様」と呼ぶ案まで提案され、呼称に関する議論が広がっている。</p><div class="meta">🔥 43 ポスト</div></article><article class="card"><h2>近沢レース ビールハンカチ購入ラッキーと苦戦が交錯、ファン歓喜と残念の声が見られる</h2><p>近沢レースのビールハンカチがオンライン販売で話題に。早朝待機や高番号待ち、サイトエラーに苦戦しつつも、低番号でラッキーに買えた人や姉妹で同時取得した人が喜びの声を上げている様子が投稿に映っている。</p><div class="meta">🔥 43 ポスト</div></article><article class="card"><h2>「Stray Kids World Tour RUN IT JAPAN」先行受付開始、非会員同行者可でファン歓喜</h2><p>7月2日17時にStray KidsのRUN IT JAPANツアーのW会員先行がスタートし、国立は4枚、ドームは2枚まで申し込める上、同行者は非会員でもOKという条件が発表された。</p><div class="meta">🔥 42 ポスト</div></article><article class="card"><h2>「ストームエメラルダ」早押し争奪戦、購入に成功したユーザーも「指が神」的快感を語る</h2><p>ホビステで『ストームエメラルダ』の予約が開始され、早押しで争奪戦が繰り広げられました。購入に成功した人は喜びを表現し、失敗した人は悔しさを示す投稿が見られます。</p><div class="meta">🔥 41 ポスト</div></article><article class="card"><h2>元日本代表ストライカー・豊田陽平、サガン鳥栖の社長就任でファン歓喜「トヨさん社長！」</h2><p>元日本代表の豊田陽平がサガン鳥栖の社長に就任したと報じられ、SNSでは「豊田社長！！」「トヨさん社長！」と歓声が上がっている。ファンは「頑張って欲しい」「期待大」コメントを連投中だ。</p><div class="meta">🔥 40 ポスト</div></article><article class="card"><h2>「本好きの下剋上【第三部】」最新話続々公開、可愛いキャラにファン歓喜</h2><p>本好きの下剋上【第三部】がコロナEXで新しい話が続々と公開され、ファンは「今すぐ読もう」「可愛い」盛り上がっている。キャラの可愛さや迫力ある描写が好評で、更新情報がたくさんシェアされている。</p><div class="meta">🔥 40 ポスト</div></article><article class="card"><h2>来週開催の『みじゅたい』が話題に、#ぽかぽかで期待の声が続出「楽しみすぎる」「リアタイできる」</h2><p>来週に予定されている『みじゅたい』がSNSで盛り上がり、#ぽかぽか と KEYTOLIT のハッシュタグと共に多くのユーザーが期待や喜びを投稿している様子が見られる。ライブ配信や仕事の調整など、個々の予定に触れつつ、参加への意欲が伝わってくる。</p><div class="meta">🔥 39 ポスト</div></article><article class="card"><h2>「染團辰」九月秀山祭で共演、ファンが「うわーー‼️」と歓喜</h2><p>染團辰が秀山祭九月大歌舞伎で共演することが決まり、ファンの間で「うわーー‼️」や「染團辰揃い踏み！」歓声が広がっている。出演が確定したことで、期待感が高まっている様子が投稿からうかがえる。</p><div class="meta">🔥 39 ポスト</div></article><article class="card"><h2>橋本環奈×チェ・ジョンヒョプ『バカンスの法則』イメージショット公開、Netflix配信決定でファン歓喜</h2><p>『バカンスの法則』が橋本環奈とチェ・ジョンヒョプの初共演で、3枚のイメージショットを公開し、7月31日からNetflixで世界配信が決まったなっている。ビジュアルはデトックス・ロマンスをイメージさせ、ファンの期待が高まっている。</p><div class="meta">🔥 37 ポスト</div></article><article class="card"><h2>とりとらチアガール、コミケ108に初出展　ファン歓喜の声が続出</h2><p>とりとらがコミケ108に登場し、チアガール風のオリジナルグッズを販売することが発表された。公式からの告知と合わせて、非公式ユニットであることへの議論がSNSで広がっている。</p><div class="meta">🔥 34 ポスト</div></article><article class="card"><h2>「クイズDEストライク」開始、難易度に戸惑う声も「おもろい」感想が見られる</h2><p>『クイズDEストライク』が本日スタートし、クエストクリアでAIが出すヒントを元にキャラを当てると報酬がもらえるという内容だ。</p><div class="meta">🔥 32 ポスト</div></article><article class="card"><h2>「ガルバトロン」予約開始、価格やカラーに期待の声が話題に</h2><p>ガルバトロンの予約が始まり、ファンは「やっぱカッコイイ」「価格が気になる」期待を表明。ピンク系や藤色系のカラー希望や、頭部に角を付けられるかどうかの議論も盛り上がっている。</p><div class="meta">🔥 32 ポスト</div></article><article class="card"><h2>無職転生 蛇足編第4巻発売決定、完結に歓喜と寂しさが交錯</h2><p>『無職転生 蛇足編』の第4巻が11月25日に発売決定！シロタカ先生描き下ろしイラストのアクリルスタンド付き特装版も同時発売で、シリーズ最終巻としてファンの期待と寂しさが交錯している。発売前の試し読みやイラスト公開がSNSでシェアされ、みんながワクワクしながら新刊を待っている様子が伝わります。</p><div class="meta">🔥 31 ポスト</div></article><article class="card"><h2>桂歌丸師匠の命日、横浜橋で献花の波が広がり『がんばれゴエモン』発売も話題に</h2><p>7月2日、桂歌丸師匠の命日がやってきて、横浜橋通商店街に献花台が設置されたり、SNSで「寂しい」「ありがとう」思い出が次々にシェアされたり、同日に発売されたDSゲーム『がんばれゴエモン』に師匠の声が収録されたことも取り上げられた。</p><div class="meta">🔥 31 ポスト</div></article><article class="card"><h2>山中柔太朗、宝塚雪組トップ娘役説がSNSで大盛り上がり「ニヤニヤ」</h2><p>山中柔太朗がM!LKのメンバーとしてFNS歌謡祭で披露した姿がSNSで話題に。宝塚の雪組トップ娘役にピッタリという声が多数上がり、『宝塚に連れて帰ってもいいですか』コメントが飛び交っている。</p><div class="meta">🔥 31 ポスト</div></article><article class="card"><h2>速水もこみち、ぽかぽか出演で“若々しさ”が話題に　視聴者が驚きと称賛の声</h2><p>速水もこみちが『ぽかぽか』に登場し、番組内での料理やトークが披露されたことが話題になっている。視聴者は彼の年齢や容姿、スタイルに驚きや称賛の声を寄せている。</p><div class="meta">🔥 30 ポスト</div></article><article class="card"><h2>電源タップ新製品続々登場、価格や破損問題にユーザーが歓喜と懸念</h2><p>AnkerのUSB-C対応クランプ式電源タップが発売され、VESA取り付けトレイ付きの新モデルも登場するなど、電源タップ関連の新商品情報が続々と投稿され、価格や耐久性に関する声も交じりながら、みんなでデスク環境の改善を語り合っている様子が見られる。</p><div class="meta">🔥 29 ポスト</div></article><article class="card"><h2>ギマラエス・ニコラス・ロドリゲス、FC町田ゼルビアへ完全移籍加入でファン歓喜</h2><p>19歳のフィリピンA代表ゴールキーパー、ギマラエス・ニコラス・ロドリゲスが、市川サッカークラブからJ1のFC町田ゼルビアへ完全移籍加入したと、SNSで多数報告された。これにより、同クラブは若手GKの獲得に成功し、期待が高まっている。</p><div class="meta">🔥 29 ポスト</div></article><article class="card"><h2>藤嶌果歩（かほりん）インスタ更新＆写真集発売カウントダウンでファン歓喜</h2><p>藤嶌果歩（かほりん）がインスタを更新し、衣装やヘアスタイルを披露。写真集発売まで残り33日と告知され、ツーショットや舌出し画像もシェアされてファンの称賛が広がっている。</p><div class="meta">🔥 29 ポスト</div></article><article class="card"><h2>アスカネット、急騰でストップ高　投資家の「やばい」反応が続く</h2><p>アスカネットの株価が急に上がってストップ高になり、空売りが話題に。投資家は利益確定や損切りをしている様子がSNSに多数投稿され、ASKA3D技術のニュースが株価上昇に関係している。</p><div class="meta">🔥 28 ポスト</div></article><article class="card"><h2>電通総研が株式非公開へ　富士通らが2000億円規模出資検討で話題沸騰</h2><p>電通総研が株式非公開になると報じられ、電通Gが過半数を保ちつつ、富士通や商社が残りを取得しようとしているらしい。出資規模は約2兆円とされ、投資額の大きさや関係企業の動きが話題になっている。</p><div class="meta">🔥 27 ポスト</div></article><article class="card"><h2>「こんづくし」第28話、平和な日常に突如銃シーンが登場で「驚き」や「店長かわいい」声が広がる</h2><p>『こんづくし』第28話では、普段は穏やかな日常が描かれる中、主人公が突然銃を抜くシーンが入って、視聴者の間で「平和なのに銃が出た」や「店長がかわいい」感想が広がっている。</p><div class="meta">🔥 27 ポスト</div></article><article class="card"><h2>阪神タイガース・榮枝、外野オプション付与で期待の声続出1軍首脳陣も注目</h2><p>阪神タイガースの若手・榮枝が外野オプションやサブポジションを獲得したなっている。打撃や守備が評価され、1軍の関係者も注目している様子が投稿から伺える。</p><div class="meta">🔥 26 ポスト</div></article><article class="card"><h2>「クリスピークリームドーナツ」新作ペンギン＆流氷ドーナツ登場、可愛さにファン歓喜</h2><p>クリスピークリームドーナツが、夏限定でペンギンと流氷をモチーフにした新作ドーナツをリリース。カスタードやホワイトチョコの甘さが夏にぴったりで、見た目の可愛さがSNSで盛り上がっている。</p><div class="meta">🔥 26 ポスト</div></article><article class="card"><h2>染谷将太、7年ぶりに朝ドラ『ブラッサム』で若き小説家役に出演決定！ファン歓喜の声続出</h2><p>俳優の染谷将太がNHK新朝ドラ『ブラッサム』で若き小説家・西尾一路役に登場することがSNSで話題になっている。7年ぶりの朝ドラ復帰と、主人公・石橋静河演じる珠と切磋琢磨する設定がファンの期待を呼んでいる。</p><div class="meta">🔥 26 ポスト</div></article><article class="card"><h2>鈴木大河、7月8日放送の『ホンマでっか!?TV』出演決定にファン歓喜「すごい！」「楽しみです」</h2><p>鈴木大河が7月8日放送の『ホンマでっか!?TV』に出演することが決まって、予告映像が公開された。ファンからは「すごい！」「楽しみです」って声がたくさん上がっている。</p><div class="meta">🔥 25 ポスト</div></article><article class="card"><h2>「祇園祭くじ取り式」で山一番が郭巨山に決定、参加者は「嬉しい！」と歓喜</h2><p>京都市役所で行われた祇園祭のくじ取り式で、山鉾巡行の順番が発表された。前祭は郭巨山が山一番、後祭は鯉山が先頭になるんだって。</p><div class="meta">🔥 25 ポスト</div></article><article class="card"><h2>本多大夢出演のナース専科転職CMがYouTube公開、ファンは「可愛い」連呼で大盛り上がり</h2><p>本多大夢が出演する『ナース専科転職』の『仕事終わりのスナック』篇CMが、30秒・15秒・6秒のショート映像としてYouTubeに公開され、同時に地上波でも流れ、ファンからは「可愛い」や「愛されそう」の声が多数上がっている。</p><div class="meta">🔥 24 ポスト</div></article><article class="card"><h2>藤嶌果歩、1st写真集『果実の歩幅』先行カットでウェイトレス姿が可愛すぎると話題に</h2><p>藤嶌果歩が1st写真集『果実の歩幅』の先行カット第13弾を公開。ウェイトレス姿でハンバーガーをもぐもぐし、舌ペロのキュートなシーンが話題になっている。ファンは「ずっと着ていたい」や「可愛い」声を上げ、SNS上で盛り上がりを見せている。</p><div class="meta">🔥 23 ポスト</div></article><article class="card"><h2>NTT（9432）株が急騰予感、投資熱が高まる</h2><p>NTT（9432）の株価が147円で、1,000株で約5万円と紹介され、293円に上がれば300万円規模になるかもと期待が広がっている。投稿者は「来るぞ、大急騰」や「化ける可能性ある」とワクワクしながら情報をシェアしている。</p><div class="meta">🔥 23 ポスト</div></article><article class="card"><h2>「祇園祭くじ取り式」結果発表、山一番は郭巨山と鯉山に決定　祭りムード急上昇</h2><p>京都の祇園祭くじ取り式が開催され、山一番が先祭は郭巨山、後祭は鯉山に決まったと発表された。これで本格的な祭りムードがスタートし、みんなワクワクしている様子だ。</p><div class="meta">🔥 22 ポスト</div></article><article class="card"><h2>ENHYPEN NI-KI、メンズノンノ8・9月号ソロ表紙で肉体美披露にファン歓喜</h2><p>NI-KIがメンズノンノのソロ表紙に登場し、プラダの秋冬コレクションをまとって肉体美を披露した。表紙撮影のため体を絞ったと語り、ファンから「かっこいい」「スーパーモデル」声が上がっている。</p><div class="meta">🔥 22 ポスト</div></article><article class="card"><h2>ブラッククローバー第2シーズンメインビジュアル公開、ファンは「かっこいい」「楽しみ」</h2><p>TVアニメ『ブラッククローバー』の第2シーズンのメインビジュアルが公開され、アスタやユノ、ノエルが描かれたことが分かり、放送開始が2026年10月と発表された。ファンは「かっこいい」「楽しみ」喜びの声を上げている。</p><div class="meta">🔥 18 ポスト</div></article>
+    </main>
+
+    <!--NAV:PAGER_BOTTOM-->
+<div class="archive-pager"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/02/12-00.html">← 07/02 12:00</a><span class="disabled">次へ →</span></div>
+<!--/NAV:PAGER_BOTTOM-->
+
+    <!--NAV:ARCHIVE_NAV-->
+<nav class="archive-nav"><div class="archive-nav-label">過去7日のアーカイブ</div><div class="archive-nav-links"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/02/12-00.html" class="archive-nav-link current">07/02</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/01/20-00.html" class="archive-nav-link">07/01</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/06/30/20-00.html" class="archive-nav-link">06/30</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/06/29/20-00.html" class="archive-nav-link">06/29</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/06/28/20-00.html" class="archive-nav-link">06/28</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/06/27/20-00.html" class="archive-nav-link">06/27</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/06/26/20-00.html" class="archive-nav-link">06/26</a></div></nav>
+<!--/NAV:ARCHIVE_NAV-->
+
+    <div style="text-align:center;">
+      <a href="https://everflux24.github.io/Aoaeola/" class="back-link">&#8592; トップページへ戻る</a>
+    </div>
+
+    <footer>
+      <p>Generated by Aoaeola v2.5 &#183; 2026-07-02 16:00:48</p>
+    </footer>
+  </div>
+</body>
+</html>
