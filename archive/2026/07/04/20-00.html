@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07月04日 20時台のトレンド｜Aoaeola</title>
+  <meta name="description" content="07月04日 20時台のトレンド｜Aoaeola — Aoaeolaが選んだ注目トレンド">
+  <link rel="canonical" href="https://everflux24.github.io/Aoaeola/archive/2026/07/04/20-00.html">
+  <style>
+    :root {
+      --bg-start: hsl(123, 70%, 45%);
+      --bg-end: hsl(163, 70%, 55%);
+      --text: #1a1a2e;
+      --card-bg: rgba(255,255,255,0.85);
+      --accent: hsl(123, 70%, 35%);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      min-height: 100vh;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    header time {
+      display: block;
+      margin-top: 0.5rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .card .meta {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255,255,255,0.9);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .back-link:hover {
+      background: #fff;
+    }
+    .hour-blocks-nav {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .hour-blocks-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .hour-blocks-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .hour-block-link {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .hour-block-link:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .hour-block-link.current {
+      background: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .hour-block-link.empty {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .archive-pager {
+      display: flex;
+      justify-content: space-between;
+      margin: 1.5rem 0;
+      padding: 0 0.5rem;
+    }
+    .archive-pager a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .archive-pager a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .archive-pager .disabled {
+      opacity: 0.3;
+      pointer-events: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+    .archive-nav {
+      margin: 2rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .archive-nav-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .archive-nav-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .archive-nav-link {
+      display: inline-block;
+      padding: 0.4rem 0.7rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      transition: background 0.2s;
+    }
+    .archive-nav-link:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .archive-nav-link.current {
+      background: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .archive-nav-link.empty {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    footer {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "07月04日 20時台のトレンド｜Aoaeola",
+    "description": "07月04日 20時台のトレンド｜Aoaeola — Aoaeolaが選んだ注目トレンド",
+    "url": "https://everflux24.github.io/Aoaeola/archive/2026/07/04/20-00.html",
+    "datePublished": "2026-07-04T20:00:00+09:00",
+    "dateModified": "2026-07-04T20:00:00+09:00"
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>07月04日 20時台のトレンド｜Aoaeola</h1>
+      <time datetime="2026-07-04T20:00:00+09:00">2026年07月04日 20:00</time>
+    </header>
+
+    <!--NAV:PAGER_TOP-->
+<div class="archive-pager"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/04/16-00.html">← 07/04 16:00</a><span class="disabled">次へ →</span></div>
+<!--/NAV:PAGER_TOP-->
+
+    <!--NAV:HOUR_BLOCKS-->
+<nav class="hour-blocks-nav"><div class="hour-blocks-label">本日のアーカイブ</div><div class="hour-blocks-links"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/04/00-00.html" class="hour-block-link">00:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/04/04-00.html" class="hour-block-link">04:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/04/08-00.html" class="hour-block-link">08:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/04/12-00.html" class="hour-block-link">12:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/04/16-00.html" class="hour-block-link">16:00</a><span class="hour-block-link empty">20:00</span></div></nav>
+<!--/NAV:HOUR_BLOCKS-->
+
+    <main class="content-cards">
+      <article class="card"><h2>京本大我、THE MUSIC DAY 2026シャッフルメドレーでセンター登場にファン熱狂「ヤバい」</h2><p>京本大我がTHE MUSIC DAY 2026のシャッフルメドレーでセンターを務め、キレのあるダンスと目を引くビジュアルでファンの心を掴んだ様子がSNSで大きく取り上げられ、盛り上がりを見せている。</p><div class="meta">🔥 4,978 ポスト</div></article><article class="card"><h2>いけんのか超特急、THE MUSIC DAYで三輪車パフォーマンスが話題に「最高！」の声続出</h2><p>THE MUSIC DAY 2026でいけんのか超特急が三輪車コメディと変顔パフォーマンスを披露し、リョウガの長足やハルの三輪車走行がSNSで盛り上がり、トレンド2位にランクインした。</p><div class="meta">🔥 3,222 ポスト</div></article><article class="card"><h2>King &amp; Prince、THE MUSIC DAYで『HEART』と『Theater』を披露しファン歓喜「かっこいい」「かわいい」</h2><p>King &amp; Princeが『THE MUSIC DAY 2026』でライブ登場し、シャッフルメドレーで『HEART』と『Theater』を披露した。ファンは「かっこいい」「かわいい」感想を寄せ、パフォーマンスや衣装に大興奮している様子が投稿に見られる。</p><div class="meta">🔥 2,937 ポスト</div></article><article class="card"><h2>「デレミュ・オブ・ザ・デッド」公演ハッシュタグ案内と観客の熱狂的レポートが続出</h2><p>『デレミュ・オブ・ザ・デッド』の公演が始まり、公式ハッシュタグと実況ハッシュタグが紹介され、チケットが販売されたことが話題に。観客はSNSで観劇レポートやキャラのジョークを投稿し、盛り上がりを見せている。</p><div class="meta">🔥 2,746 ポスト</div></article><article class="card"><h2>ケンティー、ライブでハイタッチ演出が話題に「メロメロ」ファン歓喜</h2><p>ライブでケンティーが男性ファンにハイタッチ、乙女化させるシーンが話題に。ツイッターでは「ケンティー最高」「メロメロ」声が続出し、トレンド入りした。</p><div class="meta">🔥 2,087 ポスト</div></article><article class="card"><h2>ふわっち、にじ甲2026ドラフトで剣持刀也を1位指名　ファン歓喜の声</h2><p>にじさんじ主催のにじ甲2026ドラフトで、ふわっちが1位指名として剣持刀也を選んだことが話題になっている。ファンは「泣く」「嬉しい」コメントを投稿し、熱い反応が続いている。</p><div class="meta">🔥 1,689 ポスト</div></article><article class="card"><h2>フレン、イブラヒムを1位指名へ　にじ甲2026ドラフトで熱狂の声</h2><p>にじ甲2026のドラフトで、フレン監督がイブラヒムを1位指名したことが明らかになり、指名が被っていることや選択争いがファンの間で盛り上がっている。</p><div class="meta">🔥 881 ポスト</div></article><article class="card"><h2>「チャンカパーナ」サビが盆踊りリズムと判明、THE MUSIC DAYでライブ披露にファン歓喜</h2><p>NEWSが『チャンカパーナ』を生放送で披露し、サビが盆踊りのリズムだと指摘されたことで話題に上り、カラオケ男性グループ部門で1位に躍進した。SNSでは「サビに隠れた盆踊りのリズムなの🤭」や「チャンカパーナすごい分析されてるwww」コメントが多数寄せられ、楽曲への関心が高まった。</p><div class="meta">🔥 852 ポスト</div></article><article class="card"><h2>THE MUSIC DAY 2026、AiScReam登場でファン歓喜「最高！」</h2><p>THE MUSIC DAY 2026で、シャッフルメドレーやAiScReamが登場し、道枝駿佑やなにわ男子がキラキラの衣装でパフォーマンスを披露した。ファンは「最高！」や「かわいすぎる」声を上げ、会場は笑顔と歓声でいっぱいだった。</p><div class="meta">🔥 843 ポスト</div></article><article class="card"><h2>橋本将生、ピンク衣装でソロ披露　“カンパイ”と笑顔がファンを沸かせた</h2><p>THE MUSIC DAY2026で橋本将生がピンク衣装でシャッフルメドレーに登場し、ソロパートを披露。緊張しつつも笑顔で「カンパイ」やファイトの掛け声を入れ、声やビジュアルがファンの間で話題に。「カンパイ」や「ファイト」の掛け声が可愛らしく、ピンクの衣装と相まって「最高」「かわいい」コメントが多数寄せられた。</p><div class="meta">🔥 648 ポスト</div></article><article class="card"><h2>電音部6周年パーティ『REBOOT』がATOM SHINJUKUで開催、生配信で盛り上がり</h2><p>7月4日に電音部の6周年記念パーティ「REBOOT」がATOM SHINJUKUで開催され、YouTubeでライブ配信されたんだって。チケット争奪戦や出演者の発表が話題になっている。</p><div class="meta">🔥 607 ポスト</div></article><article class="card"><h2>にじさんじ甲子園2026ドラフト、甲斐田晴指名争奪戦にファン歓喜</h2><p>にじさんじ甲子園2026のドラフトが行われ、甲斐田晴や叶さんが指名争奪の中心に。ファンは熱いツイートで盛り上がっている。</p><div class="meta">🔥 606 ポスト</div></article><article class="card"><h2>宇佐美リト、アンジュ匂わせツイートでドラフトが話題に　ファンが「助けが必要なら合図してください」</h2><p>にじ甲2026のドラフトで、宇佐美リトがアンジュへの匂わせツイートを披露し、ファンが「助けが必要なら合図してください」や「脅されているならウィンクして」反応し、指名予想が盛り上がっている様子が見られた。</p><div class="meta">🔥 514 ポスト</div></article><article class="card"><h2>「リアル桃鉄バトル」開始、アイドルチームが全国対決で「かわいすぎて幸せ」な反応続出</h2><p>テレビ東京で『リアル桃鉄バトル』が始まり、橋本涼さんと稲葉通陽さんが率いるアイドルチームがリアルタイム配信で全国を巡りながらサイコロやカード運で対決し、貧乏神や2億円物件のやり取りも見られ、視聴者はリアタイで応援し、参加者同士の掛け合いも盛り上がり、各駅での指令クリアやサイコロの出目に笑いが絶えず、番組は熱狂的な雰囲気に包まれた。</p><div class="meta">🔥 491 ポスト</div></article><article class="card"><h2>「ラブ≠コメディ」公開、観客は「最高」や「活力になる」感想で盛り上がり</h2><p>『ラブ≠コメディ』が公開され、ファンが映画館で鑑賞しながら『最高』や『活力になる』と感想をシェアしている様子がSNSで広がっている。また、ストロベリーの音楽シーンが泣きポイントとして話題になり、作品全体が『お仕事エンターテイメント』として好評を得ている。</p><div class="meta">🔥 479 ポスト</div></article><article class="card"><h2>リゼ・ヘルエスタ、優勝旗返還でライブ登場　ファン歓喜の声が広がる</h2><p>リゼ・ヘルエスタが優勝旗を返還し、ドラフト会議の司会席に登場したのがライブ配信で話題に。ファンは#にじ甲2026で盛り上がり、コメントが続々と寄せられた。</p><div class="meta">🔥 466 ポスト</div></article><article class="card"><h2>青柳尊哉がウルトラマンと誤認され、ファンは「ウルトラマンじゃないですか？」と笑いと驚き</h2><p>青柳尊哉がウルトラマンだと勘違いするコメントが多数投稿され、ファンは「ウルトラマンじゃないんですか？」や「ウルトラマン誰？」と笑いながら議論を楽しんでいる様子が見られた。</p><div class="meta">🔥 455 ポスト</div></article><article class="card"><h2>Do As Infinity、20年ぶりテレビ出演で「涙チョチョギレる」懐かしさが炸裂</h2><p>Do As InfinityがTHE MUSIC DAYでテレビに登場し、20年ぶりのライブ映像や名曲を披露した。ファンは懐かしさに胸が高鳴り、コメントで喜びをシェアしている。</p><div class="meta">🔥 432 ポスト</div></article><article class="card"><h2>石井巧、プロ初ホームランでファン歓喜…「おめでとう」熱狂の声が続く</h2><p>ヤクルトスワローズの試合で、ルーキーの石井巧が左中間へ完璧な打球を放ち、プロ初のホームランを達成した。これでチームは1点リードし、逆転の流れが期待されている。スタジアムは歓声に包まれ、SNSでも「おめでとう」や「逆転勝利」コメントが続出している。</p><div class="meta">🔥 391 ポスト</div></article><article class="card"><h2>「池上彰のニュースそうだったのか!!」2時間半スペシャル放送、ACEesメンバー出演で盛り上がり</h2><p>7月4日18時30分から、池上彰のニュースそうだったのか!!が2時間半のスペシャルを放送し、ACEesの深田竜生さんと浮所飛貴さんがゲスト出演した。放送はテレビと同時にTVerで見逃し配信され、視聴者からたくさんのコメントが寄せられた。番組は『夏色の雲が恋と嵐をまきおこす』というテーマで、夏の話題も交えて展開された。</p><div class="meta">🔥 388 ポスト</div></article><article class="card"><h2>ルビィちゃん不在のAiScReam、観客がパートを担いで盛り上がり</h2><p>テレビでAiScReamが披露されたが、ルビィちゃんが抜けた状態で出演し、彼女のパートは観客に歌わせる形に変わった。ファンは「物足りない」「笑える」コメントし、観客が「何が好き？」と呼びかける演出が話題に。</p><div class="meta">🔥 388 ポスト</div></article><article class="card"><h2>「フリーズ高校」指名・ドラフト結果に歓喜「フリーズ高校大応援決定！」の声が広がる</h2><p>ユーザーたちは『フリーズ高校』への指名やドラフト結果をシェアし、フリーズ取得の喜びや入学祝いのコメントが続々と投稿され、盛り上がりを見せている。中でもドラフト1位や二度のフリーズ取得報告が目立ち、仲間への感謝や「フリーズ高校大応援決定！」声が多数。</p><div class="meta">🔥 383 ポスト</div></article><article class="card"><h2>小山くん、THEMUSICDAYで浮き輪と盆踊りのバカンスパフォが話題に『最高すぎ』の声続出</h2><p>小山くんがTHEMUSICDAYのシャッフルメドレーで、夏の衣装に浮き輪を合わせて盆踊りやバカンス風パフォを披露し、ファンから『最高』『めっちゃ良かった』と盛り上がりの声が多数上がった。</p><div class="meta">🔥 376 ポスト</div></article><article class="card"><h2>ギラギラホスト高校、剣持刀也と加賀美ハヤトが指名　ファン歓喜の声が広がる</h2><p>にじ甲2026のドラフトで、ギラギラホスト高校が剣持刀也と加賀美ハヤトを指名されたことが話題に。ファンは「最高」や「涙」感情を投稿し、盛り上がりを見せている。</p><div class="meta">🔥 361 ポスト</div></article><article class="card"><h2>叶くん、にじ甲2026で第一指名争奪戦！ファンが「任せたぞ叶先輩」歓喜の声</h2><p>にじ甲2026のドラフトで叶くんが第一指名され、ファンの間で取り合いが起きた。星川や小柳が祝福し、「任せたぞ叶先輩」コメントが多数寄せられ、熱い盛り上がりが見られた。</p><div class="meta">🔥 318 ポスト</div></article><article class="card"><h2>「Choo Choo TRAIN」コラボが熱狂、赤衣装と大人数パフォがファン沸騰</h2><p>THE RAMPAGEとFANTASTICSが赤と黒の衣装で『Choo Choo TRAIN』コラボを披露し、たくさんのメンバーが踊るパフォーマンスが話題になっている。</p><div class="meta">🔥 313 ポスト</div></article><article class="card"><h2>加藤シゲアキ、THE MUSIC DAYで振り間違いも可愛さ全開でファン歓喜</h2><p>THE MUSIC DAYでNEWSがステージを披露中、加藤シゲアキが振り付けをちょっと外しちゃったけど、ファンは「可愛い」や「ビジュ最高」って大盛り上がり。</p><div class="meta">🔥 294 ポスト</div></article><article class="card"><h2>山野辺翔、先発ファーストでスタメン初登板にファン歓喜「スタメンきたww」</h2><p>本日、ヤクルトの山野辺翔がスタメンでファーストに抜擢されたとSNSで盛り上がっている。移籍後初のヒットや安打も報告され、ファンの期待が高まっている。</p><div class="meta">🔥 293 ポスト</div></article><article class="card"><h2>重岡大毅、サプライズ友情出演でファン歓喜！『ラブ≠コメディ』に登場</h2><p>公式が発表したところによると、WEST.の重岡大毅が中島健人主演の映画『ラブ≠コメディ』に友情出演し、ラジオ放送作家としてサプライズ登場した。ファンは「びっくりした」や「声が出そう」リアクションを見せています。</p><div class="meta">🔥 293 ポスト</div></article><article class="card"><h2>ストプリ登場にファン歓喜、SixTONES×King &amp; Princeのコラボが話題に</h2><p>本日放送されたTHEMUSICDAYで、SixTONESとKing &amp; Princeのコラボ『ストプリ』が数秒間登場し、ファンは歓喜の声を上げた。出演者は短い絡みを披露し、視聴者は「久しぶり」や「神」リアクションを示した。</p><div class="meta">🔥 277 ポスト</div></article><article class="card"><h2>IVE、THE MUSIC DAYで『BANG BANG』テレビ初披露に「最高」歓喜の声続出</h2><p>IVEが『THE MUSIC DAY 2026』で『BANG BANG』をテレビ初披露し、ライブ映像がSNSに拡散。視聴者は「最高」「めっちゃかっこいい」盛り上がり、ビジュやダンスが話題に。さらに多くのファンが衣装や振り付け、歌声まで称賛するコメントを寄せた。</p><div class="meta">🔥 267 ポスト</div></article><article class="card"><h2>田中瑛斗、23連続無失点止むも勝ち越し打で巨人敗北</h2><p>巨人のエース、田中瑛斗が8回に登板し、相手の石川昂弥からタイムリーを浴びて逆転点を許したことで、23試合続いた無失点が止まり、試合は1-2で敗れた。観客はその瞬間にざわめき、SNSでは「また打たれた…」と驚きの声が上がった。</p><div class="meta">🔥 257 ポスト</div></article><article class="card"><h2>烏骨鶏ソフトクリーム、地上波で紹介されトレンド入り　ネットで「何？」の声が広がる</h2><p>烏骨鶏ソフトクリームがテレビで流れ、SNSで話題に上がり、トレンド入りしたんだね。みんな驚きと笑いが止まらない様子が投稿からうかがえる。</p><div class="meta">🔥 245 ポスト</div></article><article class="card"><h2>丹生明里（丹生ちゃん）がライブで感謝、ファンは「幸せ」や「楽しい」声で沸く</h2><p>丹生明里（丹生ちゃん）がライブやラジオで感謝のメッセージを届け、フルーツトークやリハビリのエピソードを披露した。ファンからは「幸せ」や「楽しかった」の声がたくさん寄せられている。</p><div class="meta">🔥 244 ポスト</div></article><article class="card"><h2>かなえぼし指名獲得で歓喜、ファンが「うおおお」や「ありがとう」熱狂</h2><p>にじ甲2026でかなえぼしが星川監督に指名され、ついに獲得が決定したとファンが報告。歓喜の声がSNSに広がり、「うおおお」「ありがとう」リアクションが続出している。</p><div class="meta">🔥 242 ポスト</div></article><article class="card"><h2>「リトテツ」登場でファン歓喜、感謝とパシリ議論が渦巻く熱狂ツイート</h2><p>7月4日、リトテツが登場したとツイートが相次ぎ、ファンは「リトテツだぁぁぁ」や「ありがとうリトテツ」と歓喜。中には「パシリ」や「絆」への期待も混ざり、熱い雰囲気が広がった。</p><div class="meta">🔥 210 ポスト</div></article><article class="card"><h2>「エビバディ」揃いに歓喜、ファンが「ありがとう」や「うおおお」と熱狂</h2><p>エビバディがついに揃い、ファンが「ありがとう」や「うおおお」と歓声を上げ、ローレンへの感謝や今後のVALO・FPSプレイへの期待を語り合う姿が多数の投稿で見られる。</p><div class="meta">🔥 205 ポスト</div></article><article class="card"><h2>「陽のあたる坂道」テレビ特番で再放送、伴ちゃん歌唱にファン歓喜</h2><p>テレビ東京の音楽特番で『陽のあたる坂道』が再び流れ、伴ちゃんが歌う姿が放送されたことで、ファンが懐かしさを語り合う様子がSNSに広がっている。</p><div class="meta">🔥 189 ポスト</div></article><article class="card"><h2>「平原まこと」サックス奏者がコナン・ルパンテーマだったと判明、ファン感動の声</h2><p>THE MUSIC DAYで、平原綾香さんの父・平原まことさんがコナンとルパンのテーマ曲をサックスで吹いてたってことが明らかになって、ファンの間で「すごい！」や「感動した」って声が広がっている。</p><div class="meta">🔥 188 ポスト</div></article><article class="card"><h2>松本伊代、CUTIE STREETとコラボステージで「かわいいだけじゃだめですか」披露にファン歓喜</h2><p>松本伊代さんがCUTIE STREETと一緒に『THE MUSIC DAY 2026』でコラボライブを行い、話題の曲「かわいいだけじゃだめですか」を披露した。放送は長時間にわたり、ファンや親衛隊から「最高だった」「とても嬉しい」リアクションが寄せられた。</p><div class="meta">🔥 187 ポスト</div></article><article class="card"><h2>フジテレビ『FIFAワールドカップ 珍プレー好プレー』が生放送で話題に、ゲスト出演やハイライトが盛り上げる</h2><p>フジテレビの『FIFAワールドカップ 珍プレー好プレー』が7月4日に生放送され、ゲストや選手の生出演が話題になっている。ハイライトや珍プレーが盛りだくさんで、視聴者の関心を集めている。</p><div class="meta">🔥 182 ポスト</div></article><article class="card"><h2>Kis-My-Ft2福岡昼公演、音響トラブルでオープニング再演＆千賀くんが一時的にステージ上で見失われるもファンが笑顔に</h2><p>Kis-My-Ft2福岡昼公演で音響トラブルが発生し、オープニングが止まってやり直しとなった。その後、千賀くんがステージ上で一時的に位置が分からなくなったが、メンバーやファンが笑顔で和んだハプニングが起きた。</p><div class="meta">🔥 181 ポスト</div></article><article class="card"><h2>太緒、ブレザー下パーカー制服姿が公開 “大正解”とファン熱狂で話題沸騰</h2><p>太緒がブレザーの中にパーカーを着た制服姿が登場し、ファンから“大正解”“めっちゃかっこいい”と歓声が上がっている。</p><div class="meta">🔥 173 ポスト</div></article><article class="card"><h2>フィジカルアカデミア、入学とエビバディ揃いで歓喜の声「うおおおお」</h2><p>『フィジカルアカデミア』が新メンバーを迎え、エビバディが揃ったことやFPS系eスポーツへの本格参戦が話題になっている。ファンからは「うおおおお」「ありがとう」歓声が上がり、チームの今後の活躍に期待の声が広がっている。</p><div class="meta">🔥 166 ポスト</div></article><article class="card"><h2>ロイヤルナイツ学園で入学・指名続出、優勝でファン歓喜の嵐が広がる</h2><p>帝国立ロイヤルナイツ学園で入学や指名が続々と報告され、イブやリゼ様が指名されたことが話題に。さらにロイヤルナイツが優勝したと歓喜の声が上がり、制服やドラフト構成への関心も高まっている。多くのユーザーが応援コメントを投稿し、盛り上がりを見せている。</p><div class="meta">🔥 165 ポスト</div></article><article class="card"><h2>ファビュラス学園、SNSでFAや指名が続々発表され「最高！」の声が広がる</h2><p>SNSで「ファビュラス学園」のFAや指名、入学が話題に。サロメやメロ、力ちゃんへの期待が高まり、みんなでワクワクしながら盛り上がっている様子が見られる。「ファビュラス最高！」や「指名決定でルンルン」コメントが続き、イベントへの期待感が広がっている。</p><div class="meta">🔥 163 ポスト</div></article><article class="card"><h2>寺西拓人、THE MUSIC DAY 2026でSHE! HER! HER!披露にファン歓喜</h2><p>寺西拓人がTHE MUSIC DAY 2026でSHE! HER! HER!を熱唱し、シャッフルメドレーでキレのあるダンスを披露した様子が、ライブ配信とSNS投稿で大きく取り上げられ、ファンから「かっこよすぎ」「最高だった」声が上がっている。</p><div class="meta">🔥 148 ポスト</div></article><article class="card"><h2>うみゃみー同時登場に沸く！にじさんじ甲子園2026で熱狂的ファンが歓喜</h2><p>にじさんじ甲子園2026の放送中、うみゃみーが同時に登場したことがSNSで大きく取り上げられ、ファンは「うみゃみー揃った！」「熱い！！」と歓声を上げ、多くのコメントが寄せられ、盛り上がりが続いている様子が見られた。</p><div class="meta">🔥 145 ポスト</div></article><article class="card"><h2>「シャワーズ」色違い登場に歓喜、ポケモンGO相棒に選ぶ声続出</h2><p>Twitterで『シャワーズ』が話題に。色違いの姿やカードの人気が取り上げられ、ポケモンGOで相棒にしたいという声が多数上がり、可愛さを称える投稿が続出している。さらに、夏イベントのデコやコラボ画像もシェアされ、ファンの盛り上がりが見られる。</p><div class="meta">🔥 144 ポスト</div></article><article class="card"><h2>抜刀高校、入学決定でファン歓喜「ありがとう監督」全力応援の波が広がる</h2><p>7月4日、Twitterで「抜刀高校」への入学や指名が続々と報告され、ファンがグッズを購入したり「全力応援します」とコメントしたりして、にじ甲2026のドラフト前に盛り上がりが広がっている様子が見られた。</p><div class="meta">🔥 125 ポスト</div></article><article class="card"><h2>ホクレン・ディスタンスチャレンジ千歳大会、自己ベスト続出で熱狂のトラックレース</h2><p>7月4日に千歳で開催されたホクレン・ディスタンスチャレンジ2026千歳大会が、男子5000mの快走や多数の自己ベスト更新で話題になっている。風が強い中でも熱いレースが続いた。</p><div class="meta">🔥 124 ポスト</div></article><article class="card"><h2>やししぃが同チームに揃いバッテリー化期待、ファン歓喜の声が広がる</h2><p>やししぃが同じチームに揃い、バッテリー（夫婦）化が期待されているとファンが盛り上がっている。投稿では「やししぃ揃ったｗ！！」や「やししぃバッテリー見えてきたな」など、喜びの声が多数上がっている。この流れで今後の展開が注目されている。</p><div class="meta">🔥 122 ポスト</div></article><article class="card"><h2>「おどるポンポコリン」放送で流れた瞬間、懐かしさと歓声が沸く</h2><p>『おどるポンポコリン』がTHE MUSIC DAYのシャッフルメドレーで流れ、BBクイーンズのカバーや子どもの初DJが披露され、視聴者が懐かしさと笑いでリアクションを寄せた。曲のフルやEDM風アレンジにも言及があり、世代を超えて盛り上がりを見せた。</p><div class="meta">🔥 120 ポスト</div></article><article class="card"><h2>増本綺良卒業セレモニー当選ラッシュと落選の声、ファンの歓喜と切なさが交錯</h2><p>増本綺良卒業セレモニーのチケット抽選結果がSNSで紹介され、当選の喜びや落選の声がファンの間でシェアされている。当たったファンは「やった！」と歓喜し、外れたファンは「泣く」や「残念」声を上げている様子が見られる。</p><div class="meta">🔥 118 ポスト</div></article><article class="card"><h2>きゃーたん、ニンフィア衣装で登場！ファンから“可愛い”の声が止まらない</h2><p>きゃーたんがニンフィア風の衣装とカチューシャで登場し、SNSで「可愛い」「最高」「解釈一致すぎ」コメントが多数寄せられ、ファンの間で大きく盛り上がっている様子が見られる。</p><div class="meta">🔥 114 ポスト</div></article><article class="card"><h2>流星ミルキーウェイ学園、にじ甲ドラフトで指名獲得に歓喜　ファンは「うおおおドラフトきたぁ！」と熱狂</h2><p>にじ甲2026のドラフトで、流星ミルキーウェイ学園が複数の選手を指名され、叶さんや星川監督が関わるチームが形づくられたと投稿が報告され、ファンからは祝福や応援の声が多数上がっている。</p><div class="meta">🔥 111 ポスト</div></article><article class="card"><h2>「宮本浩次」ファンクラブ限定イベント「my room at Live house Real うた動画」開催、ファン歓喜の声が続出</h2><p>宮本浩次がファンクラブ限定で『my room at Live house Real うた動画』を開催するんだって！7月13日は東京のCLUB Que、22日は大阪のMusic Club JANUSで、弾き語りの独演会が楽しめる。チケットはFC限定で、配信してほしいって声もある。</p><div class="meta">🔥 106 ポスト</div></article><article class="card"><h2>「ドンタコ」登場で歓喜の嵐、ファンが「嬉しい」「ありがとう」と熱狂</h2><p>『ドンタコ』が突然ツイッターに現れ、ファンが『嬉しい！』『熱い！』と歓声を上げ、供給や同期の話題が次々に投稿され、オタクたちのテンションが上がっている様子が見られる。さらに『ありがとう』や『泣きそう』感情表現も多数見られ、盛り上がりが続いている。</p><div class="meta">🔥 87 ポスト</div></article><article class="card"><h2>「京都大作戦2026」雨天でも熱狂、泥まみれライブが大盛り上がり</h2><p>雨の中でもバンドが次々にステージに立ち、観客は泥まみれになりながらも熱狂。モッシュダイブはNGになったものの、みんなで雨と泥を楽しんだ様子が伝わる。</p><div class="meta">🔥 79 ポスト</div></article><article class="card"><h2>中丸雄一、TOKYOFMで漫画家デビュー秘話トーク放送　ファン歓喜の声続出</h2><p>TOKYOFMで19時に『せかまん』がオンエアし、中丸雄一が漫画家デビューまでの裏話を語るトークが披露された。ファンからは「お楽しみに💜」と期待の声が上がっている。</p><div class="meta">🔥 74 ポスト</div></article><article class="card"><h2>インディペンデンス級航空母艦、実装期待で盛り上がり　独立記念日に合わせたイベント感がユーザーの興奮を呼ぶ</h2><p>7月4日に多数のユーザーが、艦これにインディペンデンス級航空母艦が実装されると期待を表明し、独立記念日に合わせたイベントやイラストの進行状況について語り合っている。</p><div class="meta">🔥 74 ポスト</div></article><article class="card"><h2>「相性×優勝ドロップス」好きすぎる声が続出、ファン熱狂の様子が見られる</h2><p>7月4日、Twitterで「相性×優勝ドロップス」への熱狂が広がり、みんなが歌ったり「好きすぎる」って叫んだりしている様子が見られた。</p><div class="meta">🔥 66 ポスト</div></article><article class="card"><h2>にじ甲2026ドラフト1位指名、葛葉が麒麟高校へ入学 ファンが歓喜の声</h2><p>にじ甲2026のドラフトで、葛葉が麒麟高校に1位指名され、入学が決定したと同時にグッズも発売され、ファンが「やった！」「麒麟高校だー！！」と歓喜している様子が投稿で広がっている。</p><div class="meta">🔥 63 ポスト</div></article><article class="card"><h2>韓国への関心高まる！ちきゅうラジオで料理・旅行・文化が熱く語られる</h2><p>ちきゅうラジオでリスナーが韓国の旅行や料理、音楽のエピソードを次々に披露し、済州島の体験や参鶏湯の感想、冬のソナタの流行が話題になっている様子が伝わってくる。</p><div class="meta">🔥 63 ポスト</div></article><article class="card"><h2>MUSIC FAIR次回予告が話題に、宮本浩次や亀梨和也が登場でファン歓喜</h2><p>『MUSIC FAIR』の次回予告がSNSで話題に。宮本浩次や亀梨和也が登場することが明らかになり、WAVEやコラボ楽曲、上半期名演集の情報も続々と出て、ファンのワクワクが止まらない様子だ。</p><div class="meta">🔥 57 ポスト</div></article><article class="card"><h2>「ひましぃ」登場でファン歓喜、ありがとうの声が続く #にじ甲2026</h2><p>2026年7月4日に『ひましぃ』がにじ甲2026に登場したことが明らかになり、同日多数のツイートで『ひましぃはある』『ありがとう』喜びの声が寄せられ、ハッシュタグ#にじ甲2026や絵文字と共に、ファンは「最強っすわ」「うおおおお」など熱狂的なコメントを連投した。</p><div class="meta">🔥 49 ポスト</div></article><article class="card"><h2>「ディディ・セドリック・バード」登場でファン歓喜「かわいい」「好き」声真似期待</h2><p>ディディ・セドリック・バードがSNSで紹介され、丸い外見やドナルド風の服装、名前がD.D.（Donald Duck）から来ていることが話題に。声真似やイラストの期待が投稿で盛り上がっている。</p><div class="meta">🔥 48 ポスト</div></article><article class="card"><h2>かなだい、ケイトリン振付のアップテンポ新作を発表　ファン歓喜の声</h2><p>PIWスペシャルトークショーで、かなだいがケイトリン振付の新作プログラムを発表し、マケバ以来のアップテンポになると説明された。</p><div class="meta">🔥 47 ポスト</div></article><article class="card"><h2>MilkLove、ソウルのGirlRulesFMinSeoulで『Side by Side』登場にファン歓喜「可愛すぎる」</h2><p>MilkLoveがソウルで開かれたGirlRulesFMinSeoulに『Side by Side』で登場し、ファンは「可愛すぎる」「最高」歓声を上げている様子が投稿からうかがえる。</p><div class="meta">🔥 44 ポスト</div></article><article class="card"><h2>あいみょん『今夜このまま』がTHE MUSIC DAYで披露、ファンは「大好き」や「めっちゃ可愛い」声</h2><p>あいみょんの『今夜このまま』がTHE MUSIC DAYで披露され、ファンが「大好き」や「めっちゃ可愛い」声を上げて盛り上がっている様子がSNSに広がっている。ステージは横浜で開催されたとの噂もあり、ヘアスタイルの変化やドラマ主題歌としての思い出も語られ、楽曲への愛が溢れる投稿が続出している。</p><div class="meta">🔥 41 ポスト</div></article><article class="card"><h2>「Aッ倒的ぶろぐ」7月4日更新、横アリ応援と感謝の声が続々と広がる</h2><p>7月4日に『Aッ倒的ぶろぐ』が更新され、横アリ公演への応援やメンバーの写真が披露され、ファンから「ありがとう」「かましてきてね」など感謝と期待の声が続々と寄せられた。</p><div class="meta">🔥 30 ポスト</div></article><article class="card"><h2>「マヌルネコ」赤ちゃん5匹誕生、神戸で公開　「見に行きたい」熱狂の声</h2><p>神戸どうぶつ王国でマヌルネコの赤ちゃん5匹が誕生し、元気に育っている様子がSNSでシェアされ、7月下旬の一般公開が期待されている。</p><div class="meta">🔥 29 ポスト</div></article><article class="card"><h2>『青春ブタ野郎はディアフレンドの夢を見ない』劇場公開決定、ビジュアル公開にファン歓喜</h2><p>10月16日(金)公開の劇場アニメ『青春ブタ野郎はディアフレンドの夢を見ない』の公式サイトがオープンし、本予告が配信された。赤城郁実・姫路紗良・美東美織・岩見沢寧々の新ビジュアルも同時に公開された。</p><div class="meta">🔥 28 ポスト</div></article><article class="card"><h2>『これは経費で落ちません!』Netflix配信開始でファン歓喜「嬉しい」</h2><p>NHKのドラマ『これは経費で落ちません!』が7月20日からNetflixで配信開始になると発表され、ファンは「嬉しい」「観れる」喜びをSNSに投稿し、再放送や続編への期待も語られている。</p><div class="meta">🔥 28 ポスト</div></article><article class="card"><h2>第37回日本ジュエリーベストドレッサー賞、浜辺美波ら豪華受賞者が東京ビッグサイトで華やかに表彰</h2><p>第37回日本ジュエリーベストドレッサー賞が東京ビッグサイトで開催され、浜辺美波や前田敦子らが華やかなジュエリーを身にまとい受賞した様子がSNSでシェアされた。各年代の受賞者がステージで笑顔を見せ、特別賞に高市早苗首相も登場し、会場はキラキラとした雰囲気に包まれた。</p><div class="meta">🔥 28 ポスト</div></article><article class="card"><h2>「入り浸りギャル」動画やデッキが続々登場、ユーザーは「好きすぎて草」熱狂</h2><p>Twitterで「入り浸りギャル」に関するツイートが相次ぎ、動画やデッキの紹介が多数投稿された。ユーザーはタイムラインに頻繁に流れる様子を報告し、好意的なコメントが目立っている。「めっちゃ流れてくる」「好きすぎて草」感想も多数見られ、関連動画や「入り浸りギャル」デッキの作成が盛んになっている。</p><div class="meta">🔥 24 ポスト</div></article><article class="card"><h2>スパイダーマン：ブランド・ニュー・デイ 日本語吹替版、榎木淳弥と宮内敦士が続投決定でファン歓喜</h2><p>日本語吹替版のキャストが発表され、榎木淳弥がスパイダーマン役、宮内敦士がハルク役で続投することがファンの間で話題になっている。</p><div class="meta">🔥 22 ポスト</div></article>
+    </main>
+
+    <!--NAV:PAGER_BOTTOM-->
+<div class="archive-pager"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/04/16-00.html">← 07/04 16:00</a><span class="disabled">次へ →</span></div>
+<!--/NAV:PAGER_BOTTOM-->
+
+    <!--NAV:ARCHIVE_NAV-->
+<nav class="archive-nav"><div class="archive-nav-label">過去7日のアーカイブ</div><div class="archive-nav-links"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/04/16-00.html" class="archive-nav-link current">07/04</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/03/20-00.html" class="archive-nav-link">07/03</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/02/20-00.html" class="archive-nav-link">07/02</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/01/20-00.html" class="archive-nav-link">07/01</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/06/30/20-00.html" class="archive-nav-link">06/30</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/06/29/20-00.html" class="archive-nav-link">06/29</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/06/28/20-00.html" class="archive-nav-link">06/28</a></div></nav>
+<!--/NAV:ARCHIVE_NAV-->
+
+    <div style="text-align:center;">
+      <a href="https://everflux24.github.io/Aoaeola/" class="back-link">&#8592; トップページへ戻る</a>
+    </div>
+
+    <footer>
+      <p>Generated by Aoaeola v2.5 &#183; 2026-07-04 20:00:52</p>
+    </footer>
+  </div>
+</body>
+</html>
