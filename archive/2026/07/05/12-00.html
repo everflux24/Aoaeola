@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07月05日 12時台のトレンド｜Aoaeola</title>
+  <meta name="description" content="07月05日 12時台のトレンド｜Aoaeola — Aoaeolaが選んだ注目トレンド">
+  <link rel="canonical" href="https://everflux24.github.io/Aoaeola/archive/2026/07/05/12-00.html">
+  <style>
+    :root {
+      --bg-start: hsl(232, 70%, 45%);
+      --bg-end: hsl(272, 70%, 55%);
+      --text: #1a1a2e;
+      --card-bg: rgba(255,255,255,0.85);
+      --accent: hsl(232, 70%, 35%);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      min-height: 100vh;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    header time {
+      display: block;
+      margin-top: 0.5rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .card .meta {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255,255,255,0.9);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .back-link:hover {
+      background: #fff;
+    }
+    .hour-blocks-nav {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .hour-blocks-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .hour-blocks-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .hour-block-link {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .hour-block-link:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .hour-block-link.current {
+      background: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .hour-block-link.empty {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .archive-pager {
+      display: flex;
+      justify-content: space-between;
+      margin: 1.5rem 0;
+      padding: 0 0.5rem;
+    }
+    .archive-pager a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .archive-pager a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .archive-pager .disabled {
+      opacity: 0.3;
+      pointer-events: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+    .archive-nav {
+      margin: 2rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .archive-nav-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .archive-nav-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .archive-nav-link {
+      display: inline-block;
+      padding: 0.4rem 0.7rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      transition: background 0.2s;
+    }
+    .archive-nav-link:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .archive-nav-link.current {
+      background: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .archive-nav-link.empty {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    footer {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "07月05日 12時台のトレンド｜Aoaeola",
+    "description": "07月05日 12時台のトレンド｜Aoaeola — Aoaeolaが選んだ注目トレンド",
+    "url": "https://everflux24.github.io/Aoaeola/archive/2026/07/05/12-00.html",
+    "datePublished": "2026-07-05T12:00:00+09:00",
+    "dateModified": "2026-07-05T12:00:00+09:00"
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>07月05日 12時台のトレンド｜Aoaeola</h1>
+      <time datetime="2026-07-05T12:00:00+09:00">2026年07月05日 12:00</time>
+    </header>
+
+    <!--NAV:PAGER_TOP-->
+<div class="archive-pager"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/05/08-00.html">← 07/05 08:00</a><span class="disabled">次へ →</span></div>
+<!--/NAV:PAGER_TOP-->
+
+    <!--NAV:HOUR_BLOCKS-->
+<nav class="hour-blocks-nav"><div class="hour-blocks-label">本日のアーカイブ</div><div class="hour-blocks-links"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/05/00-00.html" class="hour-block-link">00:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/05/04-00.html" class="hour-block-link">04:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/05/08-00.html" class="hour-block-link">08:00</a><span class="hour-block-link empty">12:00</span><span class="hour-block-link empty">16:00</span><span class="hour-block-link empty">20:00</span></div></nav>
+<!--/NAV:HOUR_BLOCKS-->
+
+    <main class="content-cards">
+      <article class="card"><h2>名探偵プリキュア！第23話「くれあと推理とアイスクリーム」放送、くれあの可愛さにファン歓喜</h2><p>本日放送の『名探偵プリキュア！』第23話では、くれあとるるかがアイスクリームを巡って大活躍！マコトジュエルが宿る写真をめぐる推理が展開し、パティスリーチュチュでのドタバタが見どころになっている。視聴者は「くれあさん可愛かった」声を上げ、次回予告にも期待が高まっている。</p><div class="meta">🔥 7,493 ポスト</div></article><article class="card"><h2>キュアエクレール正体はくれあさん？　SNSで推測が急上昇、ファンが熱狂的に議論</h2><p>『キュアエクレール』の正体が帆羽くれあという噂がSNSで話題になっていて、香りや記憶喪失ヒントが指摘され、くれあさんがエクレールだという声が次々に登場し、他の候補者へのツッコミも交えながら盛り上がっている様子が見られる。</p><div class="meta">🔥 6,070 ポスト</div></article><article class="card"><h2>「仮面ライダーゼッツ」CD‑BOX発売決定、全楽曲とMV収録にファン歓喜</h2><p>仮面ライダーゼッツの音楽が一挙に手に入るCD‑BOXが、9月2日発売！主題歌やキャラソン、劇伴までフル収録で、MV付きBlu‑rayも付いてくるんだって。ファンにはたまらないラインナップだね。</p><div class="meta">🔥 5,545 ポスト</div></article><article class="card"><h2>「ギャバンシステム停止」で話題沸騰、ファンは「最高議長の爆弾発言！」と熱狂</h2><p>ギャバンシステムが止まっちゃって、次元間のバトルが一瞬カオスに！みんなで「ギャバんの熱さがめっちゃギャバかった！」と盛り上がってる。各キャラが次元を駆け巡り、システム復旧を祈りながらバトル続行。ファンは「最高議長の爆弾発言！」とツッコミつつ、次回の展開に期待している。</p><div class="meta">🔥 4,527 ポスト</div></article><article class="card"><h2>「超宇宙刑事ギャバンインフィニティ」第21話、全ギャバンが次元超えて集結「ギャバい」熱狂</h2><p>第21話で次元を超えてギャバンが次々に登場し、全員が一堂に会したのが話題に。新キャラのギャバン・アミーゴやアーマイゼも加わり、ファンは「ギャバい！」と盛り上がっている。</p><div class="meta">🔥 2,924 ポスト</div></article><article class="card"><h2>フランス代表、エンバペPKで1-0勝利　ベスト8進出に歓喜の声が広がる</h2><p>フランスがパラグアイを1-0で下し、エンバペのPKが決まってベスト8入り！接戦だったけど、ゴールはPKだけだったんだって。観戦したみんなが「やったね！」と盛り上がり、暑い中でも熱戦が続いた。</p><div class="meta">🔥 2,701 ポスト</div></article><article class="card"><h2>『星に願いを2026』ブース設営完了、無料配布や再版書籍でファン歓喜の声</h2><p>『星に願いを2026』で多数のサークルがブース設営を済ませ、無料配布や再版書籍の販売開始を報告。来場者は各エリアで新作やグッズを楽しめる様子。設営完了の報告とともに、場所や配布物の詳細がシェアされ、イベント当日の盛り上がりが期待されている。</p><div class="meta">🔥 2,281 ポスト</div></article><article class="card"><h2>「仮面ライダーマイス」ビジュアル公開、ネズミと卵の変身アイテムにファン歓喜</h2><p>『仮面ライダーマイス』のビジュアルが公開され、ネズミモチーフの卵型変身アイテムや胸ベルト装着の新デザインが話題になっている。放送は9月スタートが発表された。さらに、敵として猫が登場する設定も注目され、ファンの期待が高まっている様子だ。</p><div class="meta">🔥 1,583 ポスト</div></article><article class="card"><h2>「エクレールのマコトジュエル」奪われウソノワールが人質化、るるかがファントムで奮闘</h2><p>エクレールのマコトジュエルがウソノワールの手に渡り、人質になったことが第23話で明らかに。るるかはジュエル奪還のためファントムに潜入し、物語が盛り上がった。</p><div class="meta">🔥 1,325 ポスト</div></article><article class="card"><h2>超宇宙刑事ギャバンインフィニティ第21話「ギャバン集結」放送、ファンは「ワクワクが止まらない」</h2><p>7月5日午前9時30分、テレビ朝日系列で『超宇宙刑事ギャバンインフィニティ』第21話「ギャバン集結」が放送され、ギャバン達が大集合するクライマックスが展開された。予告映像や出演者のコメントがSNSで拡散され、視聴者の期待感が高まっている。</p><div class="meta">🔥 1,051 ポスト</div></article><article class="card"><h2>おねがいアイプリ第14話、あおい＆ぐみのデュオライブが話題に「最高」</h2><p>『おねがいアイプリ』第14話が放送され、あおいとぐみのデュオライブが披露されたことが話題に。視聴者からは「最高」「感動した」声が上がり、かなたちゃんの声優情報も注目された。</p><div class="meta">🔥 824 ポスト</div></article><article class="card"><h2>カタストロフ、ゼッツとエクスドリームの激闘で退場　ファン歓喜の声が広がる</h2><p>カタストロフがついに倒れ、ゼッツだけが戦える状態になったとファンが歓声を上げている。エクスドリームの力で書き換えが完了し、物語が新たな展開へと進む様子が伝わってくる。</p><div class="meta">🔥 685 ポスト</div></article><article class="card"><h2>キュアアルカナ・シャドウ、変身シーンが話題に　「さぁ、迷宮へ誘いましょう」</h2><p>『名探偵プリキュア』第23話で、キュアアルカナ・シャドウ（森亜るるか）が変身シーンを披露し、香りと記憶の関係や正体に関するヒントを語った。視聴者はその表情や台詞に注目し、SNSで盛んにコメントを投稿している。さらに足技や謎解きの演出も注目され、キャラの魅力が再評価された。多くのファンが「最高に美しい」や「期待が高まる」と感想を寄せている。</p><div class="meta">🔥 654 ポスト</div></article><article class="card"><h2>おねがいアイプリ第14話「わたしのハイセンス！」放送開始、ファンが「待ってました！」と歓喜</h2><p>アニメ『おねがいアイプリ』第14話が9時30分に放送され、ハイセンス学園の新キャラが登場したとファンが報告し、期待の声が広がっている。</p><div class="meta">🔥 622 ポスト</div></article><article class="card"><h2>プリキュア最新回、百合の花が大量演出　くれあとるるかの関係が噂の的に</h2><p>『名探偵プリキュア』の最新回で、店内や庭に百合の花がたくさん登場し、くれあとるるかの関係を暗示する演出が話題になっている。花の香りが記憶喪失の回復に関わるという推測も広がっている。</p><div class="meta">🔥 608 ポスト</div></article><article class="card"><h2>小倉2Rでリエーヴェが勝利、スイトーヨが続く―高配当が話題に</h2><p>小倉2Rでリエーヴェがトップに立ち、スイトーヨが続き、タカモリが3位に入ったことがSNSで大きく取り上げられ、単勝や三連単で高配当が出たと報告されています。</p><div class="meta">🔥 462 ポスト</div></article><article class="card"><h2>ヤマメホープ、福島3Rで2着に！的中情報がSNSで大盛り上がり</h2><p>福島3Rでヤマメホープが2着に入って的中が続出、オッズや配当がSNSにシェアされ、無料予想リンクも多数。みんなで注目が高まっている様子が見られた。投稿者は「◎14ヤマメホープ」や「2着で的中」コメントを連投し、レースの盛り上がりを盛んに語っている。</p><div class="meta">🔥 438 ポスト</div></article><article class="card"><h2>「マシュタン」ぬい活姿が可愛すぎて、クッションでお座りシーンがSNSで大盛り上がり</h2><p>マシュタンがぬいぐるみになりきってクッションや座布団に乗り、お座り姿を披露した画像がSNSに次々と投稿され、ファンの間で「かわいい！」と盛り上がっている。その可愛さに「癒される」「萌え」コメントが続出し、マシュタンのぬい活姿が話題に。</p><div class="meta">🔥 308 ポスト</div></article><article class="card"><h2>「函館1R」無料予想公開で盛り上がり、コックニーら注目馬が話題に</h2><p>函館1Rの予想がSNSで次々にシェアされ、無料公開やいいねでの応援募集が話題に。コックニーやチカバリエンテ、ライーリーアースが注目馬として登場し、リポストやコメントが盛り上がっている様子が見られる。</p><div class="meta">🔥 276 ポスト</div></article><article class="card"><h2>「DIGIMON BEATBREAK」第37話「優しい魔法」放送、GIFT編最終回にファン歓喜</h2><p>7月5日午前9時にフジテレビで『DIGIMON BEATBREAK』第37話「優しい魔法」が放送され、GIFT編の最終回としてファンがリアルタイムで盛り上がり、メフィスモンの行方に注目が集まった。</p><div class="meta">🔥 264 ポスト</div></article><article class="card"><h2>NHKラジオ『子ども科学電話相談』本日放送、昆虫・恐竜・心と体の専門家が登場</h2><p>NHKラジオで子ども科学電話相談が今日放送され、昆虫・恐竜・心と体の専門家がゲスト出演し、リスナーからの質問をHPと電話で受け付けたんだ。大阪の自然史博物館も紹介された。</p><div class="meta">🔥 259 ポスト</div></article><article class="card"><h2>大谷翔平（ロサンゼルス・ドジャース）32歳誕生日、祝福と二刀流復帰への期待がSNSで沸騰</h2><p>大谷翔平が7月5日に32歳の誕生日を迎え、ファンからたくさんのハッピーバースデーの声が届いた上、二刀流復帰や右上腕二頭筋の違和感でスタメン外れの情報もシェアされた。</p><div class="meta">🔥 209 ポスト</div></article><article class="card"><h2>「ギャバイン」最終盤突入、急展開と予算不足に対する声が上がる</h2><p>『ギャバイン』が残り数話で最終盤に突入し、予算や尺の関係で展開が急ぎ足に。全員集合のクライマックスが十分に描かれず、ファンからは「尺が足りない」「急すぎる」声が上がっている。</p><div class="meta">🔥 202 ポスト</div></article><article class="card"><h2>オウケンハニー、福島1Rで圧勝！SNSで祝福の声が続出、的中喜びが広がる</h2><p>福島競馬場の1Rでオウケンハニーが1着に入り、単勝で高配当を獲得したことがSNSで多数報告され、ユーザーが「圧勝だぜい」や「おめでとう」と祝福の声を上げ、的中の喜びや次回への期待が広がっている様子が見られる。</p><div class="meta">🔥 198 ポスト</div></article><article class="card"><h2>勝又春（櫻坂46）生出演サンデー・ジャポンで「春ちゃん可愛い」歓喜の声続出</h2><p>2026年7月5日（日）9時54分から放送されたTBS系『サンデー・ジャポン』に、櫻坂46の勝又春が生出演し、コメントやワイプでの姿が披露された。ファンは「春ちゃん可愛い」「ハルサン⤴︎」と歓声を上げている。</p><div class="meta">🔥 194 ポスト</div></article><article class="card"><h2>「ミスティックリフレクション」投げ技が話題に、ブーメラン化で「凶器」感が一部で指摘される</h2><p>本日、プリキュアのキュアミスティックが使う「ミスティックリフレクション」が投げ技として発動し、ブーメランのように回転しながら斬撃を与える様子が多数の投稿で共有された。この新たな使い方は防御から攻撃への転用として注目され、視聴者からは「凶器化」「ブーメラン衝撃的」声が上がっている。</p><div class="meta">🔥 182 ポスト</div></article><article class="card"><h2>グレイトソン、函館2Rで1着突破！的中ユーザー歓喜の声が広がる</h2><p>函館2Rで1番人気のグレイトソンが1着に輝き、単勝オッズは約1.8倍だった。レース後は「的中」「安心」コメントが多数寄せられ、馬券の回収が喜ばれた。</p><div class="meta">🔥 159 ポスト</div></article><article class="card"><h2>『BLEACH 千年血戦篇-禍進譚-』ファイナルPV公開、ファンは「最高にワクワク」感が沸騰</h2><p>TVアニメ『BLEACH 千年血戦篇-禍進譚-』の最終クール向けファイナルPVが公開され、OPとEDの楽曲も一部聞けるようになった。放送は7月25日23時からだって！</p><div class="meta">🔥 148 ポスト</div></article><article class="card"><h2>「エグゼイド生命」CMがニチアサで毎週放送、視聴者は「早いな？」と歓喜</h2><p>エグゼイド生命のCMがニチアサ枠で毎週放送され、放送が早いことや内容の変化が話題になっている。視聴者は『早いな？』や『また弾けてる』声を上げ、続く放送に期待や笑いを交えて楽しんでいる。</p><div class="meta">🔥 134 ポスト</div></article><article class="card"><h2>伊達さゆり、車内アナウンスナレーション再登場で『かのサンド』が盛り上がり</h2><p>テレビ番組『かのサンド』で伊達さゆりがナレーションを担当し、車内アナウンス風の声で再登場。『Over Over』が流れ、約1年ぶりの出演がSNSで報告された。</p><div class="meta">🔥 121 ポスト</div></article><article class="card"><h2>パトラン様の『ポチッと！』が話題に　クルル似姿やスーパーチェンジ期待が沸騰</h2><p>パトラン様が『ポチッと！』と叫びながらクルル曹長風の動きを披露し、スーパーチェンジがまだ見られないことが話題になっている。ファンは称賛と変身への期待を交えて盛り上がっている。</p><div class="meta">🔥 118 ポスト</div></article><article class="card"><h2>福島競馬場で天候良好とオリジナル酒販売が話題に、ファンが歓喜しレース予想も続々ツイート</h2><p>福島競馬場は曇りでも芝とダートがコンディション抜群で、パドックではオリジナル酒が販売されてファンがにぎわい、3Rや11Rのレース予想が次々ツイートされて盛り上がっている。ジュライSや北九州記念への期待も高まって、みんなワクワクしている様子です。</p><div class="meta">🔥 115 ポスト</div></article><article class="card"><h2>アオイハルカ、今村聖奈騎手と小倉3Rで大外一気勝利！600万超配当に歓喜の声</h2><p>小倉競馬場の第3レースで、8番人気のアオイハルカが今村聖奈騎手とともに大外から差し切り、見事に1着となった。レース終盤の末脚が光り、三連単は600万円超の高配当を生んだ。他の有力馬は押さえきれず、レースは大波乱として多くのファンの注目を集めた。</p><div class="meta">🔥 111 ポスト</div></article><article class="card"><h2>キバヤシ、シューイチテレビ出演で驚き「なんだってー！」と話題沸騰</h2><p>シューイチにキバヤシが登場し、MMR原作者として紹介されたことで視聴者の間で「なんだってー！」や「草」リアクションが広がっている。テレビでの姿に驚きつつ、懐かしさを語る声も多く、番組が話題になっている。</p><div class="meta">🔥 110 ポスト</div></article><article class="card"><h2>チルドキ、YouTubeライブで沖野綾亜が夏の挨拶！ファンが「おはチルー」や「めんこい」で盛り上がる</h2><p>チルドキがYouTubeでライブ配信され、沖野綾亜らが夏の挨拶やリスナーとのトークを楽しんだ様子が投稿で紹介され、シャワーヘッドの話題も交えて盛り上がりを見せた。</p><div class="meta">🔥 98 ポスト</div></article><article class="card"><h2>仮面ライダーマオウ、猫モチーフの新デザイン公開で胸VS腰ベルト対決が話題に</h2><p>本日、仮面ライダーマイスの発表と同時に猫をイメージした仮面ライダーマオウが登場し、胸ベルトと腰ベルトの対決が初めて実装されたことが話題になっている。名前は猫の鳴き声「meow」から来ているらしい。</p><div class="meta">🔥 98 ポスト</div></article><article class="card"><h2>「オペラ座の怪人」名古屋初日、MTG名古屋四季劇場開幕でファン歓喜の声続出</h2><p>新劇場MTG名古屋四季劇場で『オペラ座の怪人』の初日公演が開催され、観客は「胸が熱くなりますね」や「初日の幕が無事に上がりますように」声を上げて盛り上がっている様子が伝わる。</p><div class="meta">🔥 93 ポスト</div></article><article class="card"><h2>「カトマンズゴールド」心配の声が上がり、無事を願うファンの思いが伝わる</h2><p>カトマンズゴールドがレース後に体調を崩したとの噂がSNSで広がり、心房細動や故障の可能性が取り沙汰されています。馬場が重くスタートで躓いた映像や、馬車に乗り込む様子も話題になっています。ファンは「大丈夫かな？」と心配しつつ、無事を願う声が見られます。</p><div class="meta">🔥 90 ポスト</div></article><article class="card"><h2>有本さん登場で熱狂！ビックリンガー・アミーゴと共にギャバン集結</h2><p>有本さんが最新エピソードに登場し、ビックリンガーやアミーゴ、蟻のギャバンと共にギャバン全員が集結したことがSNSで話題になっている。多くのファンが「かっこいい」「熱い」とコメントし、登場シーンが盛り上がりを見せた。</p><div class="meta">🔥 87 ポスト</div></article><article class="card"><h2>葬送のフリーレン第3期放送決定、来年10月に期待が高まる、ファン歓喜の声が広がる</h2><p>アニメ『葬送のフリーレン』の第3期が2027年10月に放送されると発表され、同じく『ダンジョン飯』第2期も同時期に決定したことがSNSで広がり、ファンの期待が高まっている。</p><div class="meta">🔥 86 ポスト</div></article><article class="card"><h2>エナジックスポーツ、5回で0-4のビハインドに“逆転できるか”と期待の声続出</h2><p>エナジックスポーツは沖縄大会の3回戦で、美里工業に対し5回終了時点で0点、4点差とビハインド状態となっています。残りイニングでの逆転が注目されており、SNSではエナジックの不利な状況への懸念と逆転への期待の声が一部で上がっています。</p><div class="meta">🔥 80 ポスト</div></article><article class="card"><h2>ジャンダルム産駒、初勝利で小倉2R制す　ファン歓喜の声続出</h2><p>小倉2Rでジャンダルム産駒のリエーヴェがついにJRA初勝利！地方での不振を乗り越え、中央でも勝ち星を手にしたことがSNSで盛り上がっている。</p><div class="meta">🔥 80 ポスト</div></article><article class="card"><h2>仮面ライダーマイス、ネズミと卵のデザインが公開でファン歓喜「戸棚の裏はネズミの卵でいっぱいだ」ミーム拡散</h2><p>仮面ライダーマイスの新作が公開され、ネズミをモチーフにしたデザインと卵型の変身ベルトが登場したことで、ファンの間で「ネズミの卵」ネタが話題になっており、掲示板やツイートで「戸棚の裏はネズミの卵でいっぱいだ」コメントが多数見られる。</p><div class="meta">🔥 72 ポスト</div></article><article class="card"><h2>「ジーク」光堕ちか　次回『仮面ライダーゼッツ』でパニちゃんとバトル予告でファン歓喜</h2><p>次回『仮面ライダーゼッツ』でジークがパニちゃんとバトルを繰り広げる予告が出て、光堕ちや改心の可能性が話題になっている。ファンは「ジークvsパニちゃんまじか」や「ジーク光堕ちするの？」と期待と不安を交えて盛り上がっている。</p><div class="meta">🔥 69 ポスト</div></article><article class="card"><h2>元中日投手マルテ、NPB復帰報道に「マルテ帰ってこい」熱狂の声続出</h2><p>米記者の報道で、元中日ドラゴンズの投手マルテがNPBに復帰する可能性が取り上げられ、SNSでは『マルテがまたNPBに来る』や『マルテ帰ってこい』声が広がっている。ファンの期待感が高まっている様子が見られる。</p><div class="meta">🔥 68 ポスト</div></article><article class="card"><h2>優里の新曲『サンダーボルト』がサンダー3 OPに決定、ファン歓喜の声続出</h2><p>優里の新曲『サンダーボルト』がサンダー3のOPに登場し、7月10日のデジタルリリースが待ち遠しいとファンが盛り上がっている。初回放送で世界初解禁され、渋谷でのうちわ配布イベントも話題になっており、SNSでは「めっちゃカッコイイ」「楽しみ」声が多数上がっている。</p><div class="meta">🔥 67 ポスト</div></article><article class="card"><h2>ダウンズ一軍合流でファン歓喜「待ってた」「グッズ買う」熱狂の声</h2><p>ダウンズ選手が二軍から一軍へ合流したことがSNSでたくさん報告され、ファンは「待ってた」「やっと来た」「グッズ買う」歓声を上げている。今後の打撃や守備での活躍に期待の声が広がっている。</p><div class="meta">🔥 66 ポスト</div></article><article class="card"><h2>ドラギニャン、井上敏樹騎手と小倉1R障害レースで初勝利　ファン歓喜の声続出</h2><p>ドラギニャンが小倉1Rの障害レースでついに初勝利！井上敏樹騎手とコンビで、安定した飛越を見せて先頭に抜け、ゴール直前に勝ち上がりを決めた様子がSNSで盛り上がっている。多くのファンが「やったー！」や「嬉しい！」と歓声を上げ、レースの様子や結果が次々とシェアされている。</p><div class="meta">🔥 61 ポスト</div></article><article class="card"><h2>「ビッグマグナム」登場でファン歓喜、シャイダーオマージュが熱く語られる</h2><p>ツイッター上で『ギャバン・インフィニティ』に登場した『ビッグマグナム』が話題になり、元は『宇宙刑事シャイダー』のオマージュだとユーザーが指摘している。映像の迫力や懐かしさに対して「熱すぎる」「泣いた」リアクションが多数見られた。</p><div class="meta">🔥 61 ポスト</div></article><article class="card"><h2>怪事課の不法侵入が止まらない　ファンは「もう普通に不法侵入してますやん」と笑顔</h2><p>投稿では、怪事課が不法侵入を繰り返し、隠れながらも復帰や再登場が続く様子が多数報告され、ファンの間で笑いの対象になっている。</p><div class="meta">🔥 59 ポスト</div></article><article class="card"><h2>四谷学院、全員1年生で初公式戦勝利　茨城大会でつくば秀英を3-0リード</h2><p>四谷学院が茨城大会でつくば秀英を相手に5回までリードし、最終的に3-0で勝ち抜いた。全員1年生という構成ながら、投手の落ち着きと守備の上手さが光った。</p><div class="meta">🔥 58 ポスト</div></article><article class="card"><h2>ユーリララ完全移籍加入、ジュビロ磐田へ歓迎の声が続出</h2><p>ユーリララ選手が完全移籍でジュビロ磐田に加入したと発表され、SNSでは「ようこそ！」「待望のボランチ補強だね」など歓迎の声が続出し、フィジカルの強さやJ1昇格への期待が語られている。</p><div class="meta">🔥 56 ポスト</div></article><article class="card"><h2>「魔法騎士レイアース」新作アニメ放送決定、梶裕貴・加藤英美里・松岡禎丞の声優発表にファン歓喜</h2><p>新作アニメ『魔法騎士レイアース』が10月7日放送へ決定し、クレフに梶裕貴、プレセアに加藤英美里、フェリオに松岡禎丞が声優として登場。第2弾キービジュアルとメインPVも公開された。</p><div class="meta">🔥 55 ポスト</div></article><article class="card"><h2>森亜るるか、パティスリーチュチュでチョコミント＆ラズベリーアイスを堪能　ファンが「アイス狂い」</h2><p>第23話で森亜るるかがパティスリーチュチュへ行き、チョコミントやラズベリーアイス、ブルーベリータルトを楽しみながら、捜査の合間に容疑者と向き合うシーンが話題に。</p><div class="meta">🔥 53 ポスト</div></article><article class="card"><h2>竹中直人、木村拓哉 Flow7月ゲストで爆笑トーク披露へ「楽しみ！」の声続出</h2><p>7月5日、木村拓哉がパーソナリティの『木村拓哉 Flow』で竹中直人がマンスリーゲストとして登場し、GOOD LUCK!!の思い出や今の活動を語る爆笑トークが披露されることが告知された。リスナーは11時30分からradikoでライブ配信を楽しめる。</p><div class="meta">🔥 51 ポスト</div></article><article class="card"><h2>King Gnu新曲「GO GHOST」OP採用でファン歓喜「ヤバい！」と盛り上がり</h2><p>King Gnuの新曲「GO GHOST」が『攻殻機動隊 THE GHOST IN THE SHELL』のオープニングテーマに採用され、同時に第5弾プロモーションビデオが公開されたことで、SNS上で盛り上がりを見せている。楽曲は常田大希が手掛け、エンディングはMILLENNIUM PARADEが務めることも話題に。</p><div class="meta">🔥 48 ポスト</div></article><article class="card"><h2>シカゴ・ホワイトソックス、モンゴメリー逆転ホームランで連敗ストップ</h2><p>シカゴ・ホワイトソックスがガーディアンズに3-1で勝ち、連敗が止まったよ！8回のモンゴメリー逆転ホームランがハイライトで、投手陣もバッチリ活躍したんだ。ファンも盛り上がって、次の試合も期待が高まるね。</p><div class="meta">🔥 43 ポスト</div></article><article class="card"><h2>「しんぢくんルーレット」本日放送、予想外れや解説が話題に「草」や「まわる」感が広がる</h2><p>『しんぢくんルーレット』が本日放送され、予想が外れたと嘆く声や、解説が役立つと喜ぶ声が同時に上がり、倍速や高速バージョンが話題になっている様子がSNSに広がっている。</p><div class="meta">🔥 42 ポスト</div></article><article class="card"><h2>ノクスドライバー、システムエラーで使用不可に　ファンは「急な機能不全でびっくり」</h2><p>ノクスドライバーがシステムエラーで使えなくなり、壊れたとの声がSNSに急増。エラー表示や機能不全が続出し、ファンは「急な機能不全でびっくり」リアクションしている。</p><div class="meta">🔥 41 ポスト</div></article><article class="card"><h2>「胸VS腰」変身ベルト対決がSNSで話題に 一部では「性癖の話みたい」との声もある</h2><p>SNSで『胸VS腰』が変身ベルトの対決として取り上げられ、ユーザーの中には「性癖の話みたい」声もあり、話題が広がっている。</p><div class="meta">🔥 40 ポスト</div></article><article class="card"><h2>アクロスメモリア、函館2Rで出遅れ10着　ファンからはスタート不調の声</h2><p>2026年7月5日、函館競馬場のダート1000m函館2Rに出走したアクロスメモリアは、ゲートで落ち着かず出遅れ、先行できずに後方でレースを進め、最後の直線でようやく脚を上げたものの、10着でゴールした。</p><div class="meta">🔥 40 ポスト</div></article><article class="card"><h2>初音ちゃんが次元渡りを開発、みんなが使えるようにと歓喜の声</h2><p>SNSで初音ちゃんが次元渡りを完成させ、ギャバン全員が使えるようになったとみんなが報告している。これでインフィニティやライヤも同じ技術を利用できるらしい。</p><div class="meta">🔥 37 ポスト</div></article><article class="card"><h2>くれあさんが最有力候補に浮上　「ショック死」や「期待」の声が一部で見られる</h2><p>くれあさんが新キャラ候補として最有力とみなされ、プリキュアやエクレールとのつながりが話題に。『くれあさんじゃなかったら…』と驚きや期待のツイートが見られる。</p><div class="meta">🔥 36 ポスト</div></article><article class="card"><h2>「アリギャバン」再登場にファン歓喜「久しぶり」「嬉しい」声が広がる</h2><p>本日、SNSで『アリギャバン』が再登場し、ファンが「久しぶり」「嬉しい」「キター」歓声を上げ、車掌ギャバンや立木さんとの絡みも話題になっている。</p><div class="meta">🔥 32 ポスト</div></article><article class="card"><h2>ゴールドパレードが福島2Rで初勝利、ファンは「やっと勝ち上がれた」と歓喜</h2><p>福島競馬場の2レース目で、ゴールドアクター産駒のゴールドパレードが石神深道騎手の騎乗で未勝利戦に挑み、先行して粘り強く走り抜け、快勝で初勝利を手にしたことがSNSで大きく取り上げられ、ファンからは「やっと勝ち上がれた」や「完璧的中」声が上がっている。</p><div class="meta">🔥 29 ポスト</div></article><article class="card"><h2>富士見さん、バランスボールで顔面衝突が話題に　ファンは「ウケる」や「かわいそう」感想</h2><p>富士見さんがバランスボールで顔面にぶつかるシーンがSNSで取り上げられ、ユーモラスなコメントが続く様子が投稿されている。ベッドに入る場面や上司としての言及もあり、作品内での扱いが盛り上がっている。</p><div class="meta">🔥 29 ポスト</div></article><article class="card"><h2>ライーリーアース、函館1RでJRA初勝利　ファン歓喜の声が続出</h2><p>ハイランドリール産駒のライーリーアースが函館競馬場1RでJRA初勝利を飾り、中央での初勝利ことがSNSで話題になっている。多くのユーザーが「初勝利おめでとう」や「思いの外早く勝ち馬出した」コメントを寄せ、ハイランドリール産駒への期待が高まっている様子だ。今後のレースでも注目が集まりそうだ。</p><div class="meta">🔥 28 ポスト</div></article><article class="card"><h2>かのサンド、ロッチ中岡さんがISUZU 117クーペで方南町散歩、視聴者はテンション爆上がり</h2><p>『かのサンド』でロッチ中岡さんがいすゞ117クーペに乗って方南町を散歩し、伊達さゆりさんのナレーションや大宮八幡宮での運試しが披露された。視聴者はテンションが上がったとコメントしている。</p><div class="meta">🔥 26 ポスト</div></article><article class="card"><h2>ニチアサで飲酒描写が急増、視聴者は「久々」や「面白い」と歓喜</h2><p>ニチアサで、今日は久しぶりにアニメの中で飲酒シーンが見られた。『仮面ライダーゼッツ』などでキャラが酒を飲む姿が登場し、視聴者の間で「珍しい」や「面白い」声が上がっている。</p><div class="meta">🔥 26 ポスト</div></article><article class="card"><h2>小倉1R障害未勝利、雨の中で開催　モズナイスバディーらが軸馬として注目</h2><p>7月5日、小倉1R障害未勝利が雨の中で開催され、芝は重くダートは不良に。モズナイスバディーやタガノバルコスが軸馬として話題になり、予想や馬場へのコメントが多数投稿された。</p><div class="meta">🔥 25 ポスト</div></article><article class="card"><h2>若鷹ガチャでタオル交換ラッシュ、ファン熱狂の様子がツイートに続出</h2><p>ツイッターでは、7月5日に開催された鷹祭SUMMER BOOST会場で、クラブホークスのタオルやマフラー、バッジなどを交換したい・譲りたいという投稿が相次ぎ、現地での手渡しが中心に行われている様子が見られた。</p><div class="meta">🔥 15 ポスト</div></article>
+    </main>
+
+    <!--NAV:PAGER_BOTTOM-->
+<div class="archive-pager"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/05/08-00.html">← 07/05 08:00</a><span class="disabled">次へ →</span></div>
+<!--/NAV:PAGER_BOTTOM-->
+
+    <!--NAV:ARCHIVE_NAV-->
+<nav class="archive-nav"><div class="archive-nav-label">過去7日のアーカイブ</div><div class="archive-nav-links"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/05/08-00.html" class="archive-nav-link current">07/05</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/04/20-00.html" class="archive-nav-link">07/04</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/03/20-00.html" class="archive-nav-link">07/03</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/02/20-00.html" class="archive-nav-link">07/02</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/01/20-00.html" class="archive-nav-link">07/01</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/06/30/20-00.html" class="archive-nav-link">06/30</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/06/29/20-00.html" class="archive-nav-link">06/29</a></div></nav>
+<!--/NAV:ARCHIVE_NAV-->
+
+    <div style="text-align:center;">
+      <a href="https://everflux24.github.io/Aoaeola/" class="back-link">&#8592; トップページへ戻る</a>
+    </div>
+
+    <footer>
+      <p>Generated by Aoaeola v2.5 &#183; 2026-07-05 12:00:52</p>
+    </footer>
+  </div>
+</body>
+</html>
