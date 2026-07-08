@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07月09日 00時台のトレンド｜Aoaeola</title>
+  <meta name="description" content="07月09日 00時台のトレンド｜Aoaeola — Aoaeolaが選んだ注目トレンド">
+  <link rel="canonical" href="https://everflux24.github.io/Aoaeola/archive/2026/07/09/00-00.html">
+  <style>
+    :root {
+      --bg-start: hsl(220, 70%, 45%);
+      --bg-end: hsl(260, 70%, 55%);
+      --text: #1a1a2e;
+      --card-bg: rgba(255,255,255,0.85);
+      --accent: hsl(220, 70%, 35%);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      min-height: 100vh;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    header time {
+      display: block;
+      margin-top: 0.5rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .card .meta {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255,255,255,0.9);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .back-link:hover {
+      background: #fff;
+    }
+    .hour-blocks-nav {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .hour-blocks-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .hour-blocks-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .hour-block-link {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .hour-block-link:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .hour-block-link.current {
+      background: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .hour-block-link.empty {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .archive-pager {
+      display: flex;
+      justify-content: space-between;
+      margin: 1.5rem 0;
+      padding: 0 0.5rem;
+    }
+    .archive-pager a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .archive-pager a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .archive-pager .disabled {
+      opacity: 0.3;
+      pointer-events: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+    .archive-nav {
+      margin: 2rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .archive-nav-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .archive-nav-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .archive-nav-link {
+      display: inline-block;
+      padding: 0.4rem 0.7rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      transition: background 0.2s;
+    }
+    .archive-nav-link:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .archive-nav-link.current {
+      background: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .archive-nav-link.empty {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    footer {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "07月09日 00時台のトレンド｜Aoaeola",
+    "description": "07月09日 00時台のトレンド｜Aoaeola — Aoaeolaが選んだ注目トレンド",
+    "url": "https://everflux24.github.io/Aoaeola/archive/2026/07/09/00-00.html",
+    "datePublished": "2026-07-09T00:00:00+09:00",
+    "dateModified": "2026-07-09T00:00:00+09:00"
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>07月09日 00時台のトレンド｜Aoaeola</h1>
+      <time datetime="2026-07-09T00:00:00+09:00">2026年07月09日 00:00</time>
+    </header>
+
+    <!--NAV:PAGER_TOP-->
+<div class="archive-pager"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/08/20-00.html">← 07/08 20:00</a><span class="disabled">次へ →</span></div>
+<!--/NAV:PAGER_TOP-->
+
+    <!--NAV:HOUR_BLOCKS-->
+<nav class="hour-blocks-nav"><div class="hour-blocks-label">本日のアーカイブ</div><div class="hour-blocks-links"><span class="hour-block-link empty">00:00</span><span class="hour-block-link empty">04:00</span><span class="hour-block-link empty">08:00</span><span class="hour-block-link empty">12:00</span><span class="hour-block-link empty">16:00</span><span class="hour-block-link empty">20:00</span></div></nav>
+<!--/NAV:HOUR_BLOCKS-->
+
+    <main class="content-cards">
+      <article class="card"><h2>広島東洋カープ、2夜連続押し出しサヨナラ勝ちで歓喜の渦がファンを沸かす</h2><p>広島東洋カープが2試合続けて押し出し四球でサヨナラ勝ちし、ファンが「こいほー！」と大歓声。リリーフの健矢投手が無失点で抑え、モンテロが決め球で相手を追い出すなど、連続勝利でチームの勢いが止まらない様子が伝わる。</p><div class="meta">🔥 3,162 ポスト</div></article><article class="card"><h2>「ファーストクライ 母子救命救急班」第1話放送、感動の声が続出</h2><p>日テレの新ドラマ『ファーストクライ 母子救命救急班』が第1話を公開し、TVerでリアルタイム配信が始まった。視聴者は「感動した」「永坂先生がんばれ」声を上げ、トレンド入りした様子が見られる。</p><div class="meta">🔥 1,996 ポスト</div></article><article class="card"><h2>正門良規、前髪カットと珍Tシャツでファン歓喜「かわいい」SNSで話題沸騰</h2><p>正門良規が前髪をカットして丸い新スタイルを見せ、珍しいTシャツで登場したのがSNSで話題に。屋台ポップアップの企画もファンの期待を集めている。</p><div class="meta">🔥 1,497 ポスト</div></article><article class="card"><h2>剣持刀也『人類観測』MV公開、ファンが「最高」「感動」熱狂</h2><p>にじさんじの剣持刀也が新曲『人類観測』のMVを公開し、3DCG映像や制作エピソードが話題に。ファンは「最高」「感動」と盛り上がっている。</p><div class="meta">🔥 1,269 ポスト</div></article><article class="card"><h2>2026年夏イベント開始、桐や花月の新艦娘実装にファン歓喜、メンテも予定通り完了で盛り上がり</h2><p>夏イベントが始まり、桐や花月新艦娘が実装された上に、メンテが予定通りに終わってファンが喜んでいる様子が投稿で紹介されている。</p><div class="meta">🔥 875 ポスト</div></article><article class="card"><h2>ポルノグラフィティ、感謝の水ツアー最終公演で『最高』の涙と歓声が沸き起こる</h2><p>ポルノグラフィティが東京で水ツアー最終公演を開催し、ツアー完走を祝って感謝の演奏を披露した。アゲハ蝶や愛が呼ぶほうへなど水関連曲が次々と紹介され、会場は歓声と感動でいっぱいだった。</p><div class="meta">🔥 716 ポスト</div></article><article class="card"><h2>IWSF2026、会場限定CD続々発売でファン歓喜「配信もあって最高」</h2><p>IWSF2026で会場限定CDが続々登場し、整理券なしの物販や配信が同時に告知された。3枚の新作CDがNeonSphereやデレフェスからも出て、ファンの期待が高まっている様子だ。</p><div class="meta">🔥 716 ポスト</div></article><article class="card"><h2>『幼女戦記Ⅱ』第1話放送開始、ファン歓喜の「待ちに待った」声が広がる</h2><p>『幼女戦記Ⅱ』が7月8日に第1話放送＆配信スタート！AT‑XやTOKYO MXで放送され、ABEMAやdアニメストアでも同時に視聴できるようになり、公式CMや告知がSNSで拡散され、ファンは「待ちに待った！」と歓喜の声を上げている。</p><div class="meta">🔥 624 ポスト</div></article><article class="card"><h2>『ToP!!!!!!!!!!!!!』の意味解説が熱狂、ミリオン版やカバーへの期待が高まる</h2><p>アイマスMORの投稿で『ToP!!!!!!!!!!!!!』のタイトル意味やカバー・ミリオン版への期待が語られ、楽曲解釈が盛り上がっている様子が見られる。ファンは『高木社長・音無小鳥・プロデューサー』の頭文字説や、タイトル変更の裏話にも注目し、今後の展開にワクワクしている。</p><div class="meta">🔥 569 ポスト</div></article><article class="card"><h2>ジョンウのソロ『花束のかわりにメロディーを』が感動的すぎてファンが涙</h2><p>大阪で開催された『TREASURE THE STAGE 2026』でジョンウがソロ曲『花束のかわりにメロディーを』を披露し、会場は静かに聴き入り、曲後は歓声と拍手が沸き起こり、ファンは感動で涙を流した。</p><div class="meta">🔥 542 ポスト</div></article><article class="card"><h2>「ホンマでっか!?TV」鈴木大河が内見術披露、笑顔とお風呂トークで視聴者歓喜</h2><p>フジテレビのバラエティ『ホンマでっか!?TV』が7月8日に放送され、IMP.の鈴木大河がゲストとして登場し、内見や家選びのコツを楽しく披露した。視聴者は大河の笑顔とお風呂トークに注目し、役立つ情報が満載と好評だった。</p><div class="meta">🔥 537 ポスト</div></article><article class="card"><h2>岡野昭仁、最終公演で『はみだし御免』低音披露にファン歓喜「最高」</h2><p>岡野昭仁が最終公演で『はみだし御免』を低音で披露し、会場が盛り上がった。</p><div class="meta">🔥 529 ポスト</div></article><article class="card"><h2>『ガンダム』シリーズ新作アニメ、7月24日特別番組で全世界同時配信が決定 – ファン歓喜の声が続出</h2><p>7月24日午前3時、サンディエゴ・コミコンで明かされた『ガンダム』シリーズの新作アニメ情報が、YouTubeで全世界同時配信の特別番組として公開され、今後の国内外展開や次回作の方向性も紹介される予定だと投稿で報告されている。</p><div class="meta">🔥 508 ポスト</div></article><article class="card"><h2>「ヒロシのぼっちキャンプ」Season13で韓国餃子マンドゥとモンジャが登場、視聴者は「美味しそう」や「笑える」反応</h2><p>Season13が放送され、ヒロシが川沿いのキャンプでマンドゥやもんじゃを作るシーンが登場し、視聴者から「美味しそう」や「笑える」声が上がっている。</p><div class="meta">🔥 496 ポスト</div></article><article class="card"><h2>仲田慶介、久々の打席でバント失敗　一部で「痛すぎた」の声も</h2><p>SNSで話題になっているのは、仲田慶介選手が久々に出た打席でバントを失敗したこと。代打で登場したものの、バントがうまくいかず、一部のファンからは「痛すぎた」声も上がっている。</p><div class="meta">🔥 440 ポスト</div></article><article class="card"><h2>とらほが歓喜！東北楽天イーグルス延長勝ち越しで連勝続く、ファン熱狂</h2><p>東北楽天イーグルスが延長戦で勝ち越し、連勝が続く中、ファンは『とらほ』として喜びの声を上げ、明日の勝ち越しを期待して盛り上がっている様子が投稿に散見された。才木投手の粘り投球や森下選手のホームランが特に称賛され、チームの勢いが感じられる展開だった。</p><div class="meta">🔥 405 ポスト</div></article><article class="card"><h2>「イントロクイズ」夏曲3曲が登場、リスナー「答えられず」も「名前呼びで大興奮」</h2><p>bayfm『9の音粋』で夏のイントロクイズが開催され、リスナーは『夏色のナンシー』『夏休み』『夏の扉』の3曲を聴きながら答えを投稿。名前呼びや正解報告が続き、参加者の中には答えが分からず戸惑う声や、名前が呼ばれて嬉しそうな声もあり、番組全体が和やかな雰囲気に包まれた。</p><div class="meta">🔥 405 ポスト</div></article><article class="card"><h2>「上田と女が吠える夜」ポンコツテーマで盛り上がり、出演者の笑顔にファン歓喜</h2><p>『上田と女が吠える夜』が今夜放送され、ポンコツテーマで出演者が次々に面白エピソードを披露し、丸山隆平や牧野真莉愛らゲストも登場して盛り上がった様子が紹介された。</p><div class="meta">🔥 401 ポスト</div></article><article class="card"><h2>『今夜もシリアルキラーと待ち合わせ』第2話放送、100万回再生でファン歓喜</h2><p>『今夜もシリアルキラーと待ち合わせ』の第2話が今夜配信され、30分のスリリングな展開が続き、100万回再生を記念してファンが盛り上がっている様子がSNSに広がっている。</p><div class="meta">🔥 383 ポスト</div></article><article class="card"><h2>「Aぇヤンタン」横浜Runwayで正門良規が前髪披露、ファン歓喜の様子</h2><p>Aぇ! groupが7月7日夜に横浜でRunwayイベントを開催し、正門良規と小島健がMCを務めた。メンバーのトークやパフォーマンスが盛り上がり、ファンからは「最高」「楽しい」声が上がっている様子が投稿された。</p><div class="meta">🔥 370 ポスト</div></article><article class="card"><h2>SAO Echoes of Aincrad デスゲームチャレンジ開始、視聴者が生存者数に熱狂</h2><p>SAO Echoes of Aincrad のデスゲームチャレンジが本日スタートし、配信中に多くのプレイヤーがゲーム内で倒れ、生存者数がツイッター上で次々に報告されている様子が見られた。</p><div class="meta">🔥 327 ポスト</div></article><article class="card"><h2>丈子、京セラドーム版モノマネ甲子園がついに公開　ファン歓喜の声続出</h2><p>京セラドーム版の『モノマネ甲子園』で丈子がついに動画で登場し、りゅちぇが編集した作品が公開された。ファンは「待ってた」「最高」歓喜し、ND5ツアー前のタイミングを喜んでいる。</p><div class="meta">🔥 326 ポスト</div></article><article class="card"><h2>タカシくん、ねこ自慢出演で猫と触れ合い写真集発売　可愛さにファン歓喜</h2><p>タカシくんが『ねこ自慢』に登場し、猫と仲良く遊んだり、餌を平等に分ける姿が放送された。さらに同時発売の写真集でも猫と一緒に写っていて、ファンからは「可愛い」「癒し」声が上がっている。</p><div class="meta">🔥 325 ポスト</div></article><article class="card"><h2>TM NETWORK スケルラジオ」7月8日放送、宇都宮隆が担当でリスナーが「ウツさんの声が優しい」など好評</h2><p>7月8日の『スケルラジオ』では、宇都宮隆がマイクを握り、ウツや木根の楽しいトークと音楽紹介が繰り広げられた。リスナーは「ウツさんの声が優しい」や「また来週」コメントで盛り上がった様子。</p><div class="meta">🔥 312 ポスト</div></article><article class="card"><h2>輪堂千速生誕祭2026で新曲「Flat Out」披露、ファン歓喜のライブが話題に</h2><p>輪堂千速の誕生日ライブが開催され、新曲「Flat Out」やギター・ベース・トロンボーンのパフォーマンスが披露された。ファンがロゴやMV制作、3Dライブ参加などで盛り上がっている様子が投稿からうかがえる。</p><div class="meta">🔥 295 ポスト</div></article><article class="card"><h2>甲斐野央、リリーフで三者凡退　「勇気100%」称賛の嵐が沖縄で巻き起こる</h2><p>甲斐野央がリリーフで登板、三者凡退を奪い、チームの流れを引き上げた。ファンは「ナイスピッチング！」や「勇気100%」と歓声を上げ、サヨナラ勝ちを期待している。沖縄のスタジアムでは子どもたちも盛り上がり、チームの攻撃に期待が高まっている。この投球で甲斐野はチームのリリーフの柱としての評価がさらに高まり、次回の登板が待ち遠しいと声が上がっている。</p><div class="meta">🔥 265 ポスト</div></article><article class="card"><h2>大熊和奏、仙台ライブ前にリアタイ配信でファン歓喜「楽しかった」</h2><p>大熊和奏は広島でのイベントに出演し、仙台へ向けたライブ前にリアタイ配信でファンと楽しく交流した様子が投稿から読み取れる。和奏ちゃんへの称賛や次回イベントへの期待が多く語られている。</p><div class="meta">🔥 252 ポスト</div></article><article class="card"><h2>佐倉綾音、髪を水色に染め“邪悪なキキララ”化でファン歓喜が話題に</h2><p>佐倉綾音が『佐倉論理』で髪を水色に染めて『邪悪なキキララ』になりたいと語り、リスナーから『水色！！絶対似合う』コメントが続出し、話題になっている。</p><div class="meta">🔥 252 ポスト</div></article><article class="card"><h2>「今さらシロー」放送遅延と延長で視聴者「録画できず」やや焦りが</h2><p>『今さらシロー！』が放送遅れと延長で話題になっている。放送開始が遅れた上にバレー中継が伸び、視聴者は「録画できず」や「リアルタイムで見逃した」声が多く、番組への期待感と同時にちょっとした焦りが見られる。</p><div class="meta">🔥 251 ポスト</div></article><article class="card"><h2>小野伸二、ホワイトボード解説でワールドカップハイライトを熱狂的に盛り上げる</h2><p>トラジャMCが手掛けた『けるとめる』特別編で、小野伸二さんがホワイトボードを使ってサッカーのハイライトを解説し、前園さんとカーニバルで盛り上げた様子がSNSで話題になっている。</p><div class="meta">🔥 211 ポスト</div></article><article class="card"><h2>しめちゃん、生放送で釜飯＆ヴァンクリ披露　ファンは「しめちかすぎん？」と歓喜</h2><p>しめちゃんが生放送で釜飯を頬張り、ヴァンクリのアクセサリーを見せつけた瞬間、ファンは「しめちかすぎん？」と歓声を上げ、二人のツーショットや小指ポーズが次々とシェアされて盛り上がっている。</p><div class="meta">🔥 203 ポスト</div></article><article class="card"><h2>才木浩人、巨人戦で10連勝達成！ファン歓喜の“とらほー”騒ぎ</h2><p>7月8日、阪神の才木浩人投手が巨人戦で7回無失点の好投を見せ、10連勝を飾った。試合は4-1で阪神が勝ち、チームは同率首位に浮上し、SNSでは“とらほー”の声が広がっている。</p><div class="meta">🔥 201 ポスト</div></article><article class="card"><h2>「IN THE DARK」ライブで大歓声、ファンは「膝から崩れ落ちた」ほど感動</h2><p>ポルノグラフィティの2026年水ツアーで『IN THE DARK』が序盤に登場し、会場は一瞬で大歓声と悲鳴に包まれ、ファンは感動と興奮で声を上げたと多数の投稿が報告されている。</p><div class="meta">🔥 191 ポスト</div></article><article class="card"><h2>無馬さん、メカニック体験希望で登場　「可愛い」「怖い」ファンの声が沸騰</h2><p>無馬さんがメカニック体験を希望し、ルナガレや警察、武器屋、ザウルス、不二子さんとやり取りしながら登場した。ファンは「可愛い」「怖い」「頭が良すぎ」感想を投稿し、リアルタイムで盛り上がっている。また、無馬さんの行動が他キャラの動向にも影響を与えている様子が見られ、コミュニティ全体で話題が拡散していると見られる。</p><div class="meta">🔥 188 ポスト</div></article><article class="card"><h2>薮島朱音、福岡ホークス始球式で投球　可愛さと笑顔にファン歓喜</h2><p>薮島朱音が福岡ソフトバンクホークスの始球式で投げた姿がSNSで話題に。黒トップスに赤イヤリングが映えて、笑顔や投球シーンがファンの投稿に次々と上がっている。投球後のインタビューでは「楽しかった」と語り、ファッションも好評で「可愛い」「号泣」コメントが寄せられた。会場は観客の歓声に包まれ、熱気あふれるスタートを切った。</p><div class="meta">🔥 185 ポスト</div></article><article class="card"><h2>篠原くん、地方球場で苦戦続く　ファンは「頑張れ！」とエール</h2><p>篠原くんが地方球場で投げた試合で、制球が揺らぎ連続失点。ファンからは「頑張れ」や「地方球場は合わない」声が上がり、交代を求める声もちらつく。</p><div class="meta">🔥 181 ポスト</div></article><article class="card"><h2>日本コロムビア、会場限定CDと投票券販売に不満の声が広がる　通販希望が拡散</h2><p>日本コロムビアが会場限定でのみCDを販売し、投票券付き特典も現地限定にしたことに対し、ファンから「普通に通販させてほしい」という声が上がっている。</p><div class="meta">🔥 175 ポスト</div></article><article class="card"><h2>ポルノグラフィティ水ツアー、冒頭の“冷たい水”から“綺麗な水”で感動のフィナーレ</h2><p>ポルノグラフィティの“水”ツアーが最終公演を迎え、冒頭のアゲハ蝶で“冷たい水をください”を披露し、ラストの愛が呼ぶほうへで“綺麗な水をあげよう”で締めた。水テーマの楽曲が続き、演出も好評で、ツアー完走がファンの間で祝福された。</p><div class="meta">🔥 169 ポスト</div></article><article class="card"><h2>伊達さゆりが語る「湿気に負けない」パニエが話題に　伊達ラジ第224回が盛り上がり</h2><p>7月8日に『伊達ラジ』第224回が配信され、伊達さゆりが「パニエのボリューム感はね、湿気に負けないのよ」と語ったのが話題になっている。視聴者は本編や会員限定おまけを楽しみつつ、湿気で紙がふにゃになる悩みやドライヤーへの不満も投稿し、季節感と番組への関心が高まっている。</p><div class="meta">🔥 166 ポスト</div></article><article class="card"><h2>「ねこぢる草」期間限定無料公開、視聴者は「めっちゃ好き」や「怖い系は注意」などの声</h2><p>アニメ『ねこぢる草』がYouTubeで7月14日までの期間限定無料配信になり、ファンが次々に視聴して感想をシェアしている。「めっちゃ好き」や「怖い系は注意」コメントが目立ち、再視聴や友達への共有が広がっています。</p><div class="meta">🔥 161 ポスト</div></article><article class="card"><h2>ブリッツクリーク新規カード登場、破壊効果にターン1制限なしが話題に</h2><p>ブリッツクリークの新カードが登場し、破壊効果にターン1が付いていないシンプルな通常魔法として注目を集めている。相手ターンでも使える点やサルベージとの相性が話題になり、デッキへの採用可否や汎用性についてユーザー間で盛り上がっている様子だ。</p><div class="meta">🔥 160 ポスト</div></article><article class="card"><h2>MEGAFON、メンバー脱退とヘッダー変更で一部ファンから「悲しくて叫んだ」などの声が上がる</h2><p>MEGAFONの公式からメンバー脱退やヘッダー変更の情報が流れ、7人体制が崩れるという噂が広がり、ファンは「悲しくて叫んだ」や「ずっと7人だと思ってた」ショックをツイートしている。</p><div class="meta">🔥 147 ポスト</div></article><article class="card"><h2>橋本将生、ブログ更新でパーマ風ヘア自撮り公開　「肩の力抜く」メッセージにファン歓喜</h2><p>橋本将生がブログを更新し、パーマ風ヘアの自撮りを多数公開した。『肩の力を抜く』という言葉とともに、自然体の姿がファンに届けられた。</p><div class="meta">🔥 143 ポスト</div></article><article class="card"><h2>ハイジョ最新ダンプラ公開、個性あふれる振付にファン歓喜の声</h2><p>ハイジョの最新ダンプラが公開され、春名や四季の個性的なダンスが話題に。『SEASON IN THE FIVE』や『SITF』の振付が称賛され、ファンは動画を何度も見て「最高」や「また見たい」と盛り上がっている。</p><div class="meta">🔥 132 ポスト</div></article><article class="card"><h2>モリミュ千秋楽、ただすけさんの生演奏に感動「最高だった」ファン熱狂</h2><p>7月8日のモリミュ公演で、ただすけさんの千秋楽が行われ、生演奏やアドリブが好評だった。観客は「最高だった」感想を投稿し、翌日のソワレやチケット譲渡情報もシェアされた。</p><div class="meta">🔥 125 ポスト</div></article><article class="card"><h2>阪神タイガース、代打に新人岡城起用も凡退で賛否の声が渦巻く試合</h2><p>阪神タイガースの2026年7月8日試合で、8回表ツーアウト満塁の場面に新人の岡城選手が代打として登場。セカンドゴロでアウトになり、得点は伸びなかった。SNSでは「代打に不適切」や「若手にチャンス」声が交錯した。</p><div class="meta">🔥 122 ポスト</div></article><article class="card"><h2>鎌田大地、クリスタル・パレスと1年契約延長　ファン歓喜の声が広がる</h2><p>日本代表MFの鎌田大地が、クリスタル・パレスと1年間の契約延長に合意した。期間は2027年夏までで、来シーズンもプレミアでプレーできるらしい。クラブ側も公式に発表しており、ファンの期待が高まっている。</p><div class="meta">🔥 117 ポスト</div></article><article class="card"><h2>櫻坂チャンネルで『ゆったりパズル生配信(仮)』が決定、ファンは「最高」や「楽しみ」盛り上がり</h2><p>7月15日21時30分から、櫻坂チャンネルで『ゆったりパズル生配信(仮)』が開催されると発表され、出演は大園玲・藤吉夏鈴・向井純葉・村井優・浅井恋乃未・松本和子の計6名が決定した。</p><div class="meta">🔥 107 ポスト</div></article><article class="card"><h2>あげ太ナイターで広島東洋カープが2連続サヨナラ勝ち、ファンが熱狂「やったあああああ！！！」</h2><p>あげ太ナイターで広島東洋カープが2連続サヨナラ勝ち、モンテロの押し出しやファビアンのツーランホームランが光り、試合後のヒーローインタビューも話題に。ファンは「あげ太くん」初勝利に大歓喜し、盛り上がりは最高潮に達した。</p><div class="meta">🔥 106 ポスト</div></article><article class="card"><h2>Neon Sphere、IWSF限定CD発売でファン歓喜「やった！」と熱狂</h2><p>Neon Sphereの新作CDがIWSFの会場限定で販売されると発表され、ファンの間で「やった！」「買うわ」歓声が上がっている。会場で手に入れようと足を運ぶ人も増えている様子がうかがえます。</p><div class="meta">🔥 105 ポスト</div></article><article class="card"><h2>「ヨルナイト」本日放送で菅原ももがアクセル全開、ファンが「萌え」や「可愛い」声で沸騰</h2><p>『ヨルナイト』が今夜放送され、菅原ももが元気に進行。リスナーは「アクセル全開」や「萌え」ってコメントで盛り上がり、次回のゲストやライブ情報もシェアされた。番組ではDIALOGUE+の稗田寧々さんと守屋亨香さんがゲストとして登場し、みんなで楽しい時間を過ごした様子が投稿に映っている。</p><div class="meta">🔥 101 ポスト</div></article><article class="card"><h2>磯貝さん、赤い指輪で登場！“かっこよすぎ”とファンが歓喜、30分があっという間に</h2><p>磯貝さんが赤い指輪を装着して登場し、かわいさと格好良さが話題に。視聴者は30分の放送があっという間と感じ、次回への期待を寄せている。</p><div class="meta">🔥 98 ポスト</div></article><article class="card"><h2>巨人捕手小林誠司起用が議論に、代打不在でファンの声が分かれる</h2><p>巨人の捕手・小林誠司が7回裏に起用されたものの、代打のチャンスが与えられず、ファンからは『代打出さないのは残念』と声が上がり、捕手交代や起用策が話題になっている。「小林が出たら逆転は難しい」や「大城を代打にすべき」など、さまざまな意見が飛び交い、次の試合での起用が注目されている。</p><div class="meta">🔥 95 ポスト</div></article><article class="card"><h2>「ドミニカンコンビ」ファビアン＆モンテロが連続サヨナラ勝ちで大活躍、カープファン歓喜</h2><p>広島カープが2日続けてサヨナラ勝ちし、ドミニカ出身のファビアンがホームラン、モンテロが四球で押し出しサヨナラを決めたんだって。ヒーローインタビューでも二人が大活躍した。</p><div class="meta">🔥 92 ポスト</div></article><article class="card"><h2>筒香嘉智の逆転ツーランホームランでベイスターズ5連勝、ファン歓喜の声続出</h2><p>7月8日の横浜DeNAベイスターズ戦で、筒香嘉智が5回裏に逆転ツーランホームランを放ち、3打点を稼いだんだ。東投手の7勝目と相まって、チームは4-3で勝ち、5連勝をキープした。</p><div class="meta">🔥 91 ポスト</div></article><article class="card"><h2>ブレイブストーリー20周年、ファンが「めちゃ好き」や「死ぬほど泣いた」感情を熱く語る</h2><p>映画『ブレイブストーリー』が公開20周年を迎え、ファンが思い出を語り合い、原作小説や主題歌への愛着を再確認する投稿が相次いでいる。再視聴や再読、グッズコレクションの話題も広がり、懐かしさと感動がSNS上で共有されている。</p><div class="meta">🔥 88 ポスト</div></article><article class="card"><h2>「世界の七五三掛」生放送で締め担当、しめちゃんの可愛さと標高質問が話題に</h2><p>ライブ配信で『世界の七五三掛』が締め役として登場し、しめちゃんの可愛いコメントや標高に関する突飛な質問が次々と披露された。視聴者は「最高」「かわいい」歓声を上げ、次回の放送への期待も高まっている。番組のテンポや演出も好評で、ファン同士の盛り上がりが画面越しに伝わってくる。</p><div class="meta">🔥 85 ポスト</div></article><article class="card"><h2>DOLLCHESTRA『アイシイ（B.G.P. Ver.）』リリックビデオ公開、ファン歓喜の声続出</h2><p>7月8日にDOLLCHESTRAが歌う『アイシイ（B.G.P. Ver.）』のリリックビデオがYouTubeに上がり、ファンが次々にリンクをシェアして「本当に神でした」や「マジで良い」声を上げている様子が見られた。</p><div class="meta">🔥 82 ポスト</div></article><article class="card"><h2>フェン様、熱戦続くEWC餓狼部門での対戦にファン歓喜「すごい」「応援したい」</h2><p>EWC餓狼部門でフェン様とGO1さんが熱い当身バトルを繰り広げ、勝敗が接戦になるシーンが続々と投稿され、次のカードや選手の体調が気になる様子が見られた。</p><div class="meta">🔥 79 ポスト</div></article><article class="card"><h2>日本女子バレーボール代表、ブラジルに1‑3で敗北…「悔しい」声が続く</h2><p>日本女子バレーボール代表がブラジルに挑み、セット1‑3で惜しくも敗れた。試合後は「悔しい」「次はタイ戦が楽しみ」声が上がり、観客も熱狂した様子がSNSに広がっている。</p><div class="meta">🔥 76 ポスト</div></article><article class="card"><h2>佐野勇斗、サンド屋台放送開始遅延にファン歓喜「始まったー！」と盛り上がり</h2><p>『サンド屋台』の放送が23時に変更されたことが告知され、佐野勇斗が出演するシーンが配信開始と同時にファンの間で盛り上がり、リアタイやコメントが続出した。放送開始が遅れたことで、23時からの視聴を待つ声や「始まったー！」リアルタイムのツイートが多数上がり、番組への期待感が高まった。</p><div class="meta">🔥 72 ポスト</div></article><article class="card"><h2>「Ray」オートチューンなし生歌が話題に　「新鮮」「最高」感が広がる</h2><p>THE FIRST TAKEで披露された『Ray』が、オートチューンを外したままの生歌バージョンで登場し、映像がSNSにシェアされた。ファンは「新鮮」「最高」歓喜している。この生音の迫力が話題を呼び、次回のライブでも期待の声が上がっている。</p><div class="meta">🔥 68 ポスト</div></article><article class="card"><h2>ファビモン、連続勝利で大活躍　残留・来季契約を求める声が高まる　ファン熱狂</h2><p>ファビモンが最近の試合で連続勝利に貢献し、長打やヒロインとしてのプレーが光ったことがSNSで話題になり、残留や来季契約を求める声が多数上がっている。</p><div class="meta">🔥 66 ポスト</div></article><article class="card"><h2>「漢字でGOGO！」配信続々、みんな「余裕っしょ」や「書き取り問題がでるんだって」など興奮の声</h2><p>今日はVTuberたちがYouTubeで『漢字でGOGO!』配信を次々に始め、書き取りゲームに挑む様子が見られた。配信は21時頃から始まり、難易度が低くて「余裕」だというコメントが多く、視聴者もリアルタイムで盛り上がっている。</p><div class="meta">🔥 65 ポスト</div></article><article class="card"><h2>「うらみちお兄さん」初日公演が満席で大盛況、観客は「めっちゃ笑いっぱなし」や「感謝の気持ちでいっぱい」と歓喜</h2><p>舞台『うらみちお兄さん』の初日がシアターサンモールで開催され、満席の中で体感型のABC体操が披露され、観客は撮影も楽しめたと報告されています。</p><div class="meta">🔥 64 ポスト</div></article><article class="card"><h2>『きまテン3』制作決定でファン熱狂　「マジか」「めっちゃうれし」歓喜の声が続々</h2><p>公式が『きまテン3』の制作決定を発表し、SNSでは「きまテン3制作決定です！がんばります！」「マジかマジかマジか」「めっちゃうれし」など、続編への期待と喜びの声が多数投稿されている。</p><div class="meta">🔥 64 ポスト</div></article><article class="card"><h2>第三十一戦隊が登場、2026夏イベ前段作戦「反撃！」が本日スタートで期待高まる</h2><p>2026年夏のイベントで、前段作戦『反撃！第三十一戦隊の戦い』が始まり、第三十一戦隊が海域に登場。桐や花月新艦娘や駆逐艦ドロップが話題になっている。</p><div class="meta">🔥 61 ポスト</div></article><article class="card"><h2>平野紫耀、Harper&#x27;s Bazaarインタビューでクロワッサン選択＆ルイ・ヴィトン2027メンズショー来場が話題に</h2><p>平野紫耀がHarper&#x27;s Bazaarのインタビューで『クロワッサンorマカロン』の4つの質問に答え、ルイ・ヴィトン2027春夏メンズコレクションショーに来場した様子がSNSでシェアされている。</p><div class="meta">🔥 60 ポスト</div></article><article class="card"><h2>「スペースヴァンガード」ライブ披露に熱狂、ファン「早くまた聴きたい」声続出</h2><p>2026年7月のツアーで新曲「スペースヴァンガード」がライブで披露され、ファンはそのSF的サウンドに感動し「また聴きたい」声が多数上がった。一部は聴けず残念がっている様子。</p><div class="meta">🔥 58 ポスト</div></article><article class="card"><h2>「夏の宿題チェキ2026」販売開始、浴衣や水着で個性表現、ファン歓喜の声</h2><p>2026年夏の宿題チェキが7月9日から販売開始し、浴衣や水着など5つの夏衣装で全5枚コンプリートできると話題に。直筆サインや特典も魅力で、ファンの期待が高まっている。</p><div class="meta">🔥 57 ポスト</div></article><article class="card"><h2>YouTubeライブ配信開始！「おまたせしました」や「このあとすぐ」など盛り上がりの声続出</h2><p>YouTubeでのライブ配信が続々と告知され、投稿者は「おまたせしました」や「このあとすぐ」フレーズで開始直前の盛り上がりを演出し、開始時間や遅延のお詫びも添えている。</p><div class="meta">🔥 54 ポスト</div></article><article class="card"><h2>すちくん、シクフォニメンバーと初コラボ＆カバーが続くファン歓喜</h2><p>すちくんがシクフォニの仲間と初コラボし、HOWLやみかんハートのカバーを披露した。MIX担当や歌唱も見せ、ファンの間で盛り上がりが広がっている。</p><div class="meta">🔥 53 ポスト</div></article><article class="card"><h2>烏屋茶房、ソロ曲『Flat out』リリースで神曲称賛　輪堂千速生誕祭でも熱狂的リアクション</h2><p>烏屋茶房が新作ソロ曲『Flat out』を発表し、同時に『不埒なCANVAS』や『銀河図書館』楽曲提供も続け、2026年の輪堂千速生誕祭で披露されたことが多数の投稿で称賛されている。ファンは「神曲」「最高」コメントで熱狂し、SNS上で話題になっている。さらに『Flat out』はライブ映像でも好評で、視聴者からは「やばい」「ドーパミンが出る」等の声が上がっている。</p><div class="meta">🔥 47 ポスト</div></article><article class="card"><h2>才木先発で巨人が10連敗、ファンは「残念だけどまだ首位だ」と嘆く</h2><p>巨人は阪神の先発投手才木に対し、投球が冴え渡り1点だけの得点にとどまって1-4で敗れ、10連敗が続いた。ファンは悔しさと焦りをツイートしている。試合後、橋上監督代行は「うまくかわされた」と語り、次戦への期待が語られた。</p><div class="meta">🔥 46 ポスト</div></article><article class="card"><h2>「デレパ」CINDERELLA PARTY!で新田ひよりゲスト登場、ファンは「ひよりんの鳴き声好き」と歓喜</h2><p>ラジオ『デレパ』が22時に放送され、ゲストに新田ひよりさんが登場した。番組は『CINDERELLA PARTY!』というタイトルで、原紗友里と青木瑠璃子がパーソナリティを務め、リスナーは「ひよりんの鳴き声好き」や「ゲスト回にハズレなし」と盛り上がっている様子だ。</p><div class="meta">🔥 44 ポスト</div></article><article class="card"><h2>ホクレン・ディスタンスチャレンジ2026網走大会、男子10000mで野中が日本人トップに輝き記録更新が続く</h2><p>7月8日のホクレン・ディスタンスチャレンジ2026網走大会で、男子10000m A組が熱戦を繰り広げ、野中恒亨が日本人トップに輝き、イマニエルが優勝。三宅悠斗や高石樹らが自己ベストを更新したんだ。</p><div class="meta">🔥 43 ポスト</div></article><article class="card"><h2>やまもも「好きでしょ〜」が話題に、ファンは「やばすぎ」や「ガチはい」で熱狂</h2><p>やまももが新曲で「好きでしょ〜」を叫び、ファンの間で「やばすぎ」「ガチはい」声が上がり、楽曲がさらに盛り上がっている様子が見られる。</p><div class="meta">🔥 42 ポスト</div></article><article class="card"><h2>「ふぐ太郎」登場で盛り上がる輪堂千速生誕祭、ティッシュカバーが話題に</h2><p>ライブのオープニングで『ふぐ太郎』が登場し、会場を盛り上げた。さらに、ふぐ太郎デザインのティッシュカバーなど新グッズが続々と披露された。</p><div class="meta">🔥 40 ポスト</div></article><article class="card"><h2>「マール王国の人形姫」7月9日配信開始、Switch2・PS5で再び楽しめるとファン歓喜</h2><p>1998年の名作ミュージカルRPG『マール王国の人形姫』が、コンソールアーカイブスで7月9日から配信開始し、Switch 2とPS5で楽しめるようになったと、SNS上でファンが「やったー」「マジか！」と喜びの声を上げている。</p><div class="meta">🔥 38 ポスト</div></article><article class="card"><h2>『そこに未来はある』公演、夏の熱狂とファン感謝の声が続々「最高に楽しかった」</h2><p>7月8日に行われた『そこに未来はある』公演は、ファンへの感謝やコール・ペンライトへのありがとうが飛び交い、メンバーの新ポジやヘアチェンジが話題になり、夏の熱い空気の中で盛り上がった様子が多くの投稿でシェアされた。</p><div class="meta">🔥 36 ポスト</div></article><article class="card"><h2>甲斐田さん配信でエルニーニョ現象を図解、視聴者が感謝と驚きの声</h2><p>甲斐田さんがライブ配信でエルニーニョ現象を図解しながら解説し、視聴者は「面白かった」「勉強になった」など感謝のコメントを連投。配信感謝の声や日本の気温への影響議論も混ざり、次回配信への期待が高まっている。</p><div class="meta">🔥 33 ポスト</div></article><article class="card"><h2>「内緒のしょ」未発表の曲が話題に　「かわいすぎ」ファンの期待が高まる</h2><p>SNS上で『内緒のしょ』という未発表楽曲が話題に。可愛いタイトルや未披露である点が注目され、ファンは「早く聞きたい」「かわいすぎ」と期待を表している。</p><div class="meta">🔥 33 ポスト</div></article><article class="card"><h2>「インディアナ」実装で盛り上がり「インディアナ来た！」と歓喜の声</h2><p>戦艦インディアナがゲームに登場し、E2でのドロップやアラバマとの姉妹関係が話題になっている。ユーザーは「インディアナ来た！」と歓声を上げ、ZECO艦としての新要素にも期待が高まっている。</p><div class="meta">🔥 32 ポスト</div></article><article class="card"><h2>『乳酸菌たち』ダンスプラクティス公開、相川奈央＆月城咲舞の振り付けにファン歓喜</h2><p>22/7の楽曲『乳酸菌たち』のダンスプラクティスがYouTubeやSHOWROOM、Instagramで同時に公開された。振り付けは相川奈央と月城咲舞が担当し、ファンからは「マジ最高」や「たくさん見てね」の声が上がっている。</p><div class="meta">🔥 31 ポスト</div></article><article class="card"><h2>侑輝大弥、プラスアクト8月号掲載とFNS歌謡祭出演でファン歓喜「イケメンすぎません？」</h2><p>侑輝大弥がプラスアクト8月号に掲載され、FNS歌謡祭でも姿を見せたことで、SNS上で「イケメンすぎません？」や「素顔の侑輝大弥くんです」声が上がり、ファンのテンションが上がっている様子が見られる。</p><div class="meta">🔥 31 ポスト</div></article><article class="card"><h2>『ロケット団の栄光』カード取得願望がSNSで急増、ファンの期待が高まる</h2><p>7月8日、Twitterで『ロケット団の栄光』カードが話題に。未所持のユーザーが「欲しい」「開けてみたい」「ミュウツーがかっこいい」期待を語り、入手の難しさや交換希望もちらりと見える様子だった。</p><div class="meta">🔥 30 ポスト</div></article><article class="card"><h2>「くるま2」続編が登場、ファンは「最高」や「ありがとう」と歓喜</h2><p>『くるま2』が劇場版じゅうたろうの続編として登場し、ファンの間で「最高」や「ありがとう」歓声が上がっている。サムネイルの美しさや内容の面白さが話題になり、次回作への期待が高まっている。</p><div class="meta">🔥 30 ポスト</div></article><article class="card"><h2>棋桜配信ブーム、段位挑戦と師弟契約が続々登場でユーザー熱狂</h2><p>同日、棋桜の配信や段位挑戦、師弟契約の開始がツイートで続々と報告され、配信開始時間や目標段位、対局の感想がシェアされたことで、コミュニティ内で盛り上がりが見られた。</p><div class="meta">🔥 30 ポスト</div></article><article class="card"><h2>「Howzit」検索1位に！黒田光輝のTikTokやサイネージがファンの歓声を呼ぶ</h2><p>「Howzit」タグがSNSで急上昇し、検索1位に輝いたことや、黒田光輝のTikTok動画、サイネージが続々シェアされ、ファンが「1位だー」や「かわいい」コメントで盛り上がっている様子が見られる。</p><div class="meta">🔥 29 ポスト</div></article><article class="card"><h2>ポルノグラフィティライブで『ライラ』のロシア語掛け声に挑戦、ファンは「スパシーバ」だけでも大歓声</h2><p>ポルノグラフィティのライブで『ライラ』が披露され、最後にロシア語の掛け声（カークジラー、プリヴェート、スパシーバ）が入った。観客は真似しようとしたが、正しく言える人は少なく、みんな「スパシーバ」だけでも大声で叫んだり、言えずに照れくささを感じていた。</p><div class="meta">🔥 28 ポスト</div></article><article class="card"><h2>「クビアカツヤカミリ」出前講座や見張り隊募集が話題に、みんな「駆除」や「報告」で盛り上がり</h2><p>兵庫県がクビアカツヤカミリ対策として、出前講座や見張り隊の募集、トラップでの駆除作業を行い、市民に情報提供や協力を呼びかけている様子がSNSでシェアされた。</p><div class="meta">🔥 18 ポスト</div></article>
+    </main>
+
+    <!--NAV:PAGER_BOTTOM-->
+<div class="archive-pager"><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/08/20-00.html">← 07/08 20:00</a><span class="disabled">次へ →</span></div>
+<!--/NAV:PAGER_BOTTOM-->
+
+    <!--NAV:ARCHIVE_NAV-->
+<nav class="archive-nav"><div class="archive-nav-label">過去7日のアーカイブ</div><div class="archive-nav-links"><span class="archive-nav-link empty">07/09</span><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/08/20-00.html" class="archive-nav-link">07/08</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/07/20-00.html" class="archive-nav-link">07/07</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/06/20-00.html" class="archive-nav-link">07/06</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/05/20-00.html" class="archive-nav-link">07/05</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/04/20-00.html" class="archive-nav-link">07/04</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/03/20-00.html" class="archive-nav-link">07/03</a></div></nav>
+<!--/NAV:ARCHIVE_NAV-->
+
+    <div style="text-align:center;">
+      <a href="https://everflux24.github.io/Aoaeola/" class="back-link">&#8592; トップページへ戻る</a>
+    </div>
+
+    <footer>
+      <p>Generated by Aoaeola v2.5 &#183; 2026-07-09 00:01:06</p>
+    </footer>
+  </div>
+</body>
+</html>
