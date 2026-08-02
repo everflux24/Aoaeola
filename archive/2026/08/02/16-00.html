@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08月02日 16時台のトレンド｜Aoaeola</title>
+  <meta name="description" content="08月02日 16時台のトレンド｜Aoaeola — Aoaeolaが選んだ注目トレンド">
+  <link rel="canonical" href="https://everflux24.github.io/Aoaeola/archive/2026/08/02/16-00.html">
+  <style>
+    :root {
+      --bg-start: hsl(36, 70%, 45%);
+      --bg-end: hsl(76, 70%, 55%);
+      --text: #1a1a2e;
+      --card-bg: rgba(255,255,255,0.85);
+      --accent: hsl(36, 70%, 35%);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      min-height: 100vh;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    header time {
+      display: block;
+      margin-top: 0.5rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .card .meta {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255,255,255,0.9);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .back-link:hover {
+      background: #fff;
+    }
+    .hour-blocks-nav {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .hour-blocks-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .hour-blocks-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .hour-block-link {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .hour-block-link:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .hour-block-link.current {
+      background: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .hour-block-link.empty {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .archive-pager {
+      display: flex;
+      justify-content: space-between;
+      margin: 1.5rem 0;
+      padding: 0 0.5rem;
+    }
+    .archive-pager a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .archive-pager a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .archive-pager .disabled {
+      opacity: 0.3;
+      pointer-events: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+    .archive-nav {
+      margin: 2rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .archive-nav-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .archive-nav-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .archive-nav-link {
+      display: inline-block;
+      padding: 0.4rem 0.7rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      transition: background 0.2s;
+    }
+    .archive-nav-link:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .archive-nav-link.current {
+      background: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .archive-nav-link.empty {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    footer {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "08月02日 16時台のトレンド｜Aoaeola",
+    "description": "08月02日 16時台のトレンド｜Aoaeola — Aoaeolaが選んだ注目トレンド",
+    "url": "https://everflux24.github.io/Aoaeola/archive/2026/08/02/16-00.html",
+    "datePublished": "2026-08-02T16:00:00+09:00",
+    "dateModified": "2026-08-02T16:00:00+09:00"
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>08月02日 16時台のトレンド｜Aoaeola</h1>
+      <time datetime="2026-08-02T16:00:00+09:00">2026年08月02日 16:00</time>
+    </header>
+
+    <!--NAV:PAGER_TOP-->
+<div class="archive-pager"><a href="https://everflux24.github.io/Aoaeola/archive/2026/08/02/12-00.html">← 08/02 12:00</a><span class="disabled">次へ →</span></div>
+<!--/NAV:PAGER_TOP-->
+
+    <!--NAV:HOUR_BLOCKS-->
+<nav class="hour-blocks-nav"><div class="hour-blocks-label">本日のアーカイブ</div><div class="hour-blocks-links"><a href="https://everflux24.github.io/Aoaeola/archive/2026/08/02/00-00.html" class="hour-block-link">00:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/08/02/04-00.html" class="hour-block-link">04:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/08/02/08-00.html" class="hour-block-link">08:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/08/02/12-00.html" class="hour-block-link">12:00</a><span class="hour-block-link empty">16:00</span><span class="hour-block-link empty">20:00</span></div></nav>
+<!--/NAV:HOUR_BLOCKS-->
+
+    <main class="content-cards">
+      <article class="card"><h2>クイーンステークス開催、ココナッツブラウンが注目の的に</h2><p>札幌で行われたクイーンステークスに向け、馬体重の変動やパドックの様子がSNSで次々と報告され、ココナッツブラウンやエリカエクスプレスが注目の的となり、予想や買い目が多数シェアされた。</p><div class="meta">🔥 4,234 ポスト</div></article><article class="card"><h2>「アイビスサマーダッシュ」新記録樹立、ピューロマジックが53.5秒でカルストンライトオ破る</h2><p>8月2日の新潟競馬場でのアイビスサマーダッシュ、ピューロマジックが53.5秒で新記録を出し、昔のカルストンライトオの記録を抜いたんだって！レコード更新と連覇が同時に起きて、みんなざわざわしてる。</p><div class="meta">🔥 3,497 ポスト</div></article><article class="card"><h2>有原航平、5回無失点の快投でファイターズを牽引「テンポ最高」歓声沸く</h2><p>有原航平が5回無失点で速球復活の快投を見せ、ファイターズを牽引した。47球で2安打、6奪三振、無四球という数字がファンの間で話題になっている。</p><div class="meta">🔥 1,252 ポスト</div></article><article class="card"><h2>小笠原慎之介のスリーベースヒット、ノーアウト三塁で無得点に　ファンの声が上がる</h2><p>小笠原慎之介がノーアウトで三塁に駆け上がるスリーベースヒットを披露したものの、続く打者が凡退や犠牲フライで点に結びつけられず、結局得点が入らなかったという試合展開がSNSで話題になっている。</p><div class="meta">🔥 1,135 ポスト</div></article><article class="card"><h2>クイーンSが無料予想で話題沸騰、ファンは「がんばれココナッツブラウン！」と熱狂</h2><p>8月2日に札幌11Rで行われるクイーンSが、無料予想やNote有料予想の告知、的中報告など多数のツイートで話題になっている。フォロー＆リツイートで予想が見られ、馬券購入や結果報告が盛んにシェアされている様子が見られる。</p><div class="meta">🔥 1,125 ポスト</div></article><article class="card"><h2>「特攻服」新衣装公開にファン歓喜、CG総選挙決戦前日に話題沸騰</h2><p>公式が発表した190人分の新衣装が、特攻服スタイルで登場したことがSNSで大きく取り上げられ、ファンからは「アツすぎる」「笑える」声が上がっている。特攻服の斬新さに驚きつつ、投票前のワクワク感が高まっている様子が投稿に表れている。</p><div class="meta">🔥 847 ポスト</div></article><article class="card"><h2>タリク・スクーバル獲得でドジャースが三連覇狙い　ファンの声が上がる</h2><p>ドジャースがタイガースからサイ・ヤング賞受賞左腕タリク・スクーバルを1対3のトレードで手に入れ、3選手を放出した。これで3連覇への本格的な補強が進んだとファンの期待が高まっている。</p><div class="meta">🔥 798 ポスト</div></article><article class="card"><h2>富士スピードウェイで雨が降り出す！スーパーGT第4戦の天候変化にファン歓喜</h2><p>スーパーGT第4戦が富士で開催され、スタート直前に雨が降ってきたんだって。チームはレインタイヤにチェンジして、雨が止むとまたスリックに戻すという、天候のアップダウンがレースを盛り上げてる。</p><div class="meta">🔥 688 ポスト</div></article><article class="card"><h2>みこめろ、グレイスで4吊り奇襲プレイに歓声沸騰「最高すぎる」</h2><p>みこめろがグレイスで4吊りの奇襲プレイを見せ、観戦者から「最高すぎる」熱い声がSNSで広がっている。</p><div class="meta">🔥 651 ポスト</div></article><article class="card"><h2>「金沢さん」新作イラスト公開にファン歓喜「制服が可愛い」熱狂的な反応続出</h2><p>FGOの新作イラストが公開され、槌田先生が描く金沢さんが制服姿で登場したことに、ファンは「新作の金沢さん」「制服が可愛い」歓声を上げ、有識者会合やフェスでも話題となり、グッズやステッカーへの期待が寄せられた。</p><div class="meta">🔥 531 ポスト</div></article><article class="card"><h2>第31回オーシャンカップ最終日、びわこで過去最多来場者と高配当が話題に</h2><p>びわこで開催された第31回オーシャンカップ最終日が、来場者数の過去最多や高配当が続出したことで盛り上がっている様子がSNSに広がっている。熱気あふれるレースや展示気配が話題になっている。</p><div class="meta">🔥 525 ポスト</div></article><article class="card"><h2>クールミラボー、名鉄杯で圧勝　ファンが「強すぎ」歓喜の声</h2><p>中京競馬場で行われた名鉄杯で、クールミラボーが本命として期待され、結果は単勝4.5倍で1位に輝いた。スタミナが光る走りが評価され、ファンからは「強すぎ」や「完走」声が上がっている。</p><div class="meta">🔥 519 ポスト</div></article><article class="card"><h2>長岡まつり大花火大会開催、夜空を彩る「白菊」や生中継に歓声「すっごく綺麗！」</h2><p>長岡まつり大花火大会が開催され、夜空に「白菊」やフェニックスが登場し、生中継や音楽スターマインが話題になっている。来場者は混雑や交通規制に気をつけつつ、花火を楽しんでいる様子だ。</p><div class="meta">🔥 486 ポスト</div></article><article class="card"><h2>乃木坂46ANN、井上和×佐久間宣行トークがTIF2026で大盛り上がり「楽しかった」声続出</h2><p>乃木坂46ANNのトークステージがTIF2026で配信され、井上和と佐久間宣行の掛け合いがファンの間で大盛り上がり。入場規制で待ち時間ができたものの、ライブやSHOWROOM配信で楽しむ声が多数上がっている。</p><div class="meta">🔥 460 ポスト</div></article><article class="card"><h2>ホウオウプレマ、札幌5R新馬戦で差し切り勝利！ファン歓喜の声続出</h2><p>ホウオウプレマが札幌5R新馬戦で見事に差し切り勝ち、ファンからは「最高！」や「また来年も期待」歓声が上がっている。その走りはスピードと粘りが光り、次のレースでも注目が集まりそうだ。</p><div class="meta">🔥 459 ポスト</div></article><article class="card"><h2>トミーバローズ、驚異の末脚で中京スポニチ賞制覇　“エグい脚”が話題に</h2><p>トミーバローズが中京スポニチ賞で驚くほどの末脚を披露し、タイレコードを更新したことがSNSで話題に。壁や接触を乗り越えての差し切りが“エグい脚”と称賛されている。</p><div class="meta">🔥 444 ポスト</div></article><article class="card"><h2>風火輪α大量出現、ユーザー歓喜の声「10連でGET」や「めっちゃ強い」</h2><p>ユーザーたちはαガチャで風火輪αを手に入れたと報告し、10連での「GET」や星玉使用での取得、連続での出現に歓喜の声が上がっている様子が投稿から読み取れる。</p><div class="meta">🔥 412 ポスト</div></article><article class="card"><h2>謎丸アニメ第4シーズン決定、ファン歓喜の「やったー」声が続出、祝福のコメントが溢れる</h2><p>謎丸のアニメ第4シーズンが公式に決定し、SNSで発表されたことで、ファンは「嬉しすぎる」「やったー」「ありがとう」歓喜コメントを次々に投稿し、祝福の声が広がっている様子が見られる。</p><div class="meta">🔥 390 ポスト</div></article><article class="card"><h2>「サンデー・ソングブック」リクエスト特集が本日14時開始、山下達郎の名曲でリスナーが感動</h2><p>サンデー・ソングブックで本日14時から山下達郎のリクエスト特集が始まり、最高音質でオールディーズが流れ、リスナーがリアルタイムで楽しめる様子が投稿に映し出されている。「希望という名の光」も流れ、みんなが心温まる時間を過ごしている。</p><div class="meta">🔥 343 ポスト</div></article><article class="card"><h2>ロードトレイル、2着で登場も外したファンは嘆き「買えてない」</h2><p>アイビスサマーダッシュでロードトレイルが2着に入ったものの、予想外れや馬券未購入のツイートが一部見られる。『買えてない』『外した』と嘆く声があり、期待していたファンは残念がり、次回への期待と反省が交錯している。</p><div class="meta">🔥 318 ポスト</div></article><article class="card"><h2>ツルマルツヨシ、31歳で急逝　ファンは「悲しい」や「ご冥福を」涙の声</h2><p>ツルマルツヨシが31歳で老衰のために急逝したと報じられ、ファンは「悲しい」「ご冥福を」コメントで哀しみを共有している。長く生きた黄金世代の象徴として、今後も思い出される。</p><div class="meta">🔥 303 ポスト</div></article><article class="card"><h2>「角醒ハンター オメガホーン」第弍話放送、キャプテン資格バトルが熱狂的に話題に</h2><p>第弍話『示せ！キャプテンの資格！』がテレビ朝日で放送され、シャウトとギリコのタッグバトルや絶炎角の活躍が披露され、視聴者から「ありがとう」や「強かった」コメントが続々寄せられた。</p><div class="meta">🔥 293 ポスト</div></article><article class="card"><h2>札幌8R予想が熱狂、エコロハート・ザカリナン・ジーティーエスピが注目の的</h2><p>札幌競馬場の8Rで、エコロハートやザカリナン、ジーティーエスピが注目され、ユーザーが単勝や馬連の買い目をシェアしながら予想を楽しんでいる様子が投稿で広がっている。</p><div class="meta">🔥 263 ポスト</div></article><article class="card"><h2>赤城みりあ、へそ出し特服で“天真爛漫”姿が話題に“笑顔満開”の声続出</h2><p>赤城みりあがへそ出しの特服を披露し、天真爛漫なイメージが広がっている様子がSNSで話題になっている。</p><div class="meta">🔥 260 ポスト</div></article><article class="card"><h2>Modulo Prelude‑GTが空中へ飛び赤旗、ファンは「大クラッシュ💥」と驚き</h2><p>Modulo Prelude‑GTが他車と衝突し、右リアが外れたまま空中に舞い上がってホームストレートで大クラッシュ。赤旗が掲げられ、レースが一時中断された。</p><div class="meta">🔥 235 ポスト</div></article><article class="card"><h2>メルブラ新作ステージがFGO 11周年フェスで披露、マシュ続投に期待の声が沸く</h2><p>13:50からメルブラステージが開催され、TYPE-MOON TIMES出張版の同時視聴配信が行われた。新作情報やキャラ続投、システム変更が話題になっている。</p><div class="meta">🔥 233 ポスト</div></article><article class="card"><h2>きらりん☆ボルケーノ、敗退でファン嘆き「悔しい」―プロリーグへの期待も</h2><p>きらりん☆ボルケーノがApex Legendsシーズン2プロリーグの予選で敗退し、ファンからは「悔しいですが負けは負けなのでSP2のプロリ頑張ります」や「もう少し見たかった」声が上がっている。</p><div class="meta">🔥 222 ポスト</div></article><article class="card"><h2>タリク・スクーバル、ドジャースへ移籍決定　“史上最強ローテ”に歓喜の声</h2><p>タリク・スクーバルがドジャースへトレードで加入し、山本由伸やブレーク・スネル、グラスノウと並んで“最強ローテ”が完成したと話題に。ファンは“史上最強ローテ”にテンションが上がっている。ポストシーズンでの活躍が期待され、三連覇狙いの声も上がっている。</p><div class="meta">🔥 212 ポスト</div></article><article class="card"><h2>有働さん、テンカラ放送で感謝と来週投票呼びかけ　リスナー歓喜の声が広がる</h2><p>有働さんが『テンカラ』の最新放送でリスナーへ感謝を伝え、今週のランキング上位3曲を紹介し、来週の投票を呼びかけた。放送の最後に『また来週も楽しみにしています』と締めくくり、リスナーの期待感が高まった。</p><div class="meta">🔥 205 ポスト</div></article><article class="card"><h2>「BE:FIRST」ハーフタイムショーで「BRUCE WAYNE」初披露、ファンが「最高」と歓喜</h2><p>BE:FIRSTがHHI2026のハーフタイムショーに登場し、「BRUCE WAYNE」や「Mainstream」など5曲を披露した。SOTAの英語MCも話題になり、会場は盛り上がりを見せた。</p><div class="meta">🔥 203 ポスト</div></article><article class="card"><h2>メシドラで超特急『Call My Name』流れる！藤岡ロケと焼きまんじゅうに視聴者歓喜</h2><p>『メシドラ』で超特急の『Call My Name』が流れ、焼きまんじゅうや群馬のローカル情報が紹介されたことが視聴者の間で話題になっている。番組は藤岡市でのロケを中心に、ゲストや音楽、グルメが盛りだくさんで、視聴者はテンションが上がっている様子だ。</p><div class="meta">🔥 156 ポスト</div></article><article class="card"><h2>「timeleszファミリア」開始　バスケ日本代表選手と豪華丼がSNSで熱狂</h2><p>『timeleszファミリア』がスタートし、バスケ日本代表選手が登場。番組内で巨大丼やユッケが披露され、視聴者は「丼だけ〜」や「ユッケ食べたい」と歓声を上げ、食欲とワクワク感が広がっている。</p><div class="meta">🔥 145 ポスト</div></article><article class="card"><h2>シゲアキうちわ即完売、ファンの一部は「絶望」や「早め予約」へ、ツアー熱狂が加速</h2><p>シゲアキのうちわがツアー会場で瞬く間に完売し、ファンは早朝から並んだり整理券を争ったりしたものの、手に入れられずがっかりした様子がツイートで見られる。購入できなかった人は「😭」や「絶望」感情を表現し、次回は早めに予約したいとコメントしている。</p><div class="meta">🔥 118 ポスト</div></article><article class="card"><h2>大島洋平特集放送にファン熱狂　『まだまだやれる』と一軍復帰を期待</h2><p>『サンドラ』で大島洋平選手の特集が放送され、インタビューで現役続行への意欲や一軍復帰への思いが語られた。ファンは『まだまだやれる』『一軍に戻ってほしい』と歓声を上げ、優勝への期待も高まっている様子が投稿に映し出された。</p><div class="meta">🔥 117 ポスト</div></article><article class="card"><h2>「乙倉悠貴」特攻服でヘソ出し、可愛さが炸裂　CG総選挙決戦前日にファン熱狂</h2><p>乙倉悠貴が特攻服でヘソ出しのイラストを披露し、可愛さが話題に。走思爽愛との組み合わせや新作立ち絵も注目され、ファンは「かわいい」「最高」と歓声を上げ、テンションが上がっている様子が見られる。</p><div class="meta">🔥 110 ポスト</div></article><article class="card"><h2>タリック・スカバルがLADへ移籍、ファンは「Skubal来るーーー！」と歓喜</h2><p>タリック・スカバルがロサンゼルス・ドジャース（LAD）へトレードで加わり、先発ローテーションに組み込まれることがSNSで多数報告された。投稿では『Skubal来るーーー』期待の声が多く、一部では懸念の声も見られた。</p><div class="meta">🔥 105 ポスト</div></article><article class="card"><h2>「月傍接吻（ムーンサイドキス）」が話題に　CG総選挙前日に笑いが広がる</h2><p>「月傍接吻（ムーンサイドキス）」がCG総選挙前日に登場し、読めるかや当て字のユーモアが話題に。笑い声とともにツイートが続出している。</p><div class="meta">🔥 103 ポスト</div></article><article class="card"><h2>有識者秘密会合、槌田先生登場で大爆笑！ファンが「めっちゃ笑った」「超濃い」感想続出</h2><p>『有識者秘密会合』が開催され、声優陣がオタクトークを披露し、槌田先生がサプライズ登場。参加者は笑いが止まらず、フルスロットルの熱い語りや女子声優の少年声議論が続き、視聴者からは「めっちゃ笑った」「超濃い」声が上がっている。</p><div class="meta">🔥 101 ポスト</div></article><article class="card"><h2>沖縄SV、FC琉球に3-0圧勝で天皇杯県代表決定　3年連続優勝に歓喜の声</h2><p>沖縄SVがFC琉球に3-0で圧勝し、天皇杯沖縄県予選決勝の県代表として本戦へ進出した。3年連続の優勝で、次は8月19日に北九州でギラヴァンツ北九州と対戦予定だ。</p><div class="meta">🔥 99 ポスト</div></article><article class="card"><h2>しられ選手、VOLTENIZER2026で優勝　中学生の圧倒的プレイにファン歓喜</h2><p>VOLTENIZER2026でしられ選手が優勝し、初見スコアや高得点で圧倒的なプレイを披露したことがSNSで話題になっている。中学生という年齢も注目され、今後の活躍が期待されている。</p><div class="meta">🔥 94 ポスト</div></article><article class="card"><h2>「小田原競輪」G3北条早雲杯争奪戦2日目、徳永哲人選手が1着で盛り上がり</h2><p>8月2日、小田原競輪場でG3北条早雲杯争奪戦2日目が行われ、7番車の徳永哲人選手が1着になった。SNSでは予想や結果が次々にシェアされ、万車や高配当が話題に。</p><div class="meta">🔥 87 ポスト</div></article><article class="card"><h2>ジスハンがライブで続々登場！ファンは「嬉しい」「供給多くて助かる」熱狂</h2><p>ジスハンが本日のライブ配信やモッパン企画に次々と登場し、ウィラや食事シーンが続々と配信されたと複数のユーザーが報告している。ファンは「嬉しい」「供給が多くて助かる」喜びつつ、「またジスハンが来た」など驚きの声を上げている。</p><div class="meta">🔥 87 ポスト</div></article><article class="card"><h2>「ファンモン」ライブで感動の大合唱、熊本応援に涙が止まらない熱狂が広がる</h2><p>『ナンバーショット』で披露された『ファンモン』は、前方エリアに入った観客が熱狂し、加藤さんの『頑張れ熊本！』エールに感動し、全員で大合唱しながら涙を流すシーンが多数見られた。会場全体が一体感に包まれ、スタンド席まで立ち上がって歌い、熱気と感動がSNSでも拡散された。多くのファンが「最高」「泣けた」とコメントし、余韻が長く続く様子が伝わった。</p><div class="meta">🔥 86 ポスト</div></article><article class="card"><h2>『どーけーよー』がSNSで大流行　名鉄杯ファンが掛け声を連発、続々と投稿</h2><p>『どーけーよー』の掛け声がSNSで次々にシェアされ、ユーザーが『名鉄杯』やファンファーレと合わせて投稿し、ミームとして広がっている様子が見られる。</p><div class="meta">🔥 75 ポスト</div></article><article class="card"><h2>サムシャインが札幌10RポプラSの本命に！期待の声が続出、ファンが熱狂し単勝・ワイド買い目も多数提案</h2><p>サムシャインが札幌10RポプラSの本命に選ばれ、ファンが期待感を示す中で単勝やワイドなど多彩な買い目が提案され、レースへの関心が高まっている様子が見られる。</p><div class="meta">🔥 72 ポスト</div></article><article class="card"><h2>横川尚隆、JAPAN PRO 212で圧倒的センターフィニッシュ　「エグすぎる」などの声が一部で上がる</h2><p>JAPAN PRO 212で横川尚隆が圧倒的な筋肉とサイズでセンターフィニッシュを決め、一部の観客の間で「エグすぎる」「デカすぎる」声が上がり、話題になっている。</p><div class="meta">🔥 72 ポスト</div></article><article class="card"><h2>羽南、宇都宮大会で勝利と敗北が交錯　ファンは「やば」「バックドロップ最高」</h2><p>羽南が宇都宮・仙台のSTARDOM大会で勝ち負けを繰り返し、膝の様子が気になるとファンがツイート。試合のハイライトやコンディションが盛り上がっている様子が見られる。</p><div class="meta">🔥 69 ポスト</div></article><article class="card"><h2>カードフォリオ発売でテンション上がる！シンデレラガール総選挙2026前日に新作が登場</h2><p>シンデレラガール総選挙2026の前日に、投票権付きカードフォリオが発売され、イラストやパッケージの新デザインが披露されたと多数のユーザーがツイートしている。購入を検討する声や再販を望む声も同時に上がり、話題が広がっている。</p><div class="meta">🔥 67 ポスト</div></article><article class="card"><h2>NMB48、TIF2026 HOT STAGEで熱演！「暑い中でも最高の夏」ファン歓喜の声</h2><p>3日目のHOT STAGEでNMB48が登場し、ナギイチやユリイカ、イビサ楽曲を披露。会場や配信で観たファンへ感謝を伝え、暑さの中でも熱いステージを楽しんだ様子が投稿に映っている。</p><div class="meta">🔥 67 ポスト</div></article><article class="card"><h2>サトノワーグナー、札幌8Rで快勝！横山武史騎手も絶賛、ファン歓喜の声続出</h2><p>サトノワーグナーが札幌8Rで見事に1着に輝き、横山武史騎手の巧みな騎乗が光った。エコロハートが続く2着、ジーティーエスピが3着と、上位3頭が勢揃いした様子が話題だ。</p><div class="meta">🔥 61 ポスト</div></article><article class="card"><h2>「繚乱ビクトリーロード」話題沸騰、CG総選挙決戦前日にファンが熱狂的ツイート</h2><p>SNS上で『繚乱ビクトリーロード』が話題となり、関連衣装や楽曲のイメージが次々と投稿され、ファン同士が『ビクトリーロード感』や『異次元フェス』との結びつきを語り合い、盛り上がりが広がっている様子が見られた。</p><div class="meta">🔥 60 ポスト</div></article><article class="card"><h2>有原航平、エスコン先発で超爆速三者凡退！ファンの声は「頑張れ」「絶対勝てよ」</h2><p>有原航平がエスコンで先発し、2分4球で三者凡退を決めた。速球が冴えて、初回から相手打線をしっかり抑えてくれたんだ。ファンからは「超爆速」「サクサク」って声が上がってる。</p><div class="meta">🔥 60 ポスト</div></article><article class="card"><h2>MLBロックアウトの可能性が取りざたされ、ドジャースの補強が波紋　ユーザーの声「ロックアウトかも」「来年はロックアウトだね」</h2><p>ユーザーはロックアウトと噂し、ドジャースの補強やサラリーキャップ問題が原因と指摘しながら「ロックアウトかも」「来年はロックアウトだね」コメントしている様子が見られる。</p><div class="meta">🔥 56 ポスト</div></article><article class="card"><h2>広島東洋カープの若手有力選手不在疑惑とドラフト批判がSNSで拡散</h2><p>SNS上で、広島東洋カープに若手有力選手が不足しているとの指摘や、最近のドラフトに対する不満の声が上がっている。</p><div class="meta">🔥 55 ポスト</div></article><article class="card"><h2>ロードクラシコ、スタートで躓き12着に、応援の声が続く</h2><p>札幌8Rでロードクラシコがスタート直後に躓き、結果は12着に終わった。体重が増えていることや、次走への期待がファンの間で語られた。</p><div class="meta">🔥 53 ポスト</div></article><article class="card"><h2>「結城さくな」モデルアップデートが8月8日発表、ファンは「楽しみすぎる」熱狂</h2><p>結城さくなが8月8日にモデルアップデートと重大告知を実施することを告知し、ファンは「さくたん」の新しい姿やLive2Dの変化を楽しみにしている様子がツイートで紹介されている。</p><div class="meta">🔥 52 ポスト</div></article><article class="card"><h2>キスは捜査のあとで第2話放送、浴衣クランクアップでファン歓喜「シーズン2やって〜」</h2><p>第2話が深夜に放送され、渡部秀と齋藤璃佑が浴衣でクランクアップ写真を披露したんだって！みんなシーズン2を期待して盛り上がってる。「シーズン2やって〜」とか「浴衣が可愛い」ってコメントが続々と寄せられ、話題が止まらない様子。</p><div class="meta">🔥 52 ポスト</div></article><article class="card"><h2>KO1KEYZ、デビューシングル発表にファン歓喜「早く聴きたい」「絶対欲しい」</h2><p>8月2日にKO1KEYZがコンセプトフォトを公開し、10月7日発売のデビューシングル『KO1KEYZ』を発表したんだ。ファンは「早く聴きたい」や「絶対欲しい」って盛り上がって、RYUJIへの投票も呼びかけている。</p><div class="meta">🔥 51 ポスト</div></article><article class="card"><h2>さのじんユニット発表でファン歓喜「きたぁぁぁぁぁ！」新曲リリースに期待感高まる</h2><p>M!LKの連続リリース第5弾で、さのじんユニットがついに登場し、吉田仁人と佐野勇斗がメンバーとして発表された。ファンは新曲のリリースにワクワクしている。</p><div class="meta">🔥 51 ポスト</div></article><article class="card"><h2>「トワイルミナ」新システム公開にファン歓喜「楽しみすぎてやばい」</h2><p>トワイルミナの新情報が出て、遠野志貴に飛び道具が加わり、FGOのマシュが登場することが分かってファンがワクワク。ガントレットやAct/Duel操作など新システムも紹介され、ゲームがさらに進化した様子が伝わってきた。さらに多彩な必殺技や移動技も追加された、プレイが楽しみだ。</p><div class="meta">🔥 50 ポスト</div></article><article class="card"><h2>グウィン、浴衣イラスト公開で美しさ称賛の声が広がるファン熱狂</h2><p>グウィンの新しい浴衣イラストがSNSで披露され、ファンは「綺麗だ…」や「浴衣が可愛い」と歓声を上げ、美しさが話題に上がっている。同時に水着バージョンへの期待や、キャラ年齢15歳への違和感を指摘する声も混ざり、さまざまな感想が寄せられている。</p><div class="meta">🔥 49 ポスト</div></article><article class="card"><h2>ウインベルチェーロ、札幌7Rで初勝利！ファン歓喜の声が続出、祝福のコメントが殺到</h2><p>ウインベルチェーロが札幌7Rで初めての勝利を飾り、1着でゴールしたことがSNSで大きく取り上げられた。レースの最後の直線で勢いをつけて先頭に立ち、見事にゴールテープを切った様子がファンの歓声とともに広がっている。</p><div class="meta">🔥 49 ポスト</div></article><article class="card"><h2>「たわし宝具2」再び登場にファン大笑い、FGO11周年を祝福</h2><p>同日、Twitterで「たわし宝具2」のツイートが大量に投稿され、ユーザーは「たわし宝具2www」や「たわし宝具2は草」表現で笑いながら懐かしさを共有した。FGO11周年やフェスのハッシュタグと共にミームが再燃した様子が見られた。</p><div class="meta">🔥 45 ポスト</div></article><article class="card"><h2>三菱UFJ銀行、資金流入と決算発表が話題に「期待と不満」続く</h2><p>三菱UFJ銀行の株が資金流入で注目され、8月3日の決算が楽しみとされる中、口座解約時の窓口対応がイマイチという声が多く上がっている。</p><div class="meta">🔥 44 ポスト</div></article><article class="card"><h2>ヤクジョ、札幌7Rで3着＆複勝的中！「やったー」歓喜の声が広がる</h2><p>札幌7Rでヤクジョが3着に入って、複勝が的中！配当は920円で、ファンからは「やったー」「美味しい」歓声が上がっている。ウインベルチェーロが勝ち、メイショウローゼが2着という結果の中、ヤクジョの走りは「絶好条件」「大激走」と評され、期待が高まっている。今回の的中で多くのユーザーがワイドや馬連も検討中らしい。</p><div class="meta">🔥 44 ポスト</div></article><article class="card"><h2>ほしおん、スターさんへの応援メッセージが続出　夏のリアルタイム放送が盛り上がり</h2><p>ABCラジオ『ほしおん』はリスナーのリクエストやコメントを受けながら、暑い夏の日にスタジオや外でリアルタイム放送を続け、スターさんやスタッフへの応援がいっぱい。冷麺やカップヌードルの食レポ、三角関係の噂など、バラエティ豊かな話題が飛び交った。</p><div class="meta">🔥 41 ポスト</div></article><article class="card"><h2>和歌山県田辺市栗栖川で40.1℃観測、近畿初の酷暑日に「暑すぎる」声が広がる</h2><p>和歌山県田辺市栗栖川で40.1℃が観測され、近畿で初めての酷暑日が登場したなっている。熱中症対策が呼びかけられ、他県でも40℃超えが報告された。特に和歌山では32年ぶりの記録とされ、全国的にも猛暑が広がっている様子が伝わっている。</p><div class="meta">🔥 41 ポスト</div></article><article class="card"><h2>ジーベック、札幌9Rで6着に終わるもファンは「頑張れ」声援、再挑戦期待</h2><p>ジーベックが札幌9Rのダート1000mで6着に入ったことがSNSで話題に。後方からの追い込みが功を奏さず、位置取りが足かせになった様子が投稿に映っている。</p><div class="meta">🔥 39 ポスト</div></article><article class="card"><h2>BTS水祭りライブで笑顔が溢れた瞬間「最高に楽しい」ファンと一緒に水かけ合戦</h2><p>BTSのコンサートでメンバーが水を掛け合いながらダンスやペットボトル投げを披露し、ファンと一緒に水かけ合戦が大盛り上がり。笑いと歓声が絶えず、SNSに楽しい動画が次々とシェアされた。</p><div class="meta">🔥 39 ポスト</div></article><article class="card"><h2>ちいかわコラボカレーが話題沸騰、セブンイレブンで辛さと美味しさにファン歓喜</h2><p>セブンイレブンで販売されたちいかわコラボカレーがSNSで話題に。辛さやカツの食感が好評で、売り切れになるほどの人気がうかがえる。</p><div class="meta">🔥 36 ポスト</div></article><article class="card"><h2>安住紳一郎の日曜天国、竹内まりやゲストでプラスティック・ラブライブ披露とグッズ発売で盛り上がり</h2><p>TBSラジオの『安住紳一郎の日曜天国』で竹内まりやさんがゲスト出演し、プラスティック・ラブのライブ音源が流れた上に、オリジナルキャラのぬいぐるみやキーホルダーが販売されたんだ。</p><div class="meta">🔥 36 ポスト</div></article><article class="card"><h2>エアジハード、唯一の存命馬として長生きを願う声がSNSで広がる</h2><p>エアジハードが唯一残る1998年世代の競走馬として、現在も元気に存命であることが報告され、ファンからは「長生きしてほしい」や「まだまだ頑張って」温かい声が多数寄せられている。</p><div class="meta">🔥 35 ポスト</div></article><article class="card"><h2>森平麗心、黒髪ブログ更新でファン熱狂「可愛い」称賛の声が続く様子</h2><p>森平麗心が黒髪で登場した新ブログが公開され、ファンは「可愛い」「大人っぽくてぶっ刺さり」歓声を上げ、デジタルカメラで撮った新写真や今後の追加投稿を期待している様子が見られた。</p><div class="meta">🔥 35 ポスト</div></article><article class="card"><h2>「2026 JAEJOONG ZEPP &amp; HALL LIVE TOUR – 4% –」パシフィコ横浜最終公演がCS衛星劇場で独占放送、ファン歓喜の声</h2><p>JAEJOONGのZEPP&amp;HALL LIVE TOUR「4%」最終公演が、CS衛星劇場でテレビ初独占放送になるんだって！撮影禁止だけど、みんなでライブ感を楽しめる。放送は9月27日と10月31日の2回で、パシフィコ横浜の熱いステージが全国に届けられるんだ。</p><div class="meta">🔥 35 ポスト</div></article><article class="card"><h2>新潟6R苗場特別、予想が盛り上がりマッドゲイルやナイトスラッガーが話題</h2><p>SNSで新潟6R 苗場特別の予想が盛り上がり、マッドゲイルやナイトスラッガー馬が「◎」や「○」で頻繁に取り上げられ、ユーザー同士で情報交換が活発に行われている様子が見られる。</p><div class="meta">🔥 33 ポスト</div></article><article class="card"><h2>「なりゆき街道旅」二子玉川取材でワイン飲み放題や再放送議論が話題に</h2><p>『なりゆき街道旅』が二子玉川で放送され、ワイン飲み放題の店や持ち込み自由のスポットが紹介された。ヒデちゃんがゲストで登場し、再放送かどうかの噂や信子へのボディタッチが話題になっている。</p><div class="meta">🔥 32 ポスト</div></article><article class="card"><h2>セーヌデローヴ、 新潟5Rで快勝　「オッズ下がりすぎだけどヨシ！」と歓喜の声</h2><p>セーヌデローヴが新潟5Rで見事に1着を勝ち取り、単勝オッズは約9.5倍で950円の配当が出た。オッズが急落したことや、馬連・3連複・3連単の高配当も話題になり、的中したファンからは「ヨシ！」や「神」歓声が上がっている。</p><div class="meta">🔥 32 ポスト</div></article><article class="card"><h2>大空スバル、ドラゴンボールカカロット配信開始でファン歓喜「しゅばあああ」騒ぎ</h2><p>大空スバルが『ドラゴンボール カカロット』の配信を始めて、ファンが「しゅばあああ！」と盛り上がり、視聴者数が急増している。配信中はゲームの展開やスバルのリアクションに対するコメントが次々と飛び交っている。</p><div class="meta">🔥 31 ポスト</div></article><article class="card"><h2>ハチエモン、丸山隆平からの温かコメントにファン沼が広がるSNSで話題に</h2><p>丸山隆平（丸ちゃん）がハチエモンへ感謝と体調を気遣うコメントを投稿し、ファンは「ありがとうハチエモン…」「ハチエモン可愛い」沼にハマった感想を次々ツイートしている。多くのユーザーが「ハチエモンと丸ちゃん相思相愛すぎて咽び泣く」や「ハチエモンさん神で草」コメントで盛り上がっている。</p><div class="meta">🔥 31 ポスト</div></article><article class="card"><h2>島村卯月、等身大パネルと笑顔で登場　ファンが「ゴーオンイエローすぎる」と歓喜</h2><p>島村卯月が等身大パネルに並び、黄色の特服やバニー衣装で登場。生足を見せる姿や満面の笑顔がSNSでシェアされ、ファンのテンションが上がっている様子が伝わる。</p><div class="meta">🔥 29 ポスト</div></article><article class="card"><h2>「ペルソナ5 ザ・ロイヤル」初見配信で歓声、にじさんじ椎名唯華が「人生初のペルソナ」実況開始</h2><p>にじさんじの椎名唯華がYouTubeでライブ配信し、人生初の『ペルソナ5 ザ・ロイヤル』を完全初見でプレイしたと報告。配信中は『ネタバレあり』と注意しつつ、ピラミッド探索やゲーム進行を見せ、視聴者からは歓声が上がった。</p><div class="meta">🔥 28 ポスト</div></article><article class="card"><h2>田中陽翔、ヤクルトファームで150km直球バックスクリーンホームランにファン歓喜</h2><p>田中陽翔がヤクルトファームで150kmの速球をバックスクリーンへ直撃、ソロホームランを披露した。ファンは「神」「エグい」歓声を上げ、盛り上がりを見せている。</p><div class="meta">🔥 26 ポスト</div></article><article class="card"><h2>『MELTY BLOOD: TWI-LUMINA』にグランドシナリオモード登場、TGS2026で世界最速試遊が話題</h2><p>新作『MELTY BLOOD: TWI-LUMINA』に、奈須きのこさん書き下ろしのグランドシナリオモードが加わり、ワンボタンで簡単に必殺技が出せる「Act」も登場したんだって！そしてTGS2026では、世界最速の試遊ブースが設置されるらしい。</p><div class="meta">🔥 25 ポスト</div></article><article class="card"><h2>2026ワールドオールスタージョッキーズに外国騎手6名が決定、ファンは「アツすぎる」歓喜</h2><p>WASJに向けて、オーストラリアやフランス、南アフリカなどから選ばれた6人の外国騎手が発表された。ダミアン・レーンやマリー・ヴェロンらが日本でレースに挑むんだって。</p><div class="meta">🔥 25 ポスト</div></article><article class="card"><h2>「あらなみマイクラ」切り抜き同時視聴会開催、ファンは「爆笑」や「感動」で大盛り上がり</h2><p>同日、ファンが#あらなみマイクラ の切り抜き動画をシェアし、石神のぞみや美紅のシーンを中心に同時視聴会を開催した。みんなで「爆笑」しながら再生回数を競い、建築シーンにも歓声が上がった。</p><div class="meta">🔥 24 ポスト</div></article><article class="card"><h2>前川右京、右肩甲骨骨折から16日で超速復帰　ヤクルト戦から1軍緊急昇格、ファン歓喜の声</h2><p>前川右京が右肩甲骨骨折からたった16日で回復し、ヤクルト戦から1軍に緊急昇格したなっている。ファンは「超速復帰」に驚きと喜びの声を上げている。</p><div class="meta">🔥 19 ポスト</div></article>
+    </main>
+
+    <!--NAV:PAGER_BOTTOM-->
+<div class="archive-pager"><a href="https://everflux24.github.io/Aoaeola/archive/2026/08/02/12-00.html">← 08/02 12:00</a><span class="disabled">次へ →</span></div>
+<!--/NAV:PAGER_BOTTOM-->
+
+    <!--NAV:ARCHIVE_NAV-->
+<nav class="archive-nav"><div class="archive-nav-label">過去7日のアーカイブ</div><div class="archive-nav-links"><a href="https://everflux24.github.io/Aoaeola/archive/2026/08/02/12-00.html" class="archive-nav-link current">08/02</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/08/01/20-00.html" class="archive-nav-link">08/01</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/31/20-00.html" class="archive-nav-link">07/31</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/30/20-00.html" class="archive-nav-link">07/30</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/29/20-00.html" class="archive-nav-link">07/29</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/28/20-00.html" class="archive-nav-link">07/28</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/07/27/20-00.html" class="archive-nav-link">07/27</a></div></nav>
+<!--/NAV:ARCHIVE_NAV-->
+
+    <div style="text-align:center;">
+      <a href="https://everflux24.github.io/Aoaeola/" class="back-link">&#8592; トップページへ戻る</a>
+    </div>
+
+    <footer>
+      <p>Generated by Aoaeola v2.5 &#183; 2026-08-02 16:00:33</p>
+    </footer>
+  </div>
+</body>
+</html>
