@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09月07日 20時台のトレンド｜Aoaeola</title>
+  <meta name="description" content="09月07日 20時台のトレンド｜Aoaeola — Aoaeolaが選んだ注目トレンド">
+  <link rel="canonical" href="https://everflux24.github.io/Aoaeola/archive/2026/09/07/20-00.html">
+  <style>
+    :root {
+      --bg-start: hsl(305, 70%, 45%);
+      --bg-end: hsl(345, 70%, 55%);
+      --text: #1a1a2e;
+      --card-bg: rgba(255,255,255,0.85);
+      --accent: hsl(305, 70%, 35%);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      min-height: 100vh;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    header time {
+      display: block;
+      margin-top: 0.5rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .card .meta {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255,255,255,0.9);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .back-link:hover {
+      background: #fff;
+    }
+    .hour-blocks-nav {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .hour-blocks-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .hour-blocks-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .hour-block-link {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .hour-block-link:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .hour-block-link.current {
+      background: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .hour-block-link.empty {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .archive-pager {
+      display: flex;
+      justify-content: space-between;
+      margin: 1.5rem 0;
+      padding: 0 0.5rem;
+    }
+    .archive-pager a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .archive-pager a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .archive-pager .disabled {
+      opacity: 0.3;
+      pointer-events: none;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+    .archive-nav {
+      margin: 2rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .archive-nav-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .archive-nav-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .archive-nav-link {
+      display: inline-block;
+      padding: 0.4rem 0.7rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      transition: background 0.2s;
+    }
+    .archive-nav-link:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .archive-nav-link.current {
+      background: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .archive-nav-link.empty {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    footer {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "09月07日 20時台のトレンド｜Aoaeola",
+    "description": "09月07日 20時台のトレンド｜Aoaeola — Aoaeolaが選んだ注目トレンド",
+    "url": "https://everflux24.github.io/Aoaeola/archive/2026/09/07/20-00.html",
+    "datePublished": "2026-09-07T20:00:00+09:00",
+    "dateModified": "2026-09-07T20:00:00+09:00"
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>09月07日 20時台のトレンド｜Aoaeola</h1>
+      <time datetime="2026-09-07T20:00:00+09:00">2026年09月07日 20:00</time>
+    </header>
+
+    <!--NAV:PAGER_TOP-->
+<div class="archive-pager"><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/07/16-00.html">← 09/07 16:00</a><span class="disabled">次へ →</span></div>
+<!--/NAV:PAGER_TOP-->
+
+    <!--NAV:HOUR_BLOCKS-->
+<nav class="hour-blocks-nav"><div class="hour-blocks-label">本日のアーカイブ</div><div class="hour-blocks-links"><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/07/00-00.html" class="hour-block-link">00:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/07/04-00.html" class="hour-block-link">04:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/07/08-00.html" class="hour-block-link">08:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/07/12-00.html" class="hour-block-link">12:00</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/07/16-00.html" class="hour-block-link">16:00</a><span class="hour-block-link empty">20:00</span></div></nav>
+<!--/NAV:HOUR_BLOCKS-->
+
+    <main class="content-cards">
+      <article class="card"><h2>新作『ケロロ軍曹☆』放送開始、声優一新でファン歓喜「思ったより違和感ない」</h2><p>新作『ケロロ軍曹☆』が10月3日から土曜朝9時30分に放送開始し、ケロロやタママ、ギロロらの声優が一新されたことが発表された。PVとキービジュアルも同時に公開されたんだ。</p><div class="meta">🔥 1,249 ポスト</div></article><article class="card"><h2>離婚後に性格悪化に気付いた投稿が話題に、共感と戸惑いの声が上がる</h2><p>Twitterで「離婚してから自分が性格悪いことに気づいた」という投稿が話題に。多くのユーザーが同じような自己反省や、相手に説明を求めすぎる姿勢への戸惑いを共有している。</p><div class="meta">🔥 565 ポスト</div></article><article class="card"><h2>レディオヘッド、19年ぶり来日5days決定にファン歓喜「やばい」「色の一年になりそう」</h2><p>Radioheadが2027年6月に埼玉のGMOアリーナで5日間の単独来日ライブを開催することが発表され、19年ぶりの来日でチケット抽選が本日スタートしたとファンに伝わっている。</p><div class="meta">🔥 535 ポスト</div></article><article class="card"><h2>「第1回ポカジャン王決定戦」開催決定、参加者熱狂の声「楽しみです！」が広がる</h2><p>9月10日19時に開催される第1回ポカジャン王決定戦の告知が配信され、8名の参加者が決まった上で、ダブルエリミネーション方式や優勝者がゲーム内称号を設定できる特典が発表された。</p><div class="meta">🔥 464 ポスト</div></article><article class="card"><h2>AKB48、好きishおかわりライブがCDTVで大盛り上がり「最高！」とファン熱狂</h2><p>AKB48が『CDTVライブライブ』で『好きish』のフルサイズおかわりライブを披露し、選抜16名が登場。視聴者はハッシュタグ#おかわり好きishで盛り上がり、放送は19時スタートでリアルタイムコメントが続出した。</p><div class="meta">🔥 365 ポスト</div></article><article class="card"><h2>スタソン公開収録開催へ、ファンが「行きたい」熱狂と同行者募集の声が続出</h2><p>『スタソン』の公開収録が決定し、ファンが「行きたい！」と盛り上がる中、同行者募集や申し込みの声が続出。少人数クラス化や番協、Howzitの出演可否も話題になっている。</p><div class="meta">🔥 265 ポスト</div></article><article class="card"><h2>ジョーカーズ新カード続々登場、ファン歓喜の声「最高のジョーカーズだ」</h2><p>最新ブースターパック『オーバー・ザ・カラミティ』にジョーカーズの新カードが続々と登場し、カード性能や多色デッキへの活用がSNSで話題になっている。</p><div class="meta">🔥 200 ポスト</div></article><article class="card"><h2>ざぶたうんショートアニメ公開、可愛さに泣き叫ぶファン続出が話題に</h2><p>ざぶたうんの新作ショートアニメが登場し、動く姿や可愛さが話題になっている。視聴者は「かわいい」「泣いた」感想を投稿し、癒しを楽しんでいる様子が見られる。</p><div class="meta">🔥 185 ポスト</div></article><article class="card"><h2>「ヤニねこ」特番YouTube公開、ファンが「キレイな内容」や「見てください！」で歓喜</h2><p>YouTubeに『ヤニねこ』特番がアップされ、テレビアニメの放送が再開されたと投稿者が報告している。特番は『今日だけキレイなヤニねこ特番』と呼ばれ、視聴者は『キレイな内容です』とコメントしている。</p><div class="meta">🔥 184 ポスト</div></article><article class="card"><h2>ROIROM『MYSTIQUE』ライブ配信決定、ファン歓喜の声が続出</h2><p>ROIROMの1st Concert「MYSTIQUE」がHuluで配信され、2日間のライブ映像をミックスしたSpecial版が視聴可能になった。ファンはチケットを購入し、再びステージを楽しめると喜んでいる。</p><div class="meta">🔥 170 ポスト</div></article><article class="card"><h2>増田さんがギロロの声を担当、新PV公開でファン歓喜「めっちゃいい！」</h2><p>新作PVで『ケロロ軍曹』のギロロが増田さんの声で登場し、ファンの間で「声が爽やかでいい！」や「期待が高まる」ツイートが続出している。違和感が少ないと感じる声や、キャラへの新たな魅力を期待する声が多数寄せられ、話題が広がっている。</p><div class="meta">🔥 165 ポスト</div></article><article class="card"><h2>「マイメロディ＆クロミ」コラボ開催、無料アイテムと限定ガチャにファン大歓喜</h2><p>マイメロディとクロミのコラボが決定し、ポケコロツインで無料アイテムや限定ガチャが楽しめるようになったとファンが歓喜している。「めろきゅんなコラボ開催決定」や「クロミちゃん欲しい」など、期待の声が続々と上がっている。</p><div class="meta">🔥 150 ポスト</div></article><article class="card"><h2>いれいす6周年ビジュ、9月13日に公開へ カウントダウン開始でファン熱狂</h2><p>あるユーザーが、いれいすの6周年記念ビジュアルが9月13日に公開されることを告知し、カウントダウンが6日間始まったと投稿した。ファンは「楽しみすぎる」「ドキドキ」コメントで期待感を示し、周年ビジュアルか新サイドの露出かと推測する声や、胸元のサイコロマークへの関心が寄せられた。</p><div class="meta">🔥 143 ポスト</div></article><article class="card"><h2>中村海人、トラジャ新ソロビジュアル公開でファン熱狂と称賛の嵐が続く</h2><p>Travis Japanが中村海人（うみ）の新ソロビジュアルを公式に公開した。ビジュアルはネックレス4連の豪華な装飾と白を基調としたキラキラ演出で、うみくんの爽やかな笑顔と王子様雰囲気が際立っている。投稿直後、ファンからは「2人目の王子が来た」「眩しすぎて直視できない」「かっこよすぎる」絶賛コメントが多数寄せられ、ネックレスが似合うと称賛する声や、アルバム発売への期待が高まっている様子が見られた。さらに、同じくトラジャのメンバーへの期待や今後の活動への応援メッセージも多数投稿され、SNS上で話題が拡散している。</p><div class="meta">🔥 114 ポスト</div></article><article class="card"><h2>石森璃花、ブログ更新とツアー完走でツインテールが話題に　ファン歓喜の声続出</h2><p>石森璃花がブログを更新し、ツアー完走を報告。ツインテールが可愛いとファンから大絶賛で、写真やコメントが次々に投稿されている。みんなで次のライブや新しいヘアスタイルを楽しみにしている様子が伝わる。</p><div class="meta">🔥 114 ポスト</div></article><article class="card"><h2>Radiohead、19年ぶりの単独来日公演が決定　5日間のさいたまスーパーアリーナに熱狂</h2><p>Radioheadが2027年6月に日本で単独来日公演を開催することが発表された。さいたまスーパーアリーナ（GMOアリーナさいたま）で5日間、5公演行われ、2008年以来19年ぶりの単独公演になる。</p><div class="meta">🔥 114 ポスト</div></article><article class="card"><h2>バタフライ誕生秘話が話題に　速さ追求で別種目に分離、SNSで盛り上がる</h2><p>バタフライが、平泳ぎのルールの抜け穴を突いて生まれ、速さが際立ちすぎたせいで別の競技に分けられたって話がSNSで広がってる。その結果、今ではバタフライは独自の泳法として定着し、速さと独特のキックが注目を集めている。</p><div class="meta">🔥 102 ポスト</div></article><article class="card"><h2>まふまふが語る『夢のまた夢』10周年記念、ラフメロディ公開と熱狂的ファンの祝福</h2><p>歌い手のまふまふが『夢のまた夢』の10周年を告知し、子どもの頃から頭に残っていた楽曲がラフ段階では全く異なるメロディだったことを明かした。ファンは「いつ聞いても変わらない」「ライブで聴きたい」など喜びと懐かしさを示し、祝福のコメントが多数寄せられた。また、夏公演での生演奏や実写MVへの期待の声も上がり、楽曲が和ロックとして長く愛されていることが改めて確認された。さらに、実写MVやイラストMVの両方が印象的だとのコメントや、ラフ段階のメロディを聞きたいという好奇心も多数寄せられ、楽曲への熱い思いが再確認された。</p><div class="meta">🔥 100 ポスト</div></article><article class="card"><h2>齋藤樹愛羅、体調不良でオンラインサイン会中止 – ファンからの温かい見守りの声</h2><p>＝LOVE_officialは、＝LOVE 8周年ツアー『＝LOVE 8th ANNIVERSARY PREMIUM TOUR』の横浜スタジアム最終公演に合わせて開催予定だった齋藤樹愛羅のオンライン個別サイン会が、本人の体調不良により中止されたと発表した。ファンは「お大事に」「ゆっくり休んでね」温かいメッセージを多数寄せ、回復を祈る声が多数見られた。</p><div class="meta">🔥 100 ポスト</div></article><article class="card"><h2>にじストア6周年、待機列や混雑も…ユーザーは「欲しいもの全部買えた」と歓喜</h2><p>にじストアが6周年を記念して新グッズを発売し、ユーザーの間で待機列や高額購入が話題になっている。サイトのバグや混雑も報告されつつ、欲しかった商品を手に入れたという声が多く聞かれる。</p><div class="meta">🔥 100 ポスト</div></article><article class="card"><h2>「ペドロ・バルデス」登場で100打点カルテット完成期待、ファン歓喜の声続出</h2><p>ペドロ・バルデスがプロ野球スピリッツAに新しく登場したことが話題になっていて、みんながその能力や100打点カルテットへの影響を楽しみにしている様子が投稿からうかがえる。</p><div class="meta">🔥 97 ポスト</div></article><article class="card"><h2>株式会社ポケモン、売上高5年で約4.4倍に伸びたことを発表</h2><p>株式会社ポケモンは、2026年2月期の決算で売上高が5年で約4.4倍の5,314億2,800万円、当期純利益が約13.6倍の1,200億5,600万円に達したと報告した。特に2022年2月期は『LEGENDS アルセウス』や『ダイヤモンド・パール』リメイクの発売により売上が約122.2%増加したことが最大の伸びとなった。ファンはこの急成長に驚きと称賛の声を上げ、カードゲームやリメイク作品の売上貢献にも関心が寄せられた。</p><div class="meta">🔥 97 ポスト</div></article><article class="card"><h2>「仮面ライダーガンバレジェンズ」新カード「マイス」登場でテンション上がるファン続出</h2><p>ガンバレジェンズに新しくバーサスロード4弾が届き、仮面ライダーマイスのレジェンドレアカードが登場した。ディフェンダーと合わせるとコウゲキ・ガッツが上がり、相手のスピードが-1になるんだって。スピードレベル5も実装されてステータスが上がり、新PVも公開されて盛り上がっている。</p><div class="meta">🔥 96 ポスト</div></article><article class="card"><h2>「夢見の兎ミレーユ」新キャラ登場　9/9更新でビジュアル公開とファン熱狂</h2><p>ドラゴンクエストタクト公式が、9月9日更新予定のイベント『解き明かせ！竜宮城事件簿』に登場する新キャラ『夢見の兎ミレーユ』を紹介した。ビジュアルが公開されると、ファンはデザインの可愛さや衣装の細部に称賛の声を寄せ、ガチャでの入手を熱望するコメントが多数寄せられた。また、キャラの属性や役割についての推測や、イラスト担当への感謝も見られ、全体的に好意的な反応が広がっている。</p><div class="meta">🔥 79 ポスト</div></article><article class="card"><h2>キラスタ、9月7日生放送開始でファン歓喜「やっほー！」が広がる</h2><p>『キラスタ』が本日18時から20時までの生放送で、ゲストが次々と登場し、リスナーとリアルタイムでトークを繰り広げた模様。『キラリク』が休みになることも話題に上がった。</p><div class="meta">🔥 79 ポスト</div></article><article class="card"><h2>しぐれうい、LINEスタンプ新作発表か　ファンから期待と喜びの声が続出</h2><p>しぐれういが『しちゃおうかな…嬉しいお知らせ 夜に』とツイートし、ファンはその内容がLINEスタンプの新作発表と受け取り、発売やデザインに関する期待感が高まった。リプライや引用ツイートでは「LINEスタンプ来る？」や「楽しみすぎる」など喜びと期待の声が多数寄せられ、同時にMVやブルーレイの噂も飛び交い、話題が拡散した。</p><div class="meta">🔥 78 ポスト</div></article><article class="card"><h2>ふわたうん取得ラッシュ！購入完了やお迎え報告でファン歓喜が続く</h2><p>「ふわたうん」のグッズが次々と手に入り、購入完了やお迎え報告が続出。到着を待つ声や「買えた」「無事捕獲」喜びのコメントが多数見られ、ファンのワクワク感が伝わってくる。</p><div class="meta">🔥 72 ポスト</div></article><article class="card"><h2>「致死量のエモ」リリース、ファンがエモさに感動しリピートとMV期待が殺到</h2><p>岩田剛典が新曲「致死量のエモ」をリリースし、SNS上でファンが楽曲のエモさや歌詞、幼馴染コラボに感動した旨を多数投稿。リピート再生やMVへの期待の声が相次ぎ、楽曲が話題となっている。</p><div class="meta">🔥 71 ポスト</div></article><article class="card"><h2>恋星はるかの浴衣イラストが投稿されファンから独占願望と称賛が殺到</h2><p>あるユーザーが、恋星はるかの浴衣姿のイラストを投稿し「独占していいのは君だけだよ」とコメントした。これに対し、ファンからは「可愛い」「独占したい」「最高に可愛い」など称賛と独占願望の声が多数寄せられ、投稿は大きな話題となった。</p><div class="meta">🔥 70 ポスト</div></article><article class="card"><h2>iONが『250% LOVE for EKUBO』を無料生配信、ファンから感謝の声が殺到</h2><p>iONが本日17時頃から『250% LOVE for EKUBO』の全編を無料で生配信すると告知し、配信ページが公開された。ファンは「ありがとう」「嬉しい」「助かる」など感謝と喜びのコメントを多数寄せ、リアルタイムでの視聴が叶わないユーザーも、後日アーカイブで視聴できる点を歓迎した。「配信神すぎ」「ガチ神」など称賛の声も上がり、全体として好意的な反応が広がった。</p><div class="meta">🔥 70 ポスト</div></article><article class="card"><h2>ドラゴンボールレジェンズ公式が新レジェンド「小鳥悟空」登場を示唆、ファンがバードウォッチングで熱狂</h2><p>ドラゴンボール レジェンズ公式が『NEW LEGEND CHARACTER…? ヒント：○○○ウォッチング』と投稿し、新レジェンドキャラの登場を示唆した。ファンは「バードウォッチング」や「小鳥悟空」キーワードで推測を展開し、期待と笑いの声が多数寄せられた。中でも「バードウォッチング」から「小鳥悟空」への推測が多数を占め、能力や入手方法についての妄想も飛び交った。公式の正式発表は未だだが、ファンの期待感は高まるばかりだ。</p><div class="meta">🔥 69 ポスト</div></article><article class="card"><h2>中川翔子、色鉛筆で描くデンジマンが話題に―リアルさと懐かしさで称賛の嵐</h2><p>中川翔子が自身のSNSに、色鉛筆（プリズマカラー）で描いた『デンジマン』のイラストを投稿した。ファンは「写真と見間違えるほどリアル」「CMのアイキャッチみたい」称賛し、懐かしさやクオリティの高さに驚きを示した。多くのコメントが「天才」「上手すぎ」称賛で埋まり、今後のアナログ作品への期待も高まっている。さらに、プレバトでの色鉛筆作品が評価されたことや、岩手で子供と一緒にデンジマンを観たという投稿も寄せられ、作品の多面的な魅力が再認識された。この反響により、バイオマンやジェットマンなど他のヒーローのアナログ画も期待されている。</p><div class="meta">🔥 69 ポスト</div></article><article class="card"><h2>にじさんじ ノスタルジアコレクション大量購入で交換募集、ファンの歓喜と戸惑いが交錯</h2><p>にじさんじのノスタルジアコレクションカードが大量に購入されたことを受け、ユーザーが「購入完了」「仮約束」などを報告しつつ、交換や譲渡を呼びかけている様子がSNSに広がっている。購入枚数は20枚から120枚までさまざまで、後日DMで個別に連絡する取引の準備も進められている。</p><div class="meta">🔥 67 ポスト</div></article><article class="card"><h2>んまぬい新作発売でファン歓喜「んまぬいーーーーー！！！」と熱狂</h2><p>新作のんまぬいが発売され、予約や代行購入を求める投稿が多数見られる。ネットで届いた報告や、実店舗が少なく代行を申し出るユーザーもいる様子が伝わる。</p><div class="meta">🔥 67 ポスト</div></article><article class="card"><h2>なにわ男子、Niigataライブへの感謝と公式TikTok更新を報告</h2><p>なにわ男子が公式TikTokを更新し、LIVE TOUR 2026「ND⁵」新潟公演への感謝をツイートした。ファンは「みちょりゅちぇ」や「O型コンビ」の可愛さを称賛し、ガタガタやクワガタのギャグにも笑い、ライブの楽しかった雰囲気やメンバーの元気さに喜びの声が多数寄せられた。</p><div class="meta">🔥 66 ポスト</div></article><article class="card"><h2>DXTEEN、8thシングル『相思想愛』発売決定　ファンは「大好き」や「勝ち確」感で熱狂</h2><p>DXTEENが12月9日発売の新シングル『相思想愛』を発表、コンセプトは恋の成長で、先着特典にNICONICOシールが付くとファンに紹介された。</p><div class="meta">🔥 65 ポスト</div></article><article class="card"><h2>「斜堂先生」凛くん演じた衝撃、大千秋楽で写真解禁とファン歓喜の声</h2><p>忍ゲキ4期の大千秋楽で、斜堂先生役が凛くんだと判明し、メイクや声が変わっていることに観客が驚きました。写真が解禁され、SNSで「凛くんの斜堂先生が最高」声が広がっています。</p><div class="meta">🔥 64 ポスト</div></article><article class="card"><h2>Aimer、デビュー15周年を迎え重要なお知らせ予告　ファンは期待と祝福の声</h2><p>Aimerは2026年9月7日、デビュー15周年を迎えることを告知し、ずっと前から準備してきた「大切なお知らせ」を近日中に発表するとコメントした。また、不安な時間を過ごす地域への安全を祈る旨も伝えた。ファンは祝福とともに、発表への期待やドキドキ感を表す返信を多数寄せ、準備万端で受け取る姿勢や応援の言葉が目立った。</p><div class="meta">🔥 62 ポスト</div></article><article class="card"><h2>KFCがジョジョコラボを示唆か　ファンが熱狂的に期待と議論　SNSで盛り上がり</h2><p>ケンタッキーフライドチキン公式アカウントが『何かが、とあるKFC店舗に迫っている…！』と曖昧な投稿をしたことをきっかけに、ユーザーは『ジョジョコラボ』を連想し、期待や興奮のコメントが多数寄せられた。中には実現への期待や過去のマクドナルド類似例への懸念、ジョジョ作品への愛着を示す声が混在し、SNS上で話題が急速に拡散した様子が見られる。</p><div class="meta">🔥 61 ポスト</div></article><article class="card"><h2>越後屋コースケ、クルル曹長の声を担当へ　新作『ケロロ軍曹☆』で期待と違和感の声が広がる</h2><p>10月3日から放送される『ケロロ軍曹☆』で、クルル曹長の声が子安さんから越後屋コースケさんに変わったことがPVで披露され、ファンの間で期待や違和感の声が広がっている。</p><div class="meta">🔥 61 ポスト</div></article><article class="card"><h2>YOASOBIが『ブラッサム』主題歌「咲き誇れ」発表、放送開始へ期待高まる</h2><p>YOASOBIが、9月28日放送開始の連続テレビ小説『ブラッサム』の主題歌として新曲「咲き誇れ」のタイトルを正式に発表した。原作は綿矢りさが書き下ろした小説で、宇野千代さんの人生を描くとされ、楽曲はミディアムテンポで朝ドラらしい明るさが期待される。SNS上では「待ってました」「楽しみ」「タイトルが素敵」など期待と称賛の声が多数寄せられ、曲のイメージやタイトルへの好感が広がっている様子が見られる。さらに、ファンは「YOASOBIの新たな側面が見られそう」「朝ドラキター」コメントも投稿し、話題はさらに拡散している。</p><div class="meta">🔥 59 ポスト</div></article><article class="card"><h2>ペルソナ4テレビワールドで必要なアイテムはメガネか—公式アンケートで多数回答が寄せられる</h2><p>モルガナ_ペルソナ広報が『ペルソナ4』シリーズのテレビワールドで必要なアイテムを問うアンケートを投稿したところ、ユーザーからは『メガネ』という回答が圧倒的に多数寄せられた。リプライや引用投稿では、鼻メガネや特製メガネ、クマのメガネなどバリエーションやジョークが続出し、メガネに関する話題がSNS上で拡散した。その結果、メガネがテレビワールドの必需品というミームが形成され、ファン間で笑いと共感が広がった。</p><div class="meta">🔥 58 ポスト</div></article><article class="card"><h2>DayRe:、初アニメタイアップで『ミカンセイオーディナリー』ED決定に歓喜の声</h2><p>DayRe:が初のアニメタイアップとして『ミカンセイオーディナリー』をEDに起用し、1stシングル発売を告知したんだ。ファンは「嬉しい」「幸せすぎる」って盛り上がっている様子だ。</p><div class="meta">🔥 58 ポスト</div></article><article class="card"><h2>とわすけ、キュントゥグンチャレンジ動画が話題に　可愛さとハグシーンでファン熱狂</h2><p>あるユーザーが『キュントゥグンチャレンジ』の動画をTikTok・Shorts・Reelsに投稿し、メンバーのとわすけが可愛らしいキュントゥグンとハグシーンを披露したことが話題となった。ファンは「可愛い」「神」「嬉しい」コメントを連投し、絵文字やハートで称賛し、拡散が加速した。</p><div class="meta">🔥 56 ポスト</div></article><article class="card"><h2>橋本環奈、シンガポールで奇抜ポーズ写真を投稿　ファンが笑いと称賛の声</h2><p>橋本環奈がシンガポール旅行中に撮影した奇抜なポーズの写真をSNSに投稿した。投稿は「タイミングを失った旅の写真」と笑いを交えて紹介され、ファンからは「身体が柔らかい」「真似したい」「最高に面白い」など称賛と笑いの声が多数寄せられ、マーライオン前のユニークな構図が話題となって拡散した。</p><div class="meta">🔥 55 ポスト</div></article><article class="card"><h2>山﨑福也、明日の先発告知と放送スケジュール発表でファン期待高まる</h2><p>北海道日本ハムファイターズ公式が、明日の試合の先発投手として山﨑福也投手が登板することを告知し、試合放送スケジュールを提示した。ファンは福也投手の好投と勝利を期待し、応援メッセージが多数寄せられた。特に福也投手へのエールや、モイネロ投手との対戦への不安・期待が混在し、チームへの応援が活発化している。</p><div class="meta">🔥 54 ポスト</div></article><article class="card"><h2>中西椋雅、CDTVライブ！ライブ！で19時放送へ出演決定とリアタイ呼びかけ</h2><p>中西椋雅がTBS『CDTVライブ！ライブ！』に19時から出演し、リアルタイム視聴（リアタイ）を呼びかけた。投稿では『ぜひ、リアタイしてください』と促し、ハッシュタグ#CDTVライブライブと#PSYCHICFEVERで拡散された。リプライでは『テレビの前で待ってます』『頑張ってね』『リアタイします』など、応援と視聴宣言が相次ぎ、ファン同士の盛り上がりが見られた。多くのファンがテレビ前で待機する準備をし、仕事や学校の合間でも録画や視聴を約束する声が上がり、出演者への期待と熱意が高まっている様子が伺える。</p><div class="meta">🔥 53 ポスト</div></article><article class="card"><h2>風間俊介、ワースト・ファーストラブ出演決定にファン歓喜「楽しみ！」</h2><p>風間俊介が『ワースト・ファーストラブ』に出演することがSNSで発表され、ファンからは「楽しみ！」や「おめでとう」喜びのコメントが続出している。</p><div class="meta">🔥 51 ポスト</div></article><article class="card"><h2>ディートリヒ実装、メルセデスとの神コラボが明らかに　ファイアーエムブレムヒーローズで話題沸騰</h2><p>ディートリヒがヒーローズに登場し、メルセデスとの神コラボが披露されたと話題に。ボイス収録の噂も広がり、ファンの期待が高まっている。新たなストーリーや演出が楽しめそうだ。</p><div class="meta">🔥 51 ポスト</div></article><article class="card"><h2>桃源暗鬼 Crimson Inferno、来週の運勢占い募集を告知　カード選択をリプライで受付</h2><p>桃源暗鬼 Crimson Inferno公式が、来週の運勢占いを実施すると告知し、4枚のカードから1枚を選んで番号をリプライで送るよう呼びかけた。カードは2日後に公開される予定で、ハッシュタグ #桃源暗鬼 #トウフェル が付けられた。ユーザーからは「3番でお願いします」や「1番が好き」など多数の番号回答が寄せられ、占いへの期待や楽しむ声が広がっている。</p><div class="meta">🔥 50 ポスト</div></article><article class="card"><h2>「にじたうん 8ちょうめ」販売開始、壁紙配布にファン歓喜「可愛い」熱狂</h2><p>にじたうん 8ちょうめが販売開始され、公式LINEで可愛い壁紙が配布されたと投稿が続出。販売ページのリンクも共有され、購入や壁紙取得を楽しむ声が多数上がっている。さらにセットでの購入やグッズの話題も見られ、ファンのテンションが上がっている様子だ。</p><div class="meta">🔥 50 ポスト</div></article><article class="card"><h2>「バッタマン」地上波放送で大盛り上がり、視聴者は「笑いが止まらない」と歓喜</h2><p>CDTVとEBiDANで「バッタマン」映像が流れ、視聴者は「笑いが止まらない」や「予想外で面白い」感想をSNSに投稿し、話題になっている。</p><div class="meta">🔥 49 ポスト</div></article><article class="card"><h2>「ブラッサム」放送開始前に主題歌「咲き誇れ」発表、キャストの期待の声が広がる</h2><p>『ブラッサム』の放送が間近に迫り、YOASOBIの新曲『咲き誇れ』が主題歌として決定したことや、石橋静河らが登場した第1週試写会が開催されたことが話題になっている。</p><div class="meta">🔥 49 ポスト</div></article><article class="card"><h2>MAN WITH A MISSION、Firestarter Tour 2026のFWAM会員限定2次先行チケット受付開始を発表</h2><p>MAN WITH A MISSIONの公式アカウントが、2026年開催の『Firestarter Tour 2026』に向けて、FWAM会員限定のチケット2次先行受付開始を告知した。ファンは「当たりますように」や「もっと会場増やして」など期待と喜びの声を寄せ、応募意欲が高まっている。</p><div class="meta">🔥 48 ポスト</div></article><article class="card"><h2>堀江貴文が体験した東海道新幹線個室、静寂と快適さが話題に</h2><p>堀江貴文がJR東海から招待を受け、東海道新幹線の個室に初乗車したと投稿した。個室は静かで快適な空間と専用Wi‑Fiが整い、動画撮影が可能という点が強調された。SNS上では「羨ましい」「プライバシー確保」称賛や、利用料金や出張経費への懸念、実装時期への期待多様な反応が寄せられ、個室新幹線への関心が高まっている。</p><div class="meta">🔥 47 ポスト</div></article><article class="card"><h2>エースコンバット8、キャンペーンがシリーズ史上最大ボリュームに—AC3を超えるとプロデューサーが発表</h2><p>とあるユーザーが、エースコンバット8のキャンペーンがシリーズ史上最大のボリュームを誇り、従来のエースコンバット3さえも上回るとプロデューサーが語ったと投稿した。これを受けて、ファンは「驚き」「期待」「AC3の52ミッションを超えるのか」声を上げ、ミッション数や機体バリエーション、オンラインモードへの期待感が高まっている。一方で「ボリュームすごすぎない？」や「長すぎるのは嫌」など、ボリュームへの懸念も一部で見られた。</p><div class="meta">🔥 44 ポスト</div></article><article class="card"><h2>「月刊わんこ」最新号、TREASUREジフン＆ジョンファン表紙にファン歓喜「可愛いすぎる」</h2><p>『月刊わんこ』が最新号でTREASUREのジフンとジョンファンを表紙に起用し、発売と同時に編集部からのいいねが多数届いたことがSNSで大きく話題になり、ファンからは「可愛いすぎる」「好きだから嬉しい」声が上がっている。</p><div class="meta">🔥 43 ポスト</div></article><article class="card"><h2>「ゴジラ-0.0」巨大3.6mムビチケ登場に「インパクトすごすぎ」ファン歓喜</h2><p>映画『ゴジラ-0.0』向けに、横3.6mの巨大ムビチケが登場した。1/2サイズも用意され、価格は26,900円。SNSでは「インパクトすごすぎ」や「高すぎ」声が飛び交っている。</p><div class="meta">🔥 43 ポスト</div></article><article class="card"><h2>建設業界でAI置換は不可能か　中国のロボ化議論が拡散</h2><p>SNS上で、あるユーザーが「AIが絶対に置き換えられない仕事がある、例えば建設業界」と投稿したことをきっかけに、建設現場の塗装や足場作業は人間の技術が必要だという賛同や、ロボット導入で効率化できるとの反論が寄せられた。中国では既にロボット化が進んでいるとの指摘や、職人の失業リスクへの懸念も多数見られ、AIと人間の役割分担について議論が活発化した。</p><div class="meta">🔥 43 ポスト</div></article><article class="card"><h2>VERIVERY、8th MINI ALBUM『CONFETTI』と『Don&#x27;t Panic!』MVを同時公開、ファン歓喜のカムバック</h2><p>VERIVERYが8th MINI ALBUM『CONFETTI』のリリースと同時に『Don&#x27;t Panic!』の公式ミュージックビデオを公開した。ファンはSNS上でカムバックを祝福し、楽曲のポップでノスタルジックな雰囲気やミラーボール演出、NG集の可愛さに歓喜の声が相次いだ。特に『元気がもらえる』『可愛い』『懐かしい』肯定的な感想が多数寄せられ、MVの映像やパフォーマンスへの期待も高まっている。</p><div class="meta">🔥 42 ポスト</div></article><article class="card"><h2>ばぁうくん、19時新作歌ってみた『洗脳』公開　高評価1万件目指す緊急ミッションにファン熱狂</h2><p>ばぁうくんがYouTubeで19時に新作歌ってみた『洗脳』をプレミア公開し、翌日22時までに高評価1万件を目指す緊急ミッションをファンに呼び掛けている。コメントや拡散、チャンネル登録で応援が募っている。</p><div class="meta">🔥 42 ポスト</div></article><article class="card"><h2>ダルビッシュセレクション2026、12名OB選手を公式が一斉発表</h2><p>プロスピA公式が、ダルビッシュ投手が選出したOB選手12名を『ダルビッシュセレクション2026』として一斉に公開した。ユーザーは豪華さに驚き「笑えるほど豪華」「最高」など称賛の声を上げる一方、逆永川や呉昇桓、ロドリゲス具体的な選手への期待や、楽天版・DeNA版への意見・微妙さの指摘も見られ、全体的に期待感と好意的なリアクションが中心だった。</p><div class="meta">🔥 42 ポスト</div></article><article class="card"><h2>Radiohead来日公演チケット販売、クリマン先行で高額価格と抽選に一部で声が上がる</h2><p>Radioheadの来日公演チケットがクリマン先行やe+先行で登場し、2万円超の高額価格や抽選倍率、転売対策が話題になっている。ファンは申し込み方法や当選確率に戸惑いの声を上げている。</p><div class="meta">🔥 42 ポスト</div></article><article class="card"><h2>カマキリの恐怖映像が拡散、AIか本物か議論沸騰、SNSで話題になる</h2><p>とあるユーザーが『Such a needy mantis』という動画を投稿し、カマキリがまるで人間に甘えるかのように手を差し伸べる奇妙な映像が掲載された。この映像は瞬く間にSNSで拡散され、視聴者からは「恐怖感がある」「キモい」「AIで作られたのでは？」驚きや不安の声が多数上がった。一方で「かわいい」「笑える」軽いリアクションや、動画の技術的な完成度を称賛するコメントも見られ、賛否が交錯した。</p><div class="meta">🔥 41 ポスト</div></article><article class="card"><h2>エクシードモデルトリニティ RX-78-2 ガンダム、二次予約開始も購入困難が続く</h2><p>バンダイ公式が『エクシードモデルトリニティ RX-78-2 ガンダム』のケーブル＋ライトユニットセット（税込1,850円）の二次予約開始を告知し、全3種のカプセルレスフィギュアが販売されると発表した。予約開始直後からサイト接続不良や在庫不足、転売ボットへの不満の声が多数寄せられ、一部ユーザーは購入に成功し交換募集や結果報告を行うなど賛否が交錯した。</p><div class="meta">🔥 41 ポスト</div></article><article class="card"><h2>EVAN、衝撃の新MV『Death of Me』公開でファン熱狂を巻き起こす</h2><p>EVANが2026年9月7日に『Death of Me』の公式ミュージックビデオを公開した。ファンはMVの映像美や振付、EVANの歌声を称賛し、「鳥肌が立つ」「最高にかっこいい」コメントが多数寄せられ、楽曲のリピート再生やアルバム全曲の通し視聴を呼びかける声も上がっている。</p><div class="meta">🔥 41 ポスト</div></article><article class="card"><h2>高橋広樹さん誕生日を祝う投稿が多数のファンから祝福の声が寄せられた</h2><p>あるユーザーが高橋広樹さんの誕生日を祝う投稿をし、ファンから「ハピバ」「おめでとう」祝福メッセージが多数寄せられた。さらに、引用ツイートではヒソカや城之内など彼が演じたキャラクターへの言及や、声の幅広さへの称賛が見られ、全体としてポジティブな反応が広がっている。</p><div class="meta">🔥 40 ポスト</div></article><article class="card"><h2>久保史緒里、ラジオ最終回でプロフィール帳執筆　「最後の2人のラジオ」感動の声が一部で見られる</h2><p>ラジオ最終回が放送され、久保史緒里がプロフィール帳を書き上げたことが話題に。リスナーはパン作りやプロポーズ願望のツイートで盛り上がっている。</p><div class="meta">🔥 40 ポスト</div></article><article class="card"><h2>小波津志、2ndアルバム『DIFFERENT』ダンス映像が話題に</h2><p>PSYCHIC FEVER OFFICIALがTikTokにて、メンバー小波津志のダンスをフィーチャーした2枚目のアルバム『DIFFERENT』のプロモーション動画を投稿した。ファンは「かっこいい」「過呼吸になるほどすごい」称賛し、ダンスの迫力や表情に驚きと喜びの声が多数寄せられた。</p><div class="meta">🔥 40 ポスト</div></article><article class="card"><h2>LeoとXinlongのイチャイチャ映像が大画面で露出、ファンが爆笑の渦に</h2><p>とあるユーザーが、レオがシンロン（Xinlong）にべったりしている様子がライブステージの大画面に映し出された映像を投稿した。ファンは「爆笑」「かわいい」「イチャイチャすぎ」コメントを寄せ、ニャンティーズやアンシン他メンバーへの言及も多数見られ、動画は急速に拡散された。さらに「ニャンティーズ万バズ」「シンロンとリオのカップル化」ツイートが続き、笑いと称賛が渦巻く様子がSNS上で話題となった。</p><div class="meta">🔥 40 ポスト</div></article><article class="card"><h2>ロサンゼルス・ドジャース、ナショナルズに7-5でシーズンスイープ達成</h2><p>ロサンゼルス・ドジャースはワシントン・ナショナルズ戦で7-5の勝利を収め、シーズン通算でナショナルズをスイープしたことがSNSで報告された。ベッツの逆転3ランホームランやタッカーのホームランキャッチ、ミラーの復帰勝利投手称賛され、ファンは「強い」「連勝続く」など喜びの声を多数寄せた。また、大谷翔平の復帰期待や今後のレッズ戦への期待感も投稿に上がっている。この勝利で4連勝を達成し、今月の6試合中5試合で5点以上の得点を記録したこともファンから称賛された。</p><div class="meta">🔥 40 ポスト</div></article><article class="card"><h2>「オーイシヤンタン」19時半ライブ配信、加藤純一ゲストにファン歓喜の声</h2><p>オーイシヤンタンのライブ配信が19時半にスタートし、加藤純一さんがゲストで登場することが決まり、ファンからは「楽しみ」や「うれしい」声が多数上がっている様子だ。配信はMBSヤングタウンで行われ、コメント欄がいつもと違うツッコミも見られ、全体的に盛り上がりを見せている。</p><div class="meta">🔥 39 ポスト</div></article><article class="card"><h2>刀剣乱舞、9月8日13時〜16時のメンテナンスでゲームプレイ停止へ「ご迷惑をおかけします」</h2><p>刀剣乱舞は9月8日（火）13時から16時までサーバーメンテナンスを行い、その間はゲームプレイや『指南』『よくある質問』の閲覧ができなくなると案内した。</p><div class="meta">🔥 39 ポスト</div></article><article class="card"><h2>まふまふ『夢のまた夢』10周年、ファンが「大好き」や「ありがとう」と祝福の声</h2><p>『夢のまた夢』が10周年を迎え、SNSでは「等身大のまふまふが詰まっている」「何千回も聴いている」コメントが続出し、ファン同士が思い出やライブでの合唱・コールを語り合い、祝福ムードが広がっている。</p><div class="meta">🔥 36 ポスト</div></article><article class="card"><h2>「忍たまハロウィンリバイバル」東京開催にファン歓喜「かわいい」「待ちに待った」でも遠方は残念</h2><p>忍たまのハロウィンリバイバルが東京のアニカフェで開催され、ハロウィン限定イラストのグッズや再販商品が登場した。受付は10月1日から11月3日で、遠方からは来店が難しいとの声もある。ファンは「かわいい」「待ちに待った」喜んでいる。</p><div class="meta">🔥 36 ポスト</div></article><article class="card"><h2>大江戸線、深さと混雑が話題に　利用者が「深すぎ」「帰りめっちゃ混んでた」と嘆く</h2><p>大江戸線は駅構内の深さや帰宅ラッシュでの混雑、車両点検による遅延が話題になっており、利用者から「深すぎ」「めっちゃ混んでた」声が上がっている。</p><div class="meta">🔥 35 ポスト</div></article><article class="card"><h2>さちゆあ対談前編・後編公開、ファンは「ヤバすぎた」や「面白すぎる」と大歓喜</h2><p>さちゆあの対談が前編・後編で公開され、福也さんが全開トーク、さちやが笑いを交えて盛り上げる様子がSNSで話題に。ファンは「ヤバすぎた」「面白すぎる」リアクションし、再会やチェキ会の要望も見られる。</p><div class="meta">🔥 35 ポスト</div></article><article class="card"><h2>星新一生誕100年記念朗読劇『星新一が描いた未来』が開催決定、福ちゃんの声にファン歓喜</h2><p>星新一の100年記念朗読劇が決定し、福ちゃんがナレーションを務めると話題に。チケットは9月9日正午から販売開始で、ファンは「行きたい！」と盛り上がっている。</p><div class="meta">🔥 34 ポスト</div></article><article class="card"><h2>にじ遊戯王祭2026でシンクロが登場、ファンが熱狂的にデッキ構築を語る</h2><p>にじ遊戯王祭2026でシンクロが登場し、ファンがデッキ構築や戦術を紹介する投稿が続出。FTK型やハンデス型など、さまざまな構築例がシェアされた。</p><div class="meta">🔥 34 ポスト</div></article><article class="card"><h2>ベンザマン登場で歓喜！2コストでJビッグ1をドローに変換できる新カードが話題に</h2><p>デュエマに新しく加わった『ベンザマン』は、2コストでJビッグ1をドローに変える効果や光る・流れる演出が特徴で、プレイヤーの間で盛り上がっている。</p><div class="meta">🔥 33 ポスト</div></article><article class="card"><h2>池﨑理人、愛猫コハクとの感動エピソードがnoteで公開　ファンは「泣ける」「神note」に歓喜</h2><p>ヤマト運輸の公式noteで、池﨑理人が愛猫コハクとのエピソードや子猫時代の写真を公開し、ファンからは感動の声や「泣ける」「神note」コメントが続出した。二人の温かな絆が伝わり、投稿者はほっこりした気持ちになった。</p><div class="meta">🔥 31 ポスト</div></article><article class="card"><h2>「ヒロミの八王子リホーム」やす子の子ども食堂実現に感動、視聴者から「すごい」声が続出</h2><p>日テレで9月7日に放送された『ヒロミの八王子リホーム～やす子の夢！子ども食堂を作る～完全版』では、築45年のカラオケスナックをリフォームし、やす子さんが子ども食堂を実現する様子が2か月半の激闘と共に描かれ、山崎育三郎やSixTONESの高地優吾が出演した。</p><div class="meta">🔥 30 ポスト</div></article><article class="card"><h2>「ネガハピ」最新話が話題に、視聴者は「おもろすぎる」と歓喜が続出</h2><p>『ネガハピ』の最新話がYouTubeで公開され、マネージャーへの視聴者感情がひっくり返る展開が登場し、ファンからは「おもろすぎる」や「濃い」声が上がっている。</p><div class="meta">🔥 29 ポスト</div></article><article class="card"><h2>『夢のクレヨン王国』29周年祝福、ファンが「おめでとう」や「リメイク希望」など熱狂的な声を連発</h2><p>2026年9月7日、Twitter上で『夢のクレヨン王国』の放送開始から29年を祝う投稿が多数寄せられ、初放送日や30周年への期待、シルバー王女誕生祭やサブタイトル読み上げ復活の情報がシェアされた。</p><div class="meta">🔥 29 ポスト</div></article><article class="card"><h2>「アニメイトカフェ」来店ラッシュ、予約制限や全メニューコンプにファン歓喜</h2><p>アニメイトカフェに行ったり予約したりしたユーザーが、名古屋店の残席や全メニュー取得、スタンプカード利用、持ち帰り限定など、さまざまな利用情報を投稿している。予約が1人だけで30分制限という声もあり、店ごとの営業形態が話題になっている。</p><div class="meta">🔥 28 ポスト</div></article><article class="card"><h2>「うたコン」平原綾香生出演、マスク・ド・カメロに大泉洋＆King&amp;Prince登場でファン歓喜</h2><p>NHK総合の音楽番組『うたコン』で、平原綾香が生出演し、マスク・ド・カメロが披露されると同時に、大泉洋やKing&amp;Princeとの写真がSNSで話題になっている。</p><div class="meta">🔥 28 ポスト</div></article><article class="card"><h2>『南田南弁護士は天才肌』新キャスト発表にファン歓喜「文哉くんきたぁ」</h2><p>ドラマ『南田南弁護士は天才肌』で、芦田愛菜が主演し、同僚の初恋相手に高橋文哉、父親役に角田晃広が新キャストとして登場した。10月19日（月）22時から毎週放送が楽しみだ。</p><div class="meta">🔥 27 ポスト</div></article><article class="card"><h2>「しるこサンド」映画コラボや限定セット、チャーム販売でSNS熱狂「欲しい」声続出</h2><p>松永製菓のしるこサンドが、ちいかわ映画コラボパッケージやさつまいも・栗限定セット、オンライン販売のチャームなど多彩に展開され、SNSで盛り上がっている様子が見られる。ファンからは「欲しい」「完売必至」声が上がり、売り場拡大やECアクセスが急増している。さらにチャームの再販が期待され、話題は拡大中だ。</p><div class="meta">🔥 26 ポスト</div></article><article class="card"><h2>東京ゲームショウ2026、限定コラボや新グッズが続々登場でファン熱狂</h2><p>東京ゲームショウ2026（9月17〜21日、幕張メッセ）では、にじさんじ×PUNK WORKSHOPのレバーレスコントローラー実機や、ぷよぷよ・ソニックの新グッズが先行販売され、セガ／アトラスの『STRANGER THAN HEAVEN』が大規模に出展、MIRESIのコスプレ出演など、各社がブースで新作商品や特典を次々に披露した。</p><div class="meta">🔥 25 ポスト</div></article><article class="card"><h2>下野紘＆早見沙織が吹替出演、バイオハザード日本語版が10月9日公開へ</h2><p>映画『バイオハザード』の日本語吹替版が10月9日公開へと決まり、予告映像が公開された。下野紘がブライアン役、早見沙織がミシェル役で声を担当することが発表され、ファンの間で話題になっている。</p><div class="meta">🔥 24 ポスト</div></article><article class="card"><h2>菅田将暉、初監督デビューで『死の谷&#x27;95』映画化 発表にファン歓喜</h2><p>俳優の菅田将暉が初監督・主演として、青山真治遺作小説『死の谷&#x27;95』の映画化を発表し、共同監督に山田健人、脚本に甫木元空が加わり、2027年公開が決まったなっている。</p><div class="meta">🔥 20 ポスト</div></article><article class="card"><h2>「マロニエ王国の七人の騎士」OP「さよならは言わない」公開、追加キャストで期待高まる</h2><p>『マロニエ王国の七人の騎士』の第2弾PVが公開され、yamaが歌うOP「さよならは言わない」や櫻井みゆき・藤原夏海・子安武人らの新声優が続々発表された。放送は10月3日午後6時25分からNHK Eテレで、Amazon Primeでも独占配信が決まっていて、ファンは期待の声を上げている。</p><div class="meta">🔥 19 ポスト</div></article>
+    </main>
+
+    <!--NAV:PAGER_BOTTOM-->
+<div class="archive-pager"><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/07/16-00.html">← 09/07 16:00</a><span class="disabled">次へ →</span></div>
+<!--/NAV:PAGER_BOTTOM-->
+
+    <!--NAV:ARCHIVE_NAV-->
+<nav class="archive-nav"><div class="archive-nav-label">過去7日のアーカイブ</div><div class="archive-nav-links"><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/07/16-00.html" class="archive-nav-link current">09/07</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/06/20-00.html" class="archive-nav-link">09/06</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/05/20-00.html" class="archive-nav-link">09/05</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/04/20-00.html" class="archive-nav-link">09/04</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/03/20-00.html" class="archive-nav-link">09/03</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/02/20-00.html" class="archive-nav-link">09/02</a><a href="https://everflux24.github.io/Aoaeola/archive/2026/09/01/20-00.html" class="archive-nav-link">09/01</a></div></nav>
+<!--/NAV:ARCHIVE_NAV-->
+
+    <div style="text-align:center;">
+      <a href="https://everflux24.github.io/Aoaeola/" class="back-link">&#8592; トップページへ戻る</a>
+    </div>
+
+    <footer>
+      <p>Generated by Aoaeola v2.5 &#183; 2026-09-07 20:00:45</p>
+    </footer>
+  </div>
+</body>
+</html>
